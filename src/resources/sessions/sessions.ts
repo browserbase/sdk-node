@@ -64,7 +64,45 @@ export interface Session {
 
   createdAt: string;
 
+  expiresAt: string;
+
+  /**
+   * Indicates if the Session was created to be kept alive upon disconnections
+   */
+  keepAlive: boolean;
+
+  /**
+   * The Project ID linked to the Session.
+   */
+  projectId: string;
+
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxyBytes: number;
+
+  startedAt: string;
+
+  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+
   updatedAt: string;
+
+  /**
+   * CPU used by the Session
+   */
+  avgCpuUsage?: number;
+
+  /**
+   * Optional. The Context linked to the Session.
+   */
+  contextId?: string;
+
+  endedAt?: string;
+
+  /**
+   * Memory used by the Session
+   */
+  memoryUsage?: number;
 }
 
 export interface SessionLiveURLs {
