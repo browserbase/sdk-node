@@ -62,47 +62,61 @@ export class Sessions extends APIResource {
 export interface Session {
   id: string;
 
-  createdAt: string;
+  created_at: string;
 
-  expiresAt: string;
+  expires_at: string;
 
   /**
    * Indicates if the Session was created to be kept alive upon disconnections
    */
-  keepAlive: boolean;
+  keep_alive: boolean;
 
   /**
    * The Project ID linked to the Session.
    */
-  projectId: string;
+  project_id: string;
 
-  /**
-   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-   */
-  proxyBytes: number;
+  region: string;
 
-  startedAt: string;
+  started_at: string;
 
   status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 
-  updatedAt: string;
+  updated_at: string;
 
   /**
    * CPU used by the Session
    */
-  avgCpuUsage?: number;
+  avg_cpu_usage?: number;
+
+  connectUrl?: string;
 
   /**
    * Optional. The Context linked to the Session.
    */
-  contextId?: string;
+  context_id?: string;
 
-  endedAt?: string;
+  ended_at?: string;
+
+  is_idle?: boolean;
 
   /**
    * Memory used by the Session
    */
-  memoryUsage?: number;
+  memory_usage?: number;
+
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxy_bytes?: number;
+
+  seleniumRemoteUrl?: string;
+
+  signingKey?: string;
+
+  viewport_height?: number;
+
+  viewport_width?: number;
 }
 
 export interface SessionLiveURLs {
