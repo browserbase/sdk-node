@@ -44,11 +44,12 @@ Types:
 
 - <code><a href="./src/resources/sessions/sessions.ts">Session</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionLiveURLs</a></code>
+- <code><a href="./src/resources/sessions/sessions.ts">SessionCreateResponse</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionListResponse</a></code>
 
 Methods:
 
-- <code title="post /v1/sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">create</a>({ ...params }) -> Session</code>
+- <code title="post /v1/sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">create</a>({ ...params }) -> SessionCreateResponse</code>
 - <code title="get /v1/sessions/{id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">retrieve</a>(id) -> Session</code>
 - <code title="post /v1/sessions/{id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">update</a>(id, { ...params }) -> Session</code>
 - <code title="get /v1/sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">list</a>({ ...params }) -> SessionListResponse</code>

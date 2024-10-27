@@ -12,6 +12,7 @@ export { Project, ProjectUsage, ProjectListResponse, Projects } from './projects
 export {
   Session,
   SessionLiveURLs,
+  SessionCreateResponse,
   SessionListResponse,
   SessionCreateParams,
   SessionUpdateParams,
