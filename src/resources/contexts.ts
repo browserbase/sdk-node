@@ -32,6 +32,11 @@ export interface Context {
 
   createdAt: string;
 
+  /**
+   * The Project ID linked to the uploaded Context.
+   */
+  projectId: string;
+
   updatedAt: string;
 }
 
