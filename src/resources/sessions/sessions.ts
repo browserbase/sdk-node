@@ -76,6 +76,11 @@ export interface Session {
    */
   project_id: string;
 
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxyBytes: number;
+
   region: string;
 
   started_at: string;
@@ -104,11 +109,6 @@ export interface Session {
    * Memory used by the Session
    */
   memory_usage?: number;
-
-  /**
-   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-   */
-  proxy_bytes?: number;
 
   seleniumRemoteUrl?: string;
 
