@@ -62,61 +62,9 @@ export class Sessions extends APIResource {
 export interface Session {
   id: string;
 
-  created_at: string;
+  createdAt: string;
 
-  expires_at: string;
-
-  /**
-   * Indicates if the Session was created to be kept alive upon disconnections
-   */
-  keep_alive: boolean;
-
-  /**
-   * The Project ID linked to the Session.
-   */
-  project_id: string;
-
-  /**
-   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-   */
-  proxyBytes: number;
-
-  region: string;
-
-  started_at: string;
-
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
-
-  updated_at: string;
-
-  /**
-   * CPU used by the Session
-   */
-  avg_cpu_usage?: number;
-
-  connectUrl?: string;
-
-  /**
-   * Optional. The Context linked to the Session.
-   */
-  context_id?: string;
-
-  ended_at?: string;
-
-  is_idle?: boolean;
-
-  /**
-   * Memory used by the Session
-   */
-  memory_usage?: number;
-
-  seleniumRemoteUrl?: string;
-
-  signingKey?: string;
-
-  viewport_height?: number;
-
-  viewport_width?: number;
+  updatedAt: string;
 }
 
 export interface SessionLiveURLs {
@@ -172,7 +120,9 @@ export interface SessionCreateParams {
    * Proxy configuration. Can be true for default proxy, or an array of proxy
    * configurations.
    */
-  proxies?: unknown | boolean;
+  proxies?:
+    | boolean
+    | Array<SessionCreateParams.BrowserbaseProxyConfig | SessionCreateParams.ExternalProxyConfig>;
 
   /**
    * Duration in seconds after which the session will automatically end. Defaults to
@@ -276,6 +226,75 @@ export namespace SessionCreateParams {
 
       width?: number;
     }
+  }
+
+  export interface BrowserbaseProxyConfig {
+    /**
+     * Type of proxy. Always use 'browserbase' for the Browserbase managed proxy
+     * network.
+     */
+    type: 'browserbase';
+
+    /**
+     * Domain pattern for which this proxy should be used. If omitted, defaults to all
+     * domains. Optional.
+     */
+    domainPattern?: string;
+
+    /**
+     * Configuration for geolocation
+     */
+    geolocation?: BrowserbaseProxyConfig.Geolocation;
+  }
+
+  export namespace BrowserbaseProxyConfig {
+    /**
+     * Configuration for geolocation
+     */
+    export interface Geolocation {
+      /**
+       * Country code in ISO 3166-1 alpha-2 format
+       */
+      country: string;
+
+      /**
+       * Name of the city. Use spaces for multi-word city names. Optional.
+       */
+      city?: string;
+
+      /**
+       * US state code (2 characters). Must also specify US as the country. Optional.
+       */
+      state?: string;
+    }
+  }
+
+  export interface ExternalProxyConfig {
+    /**
+     * Server URL for external proxy. Required.
+     */
+    server: string;
+
+    /**
+     * Type of proxy. Always 'external' for this config.
+     */
+    type: 'external';
+
+    /**
+     * Domain pattern for which this proxy should be used. If omitted, defaults to all
+     * domains. Optional.
+     */
+    domainPattern?: string;
+
+    /**
+     * Password for external proxy authentication. Optional.
+     */
+    password?: string;
+
+    /**
+     * Username for external proxy authentication. Optional.
+     */
+    username?: string;
   }
 }
 
