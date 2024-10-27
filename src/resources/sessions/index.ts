@@ -4,6 +4,7 @@ export { Downloads } from './downloads';
 export {
   Session,
   SessionLiveURLs,
+  SessionCreateResponse,
   SessionListResponse,
   SessionCreateParams,
   SessionUpdateParams,

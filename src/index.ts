@@ -200,6 +200,7 @@ export namespace Browserbase {
   export import Sessions = API.Sessions;
   export import Session = API.Session;
   export import SessionLiveURLs = API.SessionLiveURLs;
+  export import SessionCreateResponse = API.SessionCreateResponse;
   export import SessionListResponse = API.SessionListResponse;
   export import SessionCreateParams = API.SessionCreateParams;
   export import SessionUpdateParams = API.SessionUpdateParams;
