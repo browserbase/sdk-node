@@ -33,16 +33,9 @@ export class Extensions extends APIResource {
 export interface Extension {
   id: string;
 
-  created_at: string;
+  createdAt: string;
 
-  fileName: string;
-
-  /**
-   * The Project ID linked to the uploaded Extension.
-   */
-  projectId: string;
-
-  updated_at: string;
+  updatedAt: string;
 }
 
 export interface ExtensionCreateParams {
