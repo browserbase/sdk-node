@@ -35,6 +35,13 @@ export interface Extension {
 
   createdAt: string;
 
+  fileName: string;
+
+  /**
+   * The Project ID linked to the uploaded Extension.
+   */
+  projectId: string;
+
   updatedAt: string;
 }
 

@@ -32,6 +32,12 @@ export interface Project {
 
   createdAt: string;
 
+  defaultTimeout: number;
+
+  name: string;
+
+  ownerId: string;
+
   updatedAt: string;
 }
 

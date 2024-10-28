@@ -18,7 +18,7 @@ export class Sessions extends APIResource {
   /**
    * Create a Session
    */
-  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<Session> {
+  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
     return this._client.post('/v1/sessions', { body, ...options });
   }
 
@@ -64,7 +64,50 @@ export interface Session {
 
   createdAt: string;
 
+  expiresAt: string;
+
+  /**
+   * Indicates if the Session was created to be kept alive upon disconnections
+   */
+  keepAlive: boolean;
+
+  /**
+   * The Project ID linked to the Session.
+   */
+  projectId: string;
+
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxyBytes: number;
+
+  /**
+   * The region where the Session is running.
+   */
+  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
+
+  startedAt: string;
+
+  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+
   updatedAt: string;
+
+  /**
+   * CPU used by the Session
+   */
+  avgCpuUsage?: number;
+
+  /**
+   * Optional. The Context linked to the Session.
+   */
+  contextId?: string;
+
+  endedAt?: string;
+
+  /**
+   * Memory used by the Session
+   */
+  memoryUsage?: number;
 }
 
 export interface SessionLiveURLs {
@@ -91,6 +134,72 @@ export namespace SessionLiveURLs {
 
     url: string;
   }
+}
+
+export interface SessionCreateResponse {
+  id: string;
+
+  /**
+   * WebSocket URL to connect to the Session.
+   */
+  connectUrl: string;
+
+  createdAt: string;
+
+  expiresAt: string;
+
+  /**
+   * Indicates if the Session was created to be kept alive upon disconnections
+   */
+  keepAlive: boolean;
+
+  /**
+   * The Project ID linked to the Session.
+   */
+  projectId: string;
+
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxyBytes: number;
+
+  /**
+   * The region where the Session is running.
+   */
+  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
+
+  /**
+   * HTTP URL to connect to the Session.
+   */
+  seleniumRemoteUrl: string;
+
+  /**
+   * Signing key to use when connecting to the Session via HTTP.
+   */
+  signingKey: string;
+
+  startedAt: string;
+
+  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+
+  updatedAt: string;
+
+  /**
+   * CPU used by the Session
+   */
+  avgCpuUsage?: number;
+
+  /**
+   * Optional. The Context linked to the Session.
+   */
+  contextId?: string;
+
+  endedAt?: string;
+
+  /**
+   * Memory used by the Session
+   */
+  memoryUsage?: number;
 }
 
 export type SessionListResponse = Array<Session>;
@@ -120,9 +229,12 @@ export interface SessionCreateParams {
    * Proxy configuration. Can be true for default proxy, or an array of proxy
    * configurations.
    */
-  proxies?:
-    | boolean
-    | Array<SessionCreateParams.BrowserbaseProxyConfig | SessionCreateParams.ExternalProxyConfig>;
+  proxies?: unknown;
+
+  /**
+   * The region where the Session should run.
+   */
+  region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
 
   /**
    * Duration in seconds after which the session will automatically end. Defaults to
@@ -180,7 +292,7 @@ export namespace SessionCreateParams {
       /**
        * Whether or not to persist the context after browsing. Defaults to `false`.
        */
-      persist: boolean;
+      persist?: boolean;
     }
 
     /**
@@ -227,75 +339,6 @@ export namespace SessionCreateParams {
       width?: number;
     }
   }
-
-  export interface BrowserbaseProxyConfig {
-    /**
-     * Type of proxy. Always use 'browserbase' for the Browserbase managed proxy
-     * network.
-     */
-    type: 'browserbase';
-
-    /**
-     * Domain pattern for which this proxy should be used. If omitted, defaults to all
-     * domains. Optional.
-     */
-    domainPattern?: string;
-
-    /**
-     * Configuration for geolocation
-     */
-    geolocation?: BrowserbaseProxyConfig.Geolocation;
-  }
-
-  export namespace BrowserbaseProxyConfig {
-    /**
-     * Configuration for geolocation
-     */
-    export interface Geolocation {
-      /**
-       * Country code in ISO 3166-1 alpha-2 format
-       */
-      country: string;
-
-      /**
-       * Name of the city. Use spaces for multi-word city names. Optional.
-       */
-      city?: string;
-
-      /**
-       * US state code (2 characters). Must also specify US as the country. Optional.
-       */
-      state?: string;
-    }
-  }
-
-  export interface ExternalProxyConfig {
-    /**
-     * Server URL for external proxy. Required.
-     */
-    server: string;
-
-    /**
-     * Type of proxy. Always 'external' for this config.
-     */
-    type: 'external';
-
-    /**
-     * Domain pattern for which this proxy should be used. If omitted, defaults to all
-     * domains. Optional.
-     */
-    domainPattern?: string;
-
-    /**
-     * Password for external proxy authentication. Optional.
-     */
-    password?: string;
-
-    /**
-     * Username for external proxy authentication. Optional.
-     */
-    username?: string;
-  }
 }
 
 export interface SessionUpdateParams {
@@ -319,6 +362,7 @@ export interface SessionListParams {
 export namespace Sessions {
   export import Session = SessionsAPI.Session;
   export import SessionLiveURLs = SessionsAPI.SessionLiveURLs;
+  export import SessionCreateResponse = SessionsAPI.SessionCreateResponse;
   export import SessionListResponse = SessionsAPI.SessionListResponse;
   export import SessionCreateParams = SessionsAPI.SessionCreateParams;
   export import SessionUpdateParams = SessionsAPI.SessionUpdateParams;
