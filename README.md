@@ -27,6 +27,7 @@ import Browserbase from 'browserbase';
 
 const client = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY'], // This is the default and can be omitted
+  environment: 'development', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {
@@ -48,6 +49,7 @@ import Browserbase from 'browserbase';
 
 const client = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY'], // This is the default and can be omitted
+  environment: 'development', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {
