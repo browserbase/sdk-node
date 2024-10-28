@@ -235,12 +235,6 @@ export interface SessionCreateParams {
    * The region where the Session should run.
    */
   region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
-
-  /**
-   * Duration in seconds after which the session will automatically end. Defaults to
-   * the Project's `defaultTimeout`.
-   */
-  timeout?: number;
 }
 
 export namespace SessionCreateParams {
