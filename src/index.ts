@@ -6,28 +6,11 @@ import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as API from './resources/index';
 
-const environments = {
-  production: 'https://api.browserbase.com',
-  development: 'https://api.dev.browserbase.com',
-  local: 'http://api.localhost',
-};
-type Environment = keyof typeof environments;
-
 export interface ClientOptions {
   /**
    * Your [Browserbase API Key](https://www.browserbase.com/settings).
    */
   apiKey?: string | undefined;
-
-  /**
-   * Specifies the environment to use for the API.
-   *
-   * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://api.browserbase.com`
-   * - `development` corresponds to `https://api.dev.browserbase.com`
-   * - `local` corresponds to `http://api.localhost`
-   */
-  environment?: Environment;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -98,7 +81,6 @@ export class Browserbase extends Core.APIClient {
    * API Client for interfacing with the Browserbase API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['BROWSERBASE_API_KEY'] ?? undefined]
-   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['BROWSERBASE_BASE_URL'] ?? https://api.browserbase.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -121,18 +103,11 @@ export class Browserbase extends Core.APIClient {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL,
-      environment: opts.environment ?? 'production',
+      baseURL: baseURL || `https://api.browserbase.com`,
     };
 
-    if (baseURL && opts.environment) {
-      throw new Errors.BrowserbaseError(
-        'Ambiguous URL; The `baseURL` option (or BROWSERBASE_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
-      );
-    }
-
     super({
-      baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURL: options.baseURL!,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
