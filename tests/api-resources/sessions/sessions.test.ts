@@ -44,7 +44,6 @@ describe('resource sessions', () => {
       keepAlive: true,
       proxies: {},
       region: 'us-west-2',
-      timeout: 60,
     });
   });
 
