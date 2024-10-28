@@ -5,13 +5,6 @@ import { chromium } from 'playwright-core';
 const DEFAULT_CAPTCHA_URL = 'https://2captcha.com/demo/recaptcha-v2';
 const OVERRIDE_TIMEOUT = 60000; // 1 minute in milliseconds
 
-// Type declarations
-declare global {
-  interface Window {
-    captchaSolvingFinished?: boolean;
-  }
-}
-
 const bb = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY']!,
 });
