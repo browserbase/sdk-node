@@ -1,8 +1,8 @@
 {
   "name": "browserbase",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "The official TypeScript library for the Browserbase API",
-  "author": "Browserbase <dev-feedback@browserbase.com>",
+  "author": "Browserbase <support@browserbase.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
-    "*"
+    "**/*"
   ],
   "private": false,
   "scripts": {

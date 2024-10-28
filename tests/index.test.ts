@@ -151,13 +151,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['BROWSERBASE_BASE_URL'] = ''; // empty
       const client = new Browserbase({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.dev.browserbase.com');
+      expect(client.baseURL).toEqual('https://api.browserbase.com');
     });
 
     test('blank env variable', () => {
       process.env['BROWSERBASE_BASE_URL'] = '  '; // blank
       const client = new Browserbase({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.dev.browserbase.com');
+      expect(client.baseURL).toEqual('https://api.browserbase.com');
     });
   });
 

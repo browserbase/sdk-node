@@ -30,9 +30,9 @@ const client = new Browserbase({
 });
 
 async function main() {
-  const context = await client.contexts.create({ projectId: 'projectId' });
+  const session = await client.sessions.create({ projectId: 'your_project_id', proxies: true });
 
-  console.log(context.id);
+  console.log(session.id);
 }
 
 main();
@@ -51,8 +51,8 @@ const client = new Browserbase({
 });
 
 async function main() {
-  const params: Browserbase.ContextCreateParams = { projectId: 'projectId' };
-  const context: Browserbase.ContextCreateResponse = await client.contexts.create(params);
+  const params: Browserbase.SessionCreateParams = { projectId: 'your_project_id', proxies: true };
+  const session: Browserbase.SessionCreateResponse = await client.sessions.create(params);
 }
 
 main();
@@ -69,15 +69,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const context = await client.contexts.create({ projectId: 'projectId' }).catch(async (err) => {
-    if (err instanceof Browserbase.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const session = await client.sessions
+    .create({ projectId: 'your_project_id', proxies: true })
+    .catch(async (err) => {
+      if (err instanceof Browserbase.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -112,7 +114,7 @@ const client = new Browserbase({
 });
 
 // Or, configure per-request:
-await client.contexts.create({ projectId: 'projectId' }, {
+await client.sessions.create({ projectId: 'your_project_id', proxies: true }, {
   maxRetries: 5,
 });
 ```
@@ -129,7 +131,7 @@ const client = new Browserbase({
 });
 
 // Override per-request:
-await client.contexts.create({ projectId: 'projectId' }, {
+await client.sessions.create({ projectId: 'your_project_id', proxies: true }, {
   timeout: 5 * 1000,
 });
 ```
@@ -150,15 +152,15 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Browserbase();
 
-const response = await client.contexts.create({ projectId: 'projectId' }).asResponse();
+const response = await client.sessions.create({ projectId: 'your_project_id', proxies: true }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: context, response: raw } = await client.contexts
-  .create({ projectId: 'projectId' })
+const { data: session, response: raw } = await client.sessions
+  .create({ projectId: 'your_project_id', proxies: true })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(context.id);
+console.log(session.id);
 ```
 
 ### Making custom/undocumented requests
@@ -262,8 +264,8 @@ const client = new Browserbase({
 });
 
 // Override per-request:
-await client.contexts.create(
-  { projectId: 'projectId' },
+await client.sessions.create(
+  { projectId: 'your_project_id', proxies: true },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
