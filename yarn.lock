@@ -857,6 +857,14 @@
   dependencies:
     undici-types "~6.19.2"
 
+"@types/selenium-webdriver@^4.1.26":
+  version "4.1.26"
+  resolved "https://registry.npmjs.org/@types/selenium-webdriver/-/selenium-webdriver-4.1.26.tgz"
+  integrity sha512-PUgqsyNffal0eAU0bzGlh37MJo558aporAPZoKqBeB/pF7zhKl1S3zqza0GpwFqgoigNxWhEIJzru75eeYco/w==
+  dependencies:
+    "@types/node" "*"
+    "@types/ws" "*"
+
 "@types/semver@^7.5.0":
   version "7.5.8"
   resolved "https://registry.npmjs.org/@types/semver/-/semver-7.5.8.tgz"
@@ -866,6 +874,13 @@
   version "2.0.3"
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.3.tgz"
   integrity sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==
+
+"@types/ws@*":
+  version "8.5.12"
+  resolved "https://registry.npmjs.org/@types/ws/-/ws-8.5.12.tgz"
+  integrity sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==
+  dependencies:
+    "@types/node" "*"
 
 "@types/yargs-parser@*":
   version "21.0.3"
