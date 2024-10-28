@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "browserbase/*": ["dist/src/*"],
-      "browserbase": ["dist/src/index.ts"],
+      "browserbase": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
