@@ -18,7 +18,7 @@ const bb = new Browserbase({
   const browser = await chromium.connectOverCDP(session.connectUrl);
 
   // Getting the default context to ensure the sessions are recorded.
-  const defaultContext = browser.contexts()[0];
+  const [defaultContext] = browser.contexts();
   const page = defaultContext?.pages()[0];
 
   await page?.goto('https://browserbase.com/');
