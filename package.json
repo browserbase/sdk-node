@@ -1,7 +1,7 @@
 {
   "name": "@browserbasehq/sdk",
   "version": "2.0.0-alpha.0",
-  "description": "The official Node.js library for the Browserbase API",
+  "description": "The official TypeScript library for the Browserbase API",
   "author": "Browserbase <support@browserbase.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
