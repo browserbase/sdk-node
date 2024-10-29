@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'browserbase/core';
-import { Blob } from 'browserbase/_shims/index';
-import { toFile } from 'browserbase';
+import { multipartFormRequestOptions, createForm } from '@browserbasehq/sdk/core';
+import { Blob } from '@browserbasehq/sdk/_shims/index';
+import { toFile } from '@browserbasehq/sdk';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

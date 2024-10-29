@@ -1,6 +1,6 @@
 # Browserbase Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/browserbase.svg)](https://npmjs.org/package/browserbase) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/browserbase)
+[![NPM version](https://img.shields.io/npm/v/@browserbasehq/sdk.svg)](https://npmjs.org/package/@browserbasehq/sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@browserbasehq/sdk)
 
 This library provides convenient access to the Browserbase REST API from server-side TypeScript or JavaScript.
 
@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:browserbase/sdk-node.git
+npm install @browserbasehq/sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install browserbase`
 
 ## Usage
 
@@ -23,7 +20,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Browserbase from 'browserbase';
+import Browserbase from '@browserbasehq/sdk';
 
 const client = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY'], // This is the default and can be omitted
@@ -44,7 +41,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Browserbase from 'browserbase';
+import Browserbase from '@browserbasehq/sdk';
 
 const client = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY'], // This is the default and can be omitted
@@ -218,11 +215,11 @@ add the following import before your first import `from "Browserbase"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'browserbase/shims/web';
-import Browserbase from 'browserbase';
+import '@browserbasehq/sdk/shims/web';
+import Browserbase from '@browserbasehq/sdk';
 ```
 
-To do the inverse, add `import "browserbase/shims/node"` (which does import polyfills).
+To do the inverse, add `import "@browserbasehq/sdk/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/browserbase/sdk-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -232,7 +229,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Browserbase from 'browserbase';
+import Browserbase from '@browserbasehq/sdk';
 
 const client = new Browserbase({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
