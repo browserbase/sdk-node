@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Browserbase from 'browserbase';
-import { APIUserAbortError } from 'browserbase';
-import { Headers } from 'browserbase/core';
+import Browserbase from '@browserbasehq/sdk';
+import { APIUserAbortError } from '@browserbasehq/sdk';
+import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
