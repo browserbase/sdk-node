@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Browserbase } from '@browserbasehq/sdk';
+import { Browserbase } from 'browserbase';
 
 const { stringifyQuery } = Browserbase.prototype as any;
 
