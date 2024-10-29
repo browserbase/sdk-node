@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'browserbase/shims/${shims.kind}'\` before importing anything else from browserbase`,
+      `you must \`import '@browserbasehq/sdk/shims/${shims.kind}'\` before importing anything else from @browserbasehq/sdk`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import 'browserbase/shims/${shims.kind}'\` after \`import 'browserbase/shims/${kind}'\``,
+      `can't \`import '@browserbasehq/sdk/shims/${shims.kind}'\` after \`import '@browserbasehq/sdk/shims/${kind}'\``,
     );
   }
   auto = options.auto;

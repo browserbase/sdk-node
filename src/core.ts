@@ -99,9 +99,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'browserbase'`:
-   * - `import 'browserbase/shims/node'` (if you're running on Node)
-   * - `import 'browserbase/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from '@browserbasehq/sdk'`:
+   * - `import '@browserbasehq/sdk/shims/node'` (if you're running on Node)
+   * - `import '@browserbasehq/sdk/shims/web'` (otherwise)
    */
   asResponse(): Promise<Response> {
     return this.responsePromise.then((p) => p.response);
@@ -115,9 +115,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'browserbase'`:
-   * - `import 'browserbase/shims/node'` (if you're running on Node)
-   * - `import 'browserbase/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from '@browserbasehq/sdk'`:
+   * - `import '@browserbasehq/sdk/shims/node'` (if you're running on Node)
+   * - `import '@browserbasehq/sdk/shims/web'` (otherwise)
    */
   async withResponse(): Promise<{ data: T; response: Response }> {
     const [data, response] = await Promise.all([this.parse(), this.asResponse()]);
