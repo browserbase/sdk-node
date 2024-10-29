@@ -1,6 +1,6 @@
 {
   "name": "@browserbasehq/sdk",
-  "version": "0.1.0-alpha.3",
+  "version": "2.0.0-alpha.0",
   "description": "The official TypeScript library for the Browserbase API",
   "author": "Browserbase <support@browserbase.com>",
   "types": "dist/index.d.ts",
