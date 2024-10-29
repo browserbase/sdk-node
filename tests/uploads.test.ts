@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from '@browserbasehq/sdk/uploads';
-import { File } from '@browserbasehq/sdk/_shims/index';
+import { toFile, type ResponseLike } from 'browserbase/uploads';
+import { File } from 'browserbase/_shims/index';
 
 class MyClass {
   name: string = 'foo';

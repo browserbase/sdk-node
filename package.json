@@ -66,8 +66,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "@browserbasehq/sdk": ".",
-    "@browserbasehq/sdk/*": "./src/*"
+    "browserbase": ".",
+    "browserbase/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {
