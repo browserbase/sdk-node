@@ -1,4 +1,4 @@
-import Browserbase from 'browserbase/index';
+import Browserbase from '@browserbasehq/sdk';
 import { chromium } from 'playwright-core';
 
 // Configuration

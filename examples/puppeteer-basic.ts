@@ -1,5 +1,5 @@
 import { connect } from 'puppeteer-core';
-import Browserbase from 'browserbase/index';
+import Browserbase from '@browserbasehq/sdk';
 
 // Configuration
 const BROWSERBASE_PROJECT_ID = process.env['BROWSERBASE_PROJECT_ID']!;

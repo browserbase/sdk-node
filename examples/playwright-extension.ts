@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { chromium } from 'playwright-core';
 import AdmZip from 'adm-zip';
-import Browserbase from 'browserbase/index';
+import Browserbase from '@browserbasehq/sdk';
 
 // Configuration
 const BROWSERBASE_PROJECT_ID = process.env['BROWSERBASE_PROJECT_ID']!;

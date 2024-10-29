@@ -1,8 +1,9 @@
+import fs from 'node:fs';
 import http, { type ClientRequest } from 'node:http';
 import { join } from 'node:path';
 import { Builder, By, until } from 'selenium-webdriver';
-import Browserbase from 'browserbase/index';
-import fs from 'node:fs';
+import Browserbase from '@browserbasehq/sdk';
+
 // Configuration
 const BROWSERBASE_PROJECT_ID = process.env['BROWSERBASE_PROJECT_ID']!;
 const BROWSERBASE_API_KEY = process.env['BROWSERBASE_API_KEY']!;
