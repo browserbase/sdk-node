@@ -1,5 +1,5 @@
+import Browserbase from '@browserbasehq/sdk';
 import { chromium } from 'playwright-core';
-import Browserbase from 'browserbase/index';
 
 const BROWSERBASE_API_KEY = process.env['BROWSERBASE_API_KEY']!;
 const BROWSERBASE_PROJECT_ID = process.env['BROWSERBASE_PROJECT_ID']!;
