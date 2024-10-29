@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "@browserbasehq/sdk/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "@browserbasehq/sdk/*": ["deno/*"],
-      "@browserbasehq/sdk": ["deno/index.ts"],
+      "browserbase/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "browserbase/*": ["deno/*"],
+      "browserbase": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,

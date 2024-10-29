@@ -1,5 +1,5 @@
 {
-  "name": "@browserbasehq/sdk",
+  "name": "browserbase",
   "version": "0.1.0-alpha.2",
   "description": "The official TypeScript library for the Browserbase API",
   "author": "Browserbase <support@browserbase.com>",
@@ -60,8 +60,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "@browserbasehq/sdk": ".",
-    "@browserbasehq/sdk/*": "./src/*"
+    "browserbase": ".",
+    "browserbase/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

@@ -1,5 +1,5 @@
-import { createResponseHeaders } from '@browserbasehq/sdk/core';
-import { Headers } from '@browserbasehq/sdk/_shims/index';
+import { createResponseHeaders } from 'browserbase/core';
+import { Headers } from 'browserbase/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

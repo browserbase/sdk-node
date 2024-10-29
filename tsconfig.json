@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "@browserbasehq/sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "@browserbasehq/sdk/*": ["src/*"],
-      "@browserbasehq/sdk": ["src/index.ts"],
+      "browserbase/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "browserbase/*": ["src/*"],
+      "browserbase": ["src/index.ts"],
     },
     "noEmit": true,
 
