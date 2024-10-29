@@ -8,7 +8,7 @@
     "paths": {
       "@browserbasehq/sdk/_shims/auto/*": ["deno/_shims/auto/*-deno"],
       "@browserbasehq/sdk/*": ["deno/*"],
-      "@browserbasehq/sdk": ["deno/index.ts"],
+      "@browserbasehq/sdk": ["deno/index.ts"]
     },
     "noEmit": true,
     "declaration": true,
