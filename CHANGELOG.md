@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-10-29)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/browserbase/sdk-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#19](https://github.com/browserbase/sdk-node/issues/19)) ([8df9cc8](https://github.com/browserbase/sdk-node/commit/8df9cc8c76e4a615ba63d4568086bd60e88a0dfb))
+
+
+### Chores
+
+* update SDK settings ([#21](https://github.com/browserbase/sdk-node/issues/21)) ([dd2956f](https://github.com/browserbase/sdk-node/commit/dd2956f0b22aac232b6ae3cdd572a4d6b688099d))
+
 ## 0.1.0-alpha.2 (2024-10-28)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/browserbase/sdk-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
