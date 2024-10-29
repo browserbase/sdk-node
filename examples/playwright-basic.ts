@@ -19,7 +19,7 @@ const bb = new Browserbase({
 
   // Getting the default context to ensure the sessions are recorded.
   const [defaultContext] = browser.contexts();
-  const [page] = defaultContext?.pages();
+  const page = defaultContext?.pages()[0];
 
   await page?.goto('https://browserbase.com/');
   await page?.close();
