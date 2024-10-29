@@ -11,7 +11,7 @@
     "paths": {
       "@browserbasehq/sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
       "@browserbasehq/sdk/*": ["src/*"],
-      "@browserbasehq/sdk": ["src/index.ts"],
+      "@browserbasehq/sdk": ["src/index.ts"]
     },
     "noEmit": true,
 
