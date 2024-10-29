@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Browserbase from 'browserbase';
+import Browserbase from '@browserbasehq/sdk';
 
 const client = new Browserbase({
   apiKey: 'My API Key',
