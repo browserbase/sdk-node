@@ -42,7 +42,7 @@ describe('resource sessions', () => {
       },
       extensionId: 'extensionId',
       keepAlive: true,
-      proxies: {},
+      proxies: true,
       region: 'us-west-2',
       timeout: 60,
     });
