@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "browserbase/*": ["dist/src/*"],
-      "browserbase": ["dist/src/index.ts"],
+      "@browserbasehq/sdk/*": ["dist/src/*"],
+      "@browserbasehq/sdk": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
