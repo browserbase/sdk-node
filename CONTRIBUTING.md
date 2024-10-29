@@ -55,12 +55,12 @@ $ cd sdk-node
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link @browserbasehq/sdk
+$ yarn link browserbase
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @browserbasehq/sdk
+$ pnpm link -—global browserbase
 ```
 
 ## Running tests
