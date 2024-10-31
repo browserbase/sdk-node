@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as UploadsAPI from './uploads';
 
 export class Uploads extends APIResource {
   /**
@@ -28,7 +27,6 @@ export interface UploadCreateParams {
   file: Core.Uploadable;
 }
 
-export namespace Uploads {
-  export import UploadCreateResponse = UploadsAPI.UploadCreateResponse;
-  export import UploadCreateParams = UploadsAPI.UploadCreateParams;
+export declare namespace Uploads {
+  export { type UploadCreateResponse as UploadCreateResponse, type UploadCreateParams as UploadCreateParams };
 }

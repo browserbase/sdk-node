@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as ExtensionsAPI from './extensions';
 
 export class Extensions extends APIResource {
   /**
@@ -49,7 +48,6 @@ export interface ExtensionCreateParams {
   file: Core.Uploadable;
 }
 
-export namespace Extensions {
-  export import Extension = ExtensionsAPI.Extension;
-  export import ExtensionCreateParams = ExtensionsAPI.ExtensionCreateParams;
+export declare namespace Extensions {
+  export { type Extension as Extension, type ExtensionCreateParams as ExtensionCreateParams };
 }
