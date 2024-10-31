@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as ContextsAPI from './contexts';
 
 export class Contexts extends APIResource {
   /**
@@ -100,9 +99,11 @@ export interface ContextCreateParams {
   projectId: string;
 }
 
-export namespace Contexts {
-  export import Context = ContextsAPI.Context;
-  export import ContextCreateResponse = ContextsAPI.ContextCreateResponse;
-  export import ContextUpdateResponse = ContextsAPI.ContextUpdateResponse;
-  export import ContextCreateParams = ContextsAPI.ContextCreateParams;
+export declare namespace Contexts {
+  export {
+    type Context as Context,
+    type ContextCreateResponse as ContextCreateResponse,
+    type ContextUpdateResponse as ContextUpdateResponse,
+    type ContextCreateParams as ContextCreateParams,
+  };
 }

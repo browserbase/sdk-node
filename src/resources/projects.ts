@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as ProjectsAPI from './projects';
 
 export class Projects extends APIResource {
   /**
@@ -13,7 +12,7 @@ export class Projects extends APIResource {
   }
 
   /**
-   * List all projects
+   * List projects
    */
   list(options?: Core.RequestOptions): Core.APIPromise<ProjectListResponse> {
     return this._client.get('/v1/projects', options);
@@ -49,8 +48,10 @@ export interface ProjectUsage {
 
 export type ProjectListResponse = Array<Project>;
 
-export namespace Projects {
-  export import Project = ProjectsAPI.Project;
-  export import ProjectUsage = ProjectsAPI.ProjectUsage;
-  export import ProjectListResponse = ProjectsAPI.ProjectListResponse;
+export declare namespace Projects {
+  export {
+    type Project as Project,
+    type ProjectUsage as ProjectUsage,
+    type ProjectListResponse as ProjectListResponse,
+  };
 }

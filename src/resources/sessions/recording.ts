@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as RecordingAPI from './recording';
 
 export class Recording extends APIResource {
   /**
@@ -34,7 +33,9 @@ export interface SessionRecording {
 
 export type RecordingRetrieveResponse = Array<SessionRecording>;
 
-export namespace Recording {
-  export import SessionRecording = RecordingAPI.SessionRecording;
-  export import RecordingRetrieveResponse = RecordingAPI.RecordingRetrieveResponse;
+export declare namespace Recording {
+  export {
+    type SessionRecording as SessionRecording,
+    type RecordingRetrieveResponse as RecordingRetrieveResponse,
+  };
 }
