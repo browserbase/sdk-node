@@ -12,7 +12,6 @@ jobs:
   lint:
     name: lint
     runs-on: ubuntu-latest
-    
 
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +19,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Bootstrap
         run: ./scripts/bootstrap
@@ -31,7 +30,6 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    
 
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +37,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Bootstrap
         run: ./scripts/bootstrap
@@ -56,11 +54,10 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Bootstrap
         run: ./scripts/bootstrap
 
       - name: Run tests
         run: ./scripts/test
-
