@@ -13,8 +13,6 @@ export class Recording extends APIResource {
 }
 
 export interface SessionRecording {
-  id: string;
-
   /**
    * See
    * [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
