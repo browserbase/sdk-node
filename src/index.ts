@@ -179,30 +179,10 @@ export class Browserbase extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  BrowserbaseError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Browserbase.Contexts = Contexts;
 Browserbase.Extensions = Extensions;
 Browserbase.Projects = Projects;
 Browserbase.Sessions = Sessions;
-
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
 
@@ -238,5 +218,22 @@ export declare namespace Browserbase {
     type SessionListParams as SessionListParams,
   };
 }
+
+export { toFile, fileFromPath } from '@browserbasehq/sdk/uploads';
+export {
+  BrowserbaseError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from '@browserbasehq/sdk/error';
 
 export default Browserbase;
