@@ -219,7 +219,7 @@ export declare namespace Browserbase {
   };
 }
 
-export { toFile, fileFromPath } from '@browserbasehq/sdk/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   BrowserbaseError,
   APIError,
@@ -234,6 +234,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from '@browserbasehq/sdk/error';
+} from './error';
 
 export default Browserbase;
