@@ -3,11 +3,14 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as SessionsAPI from './sessions';
 import * as DownloadsAPI from './downloads';
+import { Downloads } from './downloads';
 import * as LogsAPI from './logs';
+import { LogListResponse, Logs, SessionLog } from './logs';
 import * as RecordingAPI from './recording';
+import { Recording, RecordingRetrieveResponse, SessionRecording } from './recording';
 import * as UploadsAPI from './uploads';
+import { UploadCreateParams, UploadCreateResponse, Uploads } from './uploads';
 
 export class Sessions extends APIResource {
   downloads: DownloadsAPI.Downloads = new DownloadsAPI.Downloads(this._client);
@@ -430,22 +433,35 @@ export interface SessionListParams {
   status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
-export namespace Sessions {
-  export import Session = SessionsAPI.Session;
-  export import SessionLiveURLs = SessionsAPI.SessionLiveURLs;
-  export import SessionCreateResponse = SessionsAPI.SessionCreateResponse;
-  export import SessionListResponse = SessionsAPI.SessionListResponse;
-  export import SessionCreateParams = SessionsAPI.SessionCreateParams;
-  export import SessionUpdateParams = SessionsAPI.SessionUpdateParams;
-  export import SessionListParams = SessionsAPI.SessionListParams;
-  export import Downloads = DownloadsAPI.Downloads;
-  export import Logs = LogsAPI.Logs;
-  export import SessionLog = LogsAPI.SessionLog;
-  export import LogListResponse = LogsAPI.LogListResponse;
-  export import Recording = RecordingAPI.Recording;
-  export import SessionRecording = RecordingAPI.SessionRecording;
-  export import RecordingRetrieveResponse = RecordingAPI.RecordingRetrieveResponse;
-  export import Uploads = UploadsAPI.Uploads;
-  export import UploadCreateResponse = UploadsAPI.UploadCreateResponse;
-  export import UploadCreateParams = UploadsAPI.UploadCreateParams;
+Sessions.Downloads = Downloads;
+Sessions.Logs = Logs;
+Sessions.Recording = Recording;
+Sessions.Uploads = Uploads;
+
+export declare namespace Sessions {
+  export {
+    type Session as Session,
+    type SessionLiveURLs as SessionLiveURLs,
+    type SessionCreateResponse as SessionCreateResponse,
+    type SessionListResponse as SessionListResponse,
+    type SessionCreateParams as SessionCreateParams,
+    type SessionUpdateParams as SessionUpdateParams,
+    type SessionListParams as SessionListParams,
+  };
+
+  export { Downloads as Downloads };
+
+  export { Logs as Logs, type SessionLog as SessionLog, type LogListResponse as LogListResponse };
+
+  export {
+    Recording as Recording,
+    type SessionRecording as SessionRecording,
+    type RecordingRetrieveResponse as RecordingRetrieveResponse,
+  };
+
+  export {
+    Uploads as Uploads,
+    type UploadCreateResponse as UploadCreateResponse,
+    type UploadCreateParams as UploadCreateParams,
+  };
 }

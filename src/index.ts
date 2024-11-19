@@ -1,10 +1,29 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import {
+  Context,
+  ContextCreateParams,
+  ContextCreateResponse,
+  ContextUpdateResponse,
+  Contexts,
+} from './resources/contexts';
+import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
+import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
+import {
+  Session,
+  SessionCreateParams,
+  SessionCreateResponse,
+  SessionListParams,
+  SessionListResponse,
+  SessionLiveURLs,
+  SessionUpdateParams,
+  Sessions,
+} from './resources/sessions/sessions';
 
 export interface ClientOptions {
   /**
@@ -160,7 +179,48 @@ export class Browserbase extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+Browserbase.Contexts = Contexts;
+Browserbase.Extensions = Extensions;
+Browserbase.Projects = Projects;
+Browserbase.Sessions = Sessions;
+export declare namespace Browserbase {
+  export type RequestOptions = Core.RequestOptions;
+
+  export {
+    Contexts as Contexts,
+    type Context as Context,
+    type ContextCreateResponse as ContextCreateResponse,
+    type ContextUpdateResponse as ContextUpdateResponse,
+    type ContextCreateParams as ContextCreateParams,
+  };
+
+  export {
+    Extensions as Extensions,
+    type Extension as Extension,
+    type ExtensionCreateParams as ExtensionCreateParams,
+  };
+
+  export {
+    Projects as Projects,
+    type Project as Project,
+    type ProjectUsage as ProjectUsage,
+    type ProjectListResponse as ProjectListResponse,
+  };
+
+  export {
+    Sessions as Sessions,
+    type Session as Session,
+    type SessionLiveURLs as SessionLiveURLs,
+    type SessionCreateResponse as SessionCreateResponse,
+    type SessionListResponse as SessionListResponse,
+    type SessionCreateParams as SessionCreateParams,
+    type SessionUpdateParams as SessionUpdateParams,
+    type SessionListParams as SessionListParams,
+  };
+}
+
+export { toFile, fileFromPath } from './uploads';
+export {
   BrowserbaseError,
   APIError,
   APIConnectionError,
@@ -174,37 +234,6 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
-export namespace Browserbase {
-  export import RequestOptions = Core.RequestOptions;
-
-  export import Contexts = API.Contexts;
-  export import Context = API.Context;
-  export import ContextCreateResponse = API.ContextCreateResponse;
-  export import ContextUpdateResponse = API.ContextUpdateResponse;
-  export import ContextCreateParams = API.ContextCreateParams;
-
-  export import Extensions = API.Extensions;
-  export import Extension = API.Extension;
-  export import ExtensionCreateParams = API.ExtensionCreateParams;
-
-  export import Projects = API.Projects;
-  export import Project = API.Project;
-  export import ProjectUsage = API.ProjectUsage;
-  export import ProjectListResponse = API.ProjectListResponse;
-
-  export import Sessions = API.Sessions;
-  export import Session = API.Session;
-  export import SessionLiveURLs = API.SessionLiveURLs;
-  export import SessionCreateResponse = API.SessionCreateResponse;
-  export import SessionListResponse = API.SessionListResponse;
-  export import SessionCreateParams = API.SessionCreateParams;
-  export import SessionUpdateParams = API.SessionUpdateParams;
-  export import SessionListParams = API.SessionListParams;
-}
+} from './error';
 
 export default Browserbase;

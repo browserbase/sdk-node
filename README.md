@@ -27,7 +27,7 @@ const client = new Browserbase({
 });
 
 async function main() {
-  const session = await client.sessions.create({ projectId: 'your_project_id', proxies: true });
+  const session = await client.sessions.create({ projectId: 'your_project_id' });
 
   console.log(session.id);
 }
@@ -48,7 +48,7 @@ const client = new Browserbase({
 });
 
 async function main() {
-  const params: Browserbase.SessionCreateParams = { projectId: 'your_project_id', proxies: true };
+  const params: Browserbase.SessionCreateParams = { projectId: 'your_project_id' };
   const session: Browserbase.SessionCreateResponse = await client.sessions.create(params);
 }
 
@@ -66,17 +66,15 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const session = await client.sessions
-    .create({ projectId: 'your_project_id', proxies: true })
-    .catch(async (err) => {
-      if (err instanceof Browserbase.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
+  const session = await client.sessions.create({ projectId: 'your_project_id' }).catch(async (err) => {
+    if (err instanceof Browserbase.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 }
 
 main();
@@ -111,7 +109,7 @@ const client = new Browserbase({
 });
 
 // Or, configure per-request:
-await client.sessions.create({ projectId: 'your_project_id', proxies: true }, {
+await client.sessions.create({ projectId: 'your_project_id' }, {
   maxRetries: 5,
 });
 ```
@@ -128,7 +126,7 @@ const client = new Browserbase({
 });
 
 // Override per-request:
-await client.sessions.create({ projectId: 'your_project_id', proxies: true }, {
+await client.sessions.create({ projectId: 'your_project_id' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -149,12 +147,12 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Browserbase();
 
-const response = await client.sessions.create({ projectId: 'your_project_id', proxies: true }).asResponse();
+const response = await client.sessions.create({ projectId: 'your_project_id' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: session, response: raw } = await client.sessions
-  .create({ projectId: 'your_project_id', proxies: true })
+  .create({ projectId: 'your_project_id' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(session.id);
@@ -262,7 +260,7 @@ const client = new Browserbase({
 
 // Override per-request:
 await client.sessions.create(
-  { projectId: 'your_project_id', proxies: true },
+  { projectId: 'your_project_id' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
@@ -286,6 +284,15 @@ We are keen for your feedback; please open an [issue](https://www.github.com/bro
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
+
+- Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
+- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Deno v1.28.0 or higher, using `import Browserbase from "npm:@browserbasehq/sdk"`.
+- Bun 1.0 or later.
+- Cloudflare Workers.
+- Vercel Edge Runtime.
+- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
+- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 

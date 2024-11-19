@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as LogsAPI from './logs';
 
 export class Logs extends APIResource {
   /**
@@ -62,7 +61,6 @@ export namespace SessionLog {
 
 export type LogListResponse = Array<SessionLog>;
 
-export namespace Logs {
-  export import SessionLog = LogsAPI.SessionLog;
-  export import LogListResponse = LogsAPI.LogListResponse;
+export declare namespace Logs {
+  export { type SessionLog as SessionLog, type LogListResponse as LogListResponse };
 }
