@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.2 (2024-11-20)
+
+Full Changelog: [v2.0.1...v2.0.2](https://github.com/browserbase/sdk-node/compare/v2.0.1...v2.0.2)
+
+### Chores
+
+* **internal:** codegen related update ([#50](https://github.com/browserbase/sdk-node/issues/50)) ([3ae78b0](https://github.com/browserbase/sdk-node/commit/3ae78b0477cb19382fb37f66c36c8dfdd5c2c4ec))
+* remove redundant word in comment ([#53](https://github.com/browserbase/sdk-node/issues/53)) ([93f75da](https://github.com/browserbase/sdk-node/commit/93f75da8176b3756133682ef622bd359f011832d))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#52](https://github.com/browserbase/sdk-node/issues/52)) ([41832d5](https://github.com/browserbase/sdk-node/commit/41832d5220e500837950cfc565a6d40d03ff695a))
+
 ## 2.0.1 (2024-11-19)
 
 Full Changelog: [v2.0.0...v2.0.1](https://github.com/browserbase/sdk-node/compare/v2.0.0...v2.0.1)
