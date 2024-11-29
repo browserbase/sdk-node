@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.1.0 (2024-11-29)
+
+Full Changelog: [v2.0.2...v2.1.0](https://github.com/browserbase/sdk-node/compare/v2.0.2...v2.1.0)
+
+### Features
+
+* **internal:** make git install file structure match npm ([#58](https://github.com/browserbase/sdk-node/issues/58)) ([f7ea01e](https://github.com/browserbase/sdk-node/commit/f7ea01e8f1b5261dc0fb3db028ff3fc1bea004ed))
+
+
+### Chores
+
+* **internal:** codegen related update ([#50](https://github.com/browserbase/sdk-node/issues/50)) ([101931a](https://github.com/browserbase/sdk-node/commit/101931aed3555b911b5e96ba6cc7cab33f22c163))
+* **internal:** version bump ([#56](https://github.com/browserbase/sdk-node/issues/56)) ([0f0b97a](https://github.com/browserbase/sdk-node/commit/0f0b97aab53c566075dadb8c91bd4ff1014dd54b))
+
 ## 2.0.2 (2024-11-20)
 
 Full Changelog: [v2.0.1...v2.0.2](https://github.com/browserbase/sdk-node/compare/v2.0.1...v2.0.2)
