@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.1 (2024-12-10)
+
+Full Changelog: [v2.1.0...v2.1.1](https://github.com/browserbase/sdk-node/compare/v2.1.0...v2.1.1)
+
+### Chores
+
+* **internal:** codegen related update ([#50](https://github.com/browserbase/sdk-node/issues/50)) ([bb1dfba](https://github.com/browserbase/sdk-node/commit/bb1dfba218c17fc31ec1c5a51d7d0cc85fe1e81a))
+* **internal:** remove unnecessary getRequestClient function ([#62](https://github.com/browserbase/sdk-node/issues/62)) ([ad17e82](https://github.com/browserbase/sdk-node/commit/ad17e821be22d01ee1521fd5d1fdb6a3a95865e2))
+* **internal:** version bump ([#56](https://github.com/browserbase/sdk-node/issues/56)) ([1434357](https://github.com/browserbase/sdk-node/commit/1434357ce1efc7895b717c18593461a6d3ea8dc0))
+* **internal:** version bump ([#60](https://github.com/browserbase/sdk-node/issues/60)) ([535d652](https://github.com/browserbase/sdk-node/commit/535d652bb074cd9a7a37ee647e670c716fca3b1b))
+
 ## 2.1.0 (2024-11-29)
 
 Full Changelog: [v2.0.2...v2.1.0](https://github.com/browserbase/sdk-node/compare/v2.0.2...v2.1.0)
