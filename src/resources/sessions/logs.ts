@@ -13,8 +13,6 @@ export class Logs extends APIResource {
 }
 
 export interface SessionLog {
-  eventId: string;
-
   method: string;
 
   pageId: number;
