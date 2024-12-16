@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.1.1 (2024-12-12)
+
+Full Changelog: [v2.1.0...v2.1.1](https://github.com/browserbase/sdk-node/compare/v2.1.0...v2.1.1)
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#63](https://github.com/browserbase/sdk-node/issues/63)) ([43a8303](https://github.com/browserbase/sdk-node/commit/43a83039ad2c853410f4918e637597f637edaac0))
+* **internal:** codegen related update ([#50](https://github.com/browserbase/sdk-node/issues/50)) ([bb1dfba](https://github.com/browserbase/sdk-node/commit/bb1dfba218c17fc31ec1c5a51d7d0cc85fe1e81a))
+* **internal:** codegen related update ([#65](https://github.com/browserbase/sdk-node/issues/65)) ([03b26a2](https://github.com/browserbase/sdk-node/commit/03b26a2b9205acf68ad254ec8be20d65e9212ef3))
+* **internal:** remove unnecessary getRequestClient function ([#62](https://github.com/browserbase/sdk-node/issues/62)) ([ad17e82](https://github.com/browserbase/sdk-node/commit/ad17e821be22d01ee1521fd5d1fdb6a3a95865e2))
+* **internal:** version bump ([#56](https://github.com/browserbase/sdk-node/issues/56)) ([1434357](https://github.com/browserbase/sdk-node/commit/1434357ce1efc7895b717c18593461a6d3ea8dc0))
+* **internal:** version bump ([#60](https://github.com/browserbase/sdk-node/issues/60)) ([535d652](https://github.com/browserbase/sdk-node/commit/535d652bb074cd9a7a37ee647e670c716fca3b1b))
+* **types:** nicer error class types + jsdocs ([#64](https://github.com/browserbase/sdk-node/issues/64)) ([7bf7d7b](https://github.com/browserbase/sdk-node/commit/7bf7d7b7058accc456b51928495b8b21b0ace08c))
+
 ## 2.1.0 (2024-11-29)
 
 Full Changelog: [v2.0.2...v2.1.0](https://github.com/browserbase/sdk-node/compare/v2.0.2...v2.1.0)
