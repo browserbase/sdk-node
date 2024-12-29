@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.2 (2024-12-29)
+
+Full Changelog: [v2.1.1...v2.1.2](https://github.com/browserbase/sdk-node/compare/v2.1.1...v2.1.2)
+
+### Chores
+
+* **internal:** codegen related update ([#50](https://github.com/browserbase/sdk-node/issues/50)) ([fa3fa06](https://github.com/browserbase/sdk-node/commit/fa3fa06b0c5b44e60dccd45a7d262341d7d4431c))
+* **internal:** version bump ([#56](https://github.com/browserbase/sdk-node/issues/56)) ([fc0e9aa](https://github.com/browserbase/sdk-node/commit/fc0e9aa25f78e3136ceab807eb2df592b7a83e46))
+* **internal:** version bump ([#60](https://github.com/browserbase/sdk-node/issues/60)) ([702abb2](https://github.com/browserbase/sdk-node/commit/702abb2c4e7d85100ea110528e70850d4a4f2c52))
+* **internal:** version bump ([#67](https://github.com/browserbase/sdk-node/issues/67)) ([93995d5](https://github.com/browserbase/sdk-node/commit/93995d5e6b9d833a428ae0501d6d4700c3a2d67d))
+
 ## 2.1.1 (2024-12-12)
 
 Full Changelog: [v2.1.0...v2.1.1](https://github.com/browserbase/sdk-node/compare/v2.1.0...v2.1.1)
