@@ -1,5 +1,68 @@
 # Changelog
 
+## 2.1.3 (2025-01-10)
+
+Full Changelog: [v2.1.2...v2.1.3](https://github.com/browserbase/sdk-node/compare/v2.1.2...v2.1.3)
+
+### Bug Fixes
+
+* **client:** normalize method ([#114](https://github.com/browserbase/sdk-node/issues/114)) ([cffc41f](https://github.com/browserbase/sdk-node/commit/cffc41f7baae3bc4fa18eaaa345daaf97077f69b))
+* **client:** normalize method ([#73](https://github.com/browserbase/sdk-node/issues/73)) ([d18d217](https://github.com/browserbase/sdk-node/commit/d18d217242c61280c58c2ea63868a5e854d87c54))
+* **client:** normalize method ([#85](https://github.com/browserbase/sdk-node/issues/85)) ([4a0a13a](https://github.com/browserbase/sdk-node/commit/4a0a13a486b1b19d86ef8fea3977a6f18e266401))
+
+
+### Chores
+
+* **internal:** codegen related update ([#100](https://github.com/browserbase/sdk-node/issues/100)) ([01c6b28](https://github.com/browserbase/sdk-node/commit/01c6b28a6c345865d0789523bcccae1bd4990eb8))
+* **internal:** codegen related update ([#101](https://github.com/browserbase/sdk-node/issues/101)) ([241e0fd](https://github.com/browserbase/sdk-node/commit/241e0fdd3fb85cc60d206ff40220741b636eaf29))
+* **internal:** codegen related update ([#102](https://github.com/browserbase/sdk-node/issues/102)) ([adbf0ac](https://github.com/browserbase/sdk-node/commit/adbf0acd4341416a540d4c81f0536f964e33db6b))
+* **internal:** codegen related update ([#103](https://github.com/browserbase/sdk-node/issues/103)) ([a04e944](https://github.com/browserbase/sdk-node/commit/a04e9444a5cc4940418e82b81a0dd6bc68614497))
+* **internal:** codegen related update ([#104](https://github.com/browserbase/sdk-node/issues/104)) ([2d639f9](https://github.com/browserbase/sdk-node/commit/2d639f936d5b4f8dad5d1a300701ac27f4efe702))
+* **internal:** codegen related update ([#105](https://github.com/browserbase/sdk-node/issues/105)) ([0d61709](https://github.com/browserbase/sdk-node/commit/0d61709a981e4d56e6b5b4693dcc4a87fa87a4c6))
+* **internal:** codegen related update ([#106](https://github.com/browserbase/sdk-node/issues/106)) ([3d19415](https://github.com/browserbase/sdk-node/commit/3d194156db3f8a1c98c933367a1d7aa48ad41e5d))
+* **internal:** codegen related update ([#107](https://github.com/browserbase/sdk-node/issues/107)) ([f21383a](https://github.com/browserbase/sdk-node/commit/f21383a99ce073953deac289f9d94e4d59308e6f))
+* **internal:** codegen related update ([#108](https://github.com/browserbase/sdk-node/issues/108)) ([47b9c65](https://github.com/browserbase/sdk-node/commit/47b9c65e487011900f1996e4f35ceb867a5f5045))
+* **internal:** codegen related update ([#109](https://github.com/browserbase/sdk-node/issues/109)) ([63a2c0d](https://github.com/browserbase/sdk-node/commit/63a2c0df0a552721d77b59e8f1ac1a0540cab7d3))
+* **internal:** codegen related update ([#110](https://github.com/browserbase/sdk-node/issues/110)) ([d17c241](https://github.com/browserbase/sdk-node/commit/d17c241b712cc5325ed8de918906890ecd1ab856))
+* **internal:** codegen related update ([#111](https://github.com/browserbase/sdk-node/issues/111)) ([85ae78d](https://github.com/browserbase/sdk-node/commit/85ae78d8ebd917b7a37a871c803122786889761e))
+* **internal:** codegen related update ([#112](https://github.com/browserbase/sdk-node/issues/112)) ([ef21c4a](https://github.com/browserbase/sdk-node/commit/ef21c4a382a4b4485c68504ca7db396ee221df1a))
+* **internal:** codegen related update ([#113](https://github.com/browserbase/sdk-node/issues/113)) ([bb69228](https://github.com/browserbase/sdk-node/commit/bb6922817abf6f6167f411e13961d346435549b4))
+* **internal:** codegen related update ([#50](https://github.com/browserbase/sdk-node/issues/50)) ([bb9da1d](https://github.com/browserbase/sdk-node/commit/bb9da1dcc8336d0e33fc8dd40519ea8db1738223))
+* **internal:** codegen related update ([#72](https://github.com/browserbase/sdk-node/issues/72)) ([415c0c3](https://github.com/browserbase/sdk-node/commit/415c0c3ba38437c2b4235fdb689f096cc062345e))
+* **internal:** codegen related update ([#74](https://github.com/browserbase/sdk-node/issues/74)) ([4e54df4](https://github.com/browserbase/sdk-node/commit/4e54df4bf0147ca39f66a39cd213336db457a415))
+* **internal:** codegen related update ([#75](https://github.com/browserbase/sdk-node/issues/75)) ([d344d5e](https://github.com/browserbase/sdk-node/commit/d344d5e923d0aa58ea8c7a1de5d16e49e24b8a26))
+* **internal:** codegen related update ([#76](https://github.com/browserbase/sdk-node/issues/76)) ([2233aa2](https://github.com/browserbase/sdk-node/commit/2233aa277ba33ede0ef04c2df2ae89b204f2251e))
+* **internal:** codegen related update ([#77](https://github.com/browserbase/sdk-node/issues/77)) ([16b27b4](https://github.com/browserbase/sdk-node/commit/16b27b41e10e2ca536488ee5b642609a18f54ba3))
+* **internal:** codegen related update ([#78](https://github.com/browserbase/sdk-node/issues/78)) ([af2d145](https://github.com/browserbase/sdk-node/commit/af2d14584d893bc5fadb35fea91522fb384f093d))
+* **internal:** codegen related update ([#79](https://github.com/browserbase/sdk-node/issues/79)) ([b7e4a89](https://github.com/browserbase/sdk-node/commit/b7e4a89a5ac5cc81c1a1e4d3383fe3618336e169))
+* **internal:** codegen related update ([#80](https://github.com/browserbase/sdk-node/issues/80)) ([85a35bf](https://github.com/browserbase/sdk-node/commit/85a35bfd6b35fd8dec0e0337c3a3d7ba5c2de2dc))
+* **internal:** codegen related update ([#81](https://github.com/browserbase/sdk-node/issues/81)) ([2b037d2](https://github.com/browserbase/sdk-node/commit/2b037d292891181f8e8184318c0e9e66ef3205ab))
+* **internal:** codegen related update ([#83](https://github.com/browserbase/sdk-node/issues/83)) ([b1feede](https://github.com/browserbase/sdk-node/commit/b1feedee3363c361a9494344db4f70bdfb7bfc45))
+* **internal:** codegen related update ([#84](https://github.com/browserbase/sdk-node/issues/84)) ([eaf66e0](https://github.com/browserbase/sdk-node/commit/eaf66e050f77f83b8c49ff48929298c185ccd2da))
+* **internal:** codegen related update ([#86](https://github.com/browserbase/sdk-node/issues/86)) ([f9b16d1](https://github.com/browserbase/sdk-node/commit/f9b16d1ebfcf83a6bfabd962629dad5b842a6d75))
+* **internal:** codegen related update ([#87](https://github.com/browserbase/sdk-node/issues/87)) ([62821e0](https://github.com/browserbase/sdk-node/commit/62821e0562b2911918e7b4bd2a6829e56cda77fd))
+* **internal:** codegen related update ([#88](https://github.com/browserbase/sdk-node/issues/88)) ([9ca705d](https://github.com/browserbase/sdk-node/commit/9ca705d9eb8f30d3c2f3b2fb949784ada1bd5432))
+* **internal:** codegen related update ([#89](https://github.com/browserbase/sdk-node/issues/89)) ([2c9ed02](https://github.com/browserbase/sdk-node/commit/2c9ed025f4f456ade76bff1f9431ad8ccb8ba643))
+* **internal:** codegen related update ([#90](https://github.com/browserbase/sdk-node/issues/90)) ([e6e5e10](https://github.com/browserbase/sdk-node/commit/e6e5e1022c331a8a9f8c347dff329831a108316f))
+* **internal:** codegen related update ([#92](https://github.com/browserbase/sdk-node/issues/92)) ([603179e](https://github.com/browserbase/sdk-node/commit/603179e15ff192b48a849a891c37d33daa44a978))
+* **internal:** codegen related update ([#93](https://github.com/browserbase/sdk-node/issues/93)) ([8e16851](https://github.com/browserbase/sdk-node/commit/8e1685118774d324812441d22dda22e5490fbdf9))
+* **internal:** codegen related update ([#94](https://github.com/browserbase/sdk-node/issues/94)) ([763fff0](https://github.com/browserbase/sdk-node/commit/763fff0013483ef8f0dd451a67396043b0a9c5e7))
+* **internal:** codegen related update ([#95](https://github.com/browserbase/sdk-node/issues/95)) ([3e6a5b4](https://github.com/browserbase/sdk-node/commit/3e6a5b430b60ba3e4f70ca84f77286f6d30a455a))
+* **internal:** codegen related update ([#96](https://github.com/browserbase/sdk-node/issues/96)) ([925575c](https://github.com/browserbase/sdk-node/commit/925575c15dcee8bcb8e84182e858bc188ed64163))
+* **internal:** codegen related update ([#97](https://github.com/browserbase/sdk-node/issues/97)) ([66c0b51](https://github.com/browserbase/sdk-node/commit/66c0b517f16827b4787c8770f2dca5a81c514873))
+* **internal:** codegen related update ([#98](https://github.com/browserbase/sdk-node/issues/98)) ([1533ff8](https://github.com/browserbase/sdk-node/commit/1533ff8b958470fc99c6c15a7c04c918f428916e))
+* **internal:** codegen related update ([#99](https://github.com/browserbase/sdk-node/issues/99)) ([668a9d1](https://github.com/browserbase/sdk-node/commit/668a9d105602b36c3cb6295cb6491fd9ffe20c80))
+* **internal:** version bump ([#56](https://github.com/browserbase/sdk-node/issues/56)) ([afafa41](https://github.com/browserbase/sdk-node/commit/afafa41deebd9c03518a8a57c4492d612f3f73ee))
+* **internal:** version bump ([#60](https://github.com/browserbase/sdk-node/issues/60)) ([1734b28](https://github.com/browserbase/sdk-node/commit/1734b28c1d1f2e13bf368feb7f910d060aa646fd))
+* **internal:** version bump ([#70](https://github.com/browserbase/sdk-node/issues/70)) ([40771ce](https://github.com/browserbase/sdk-node/commit/40771ceb4bbf4cee6fc98b8fef4f39cd096fdecd))
+
+
+### Documentation
+
+* minor formatting changes ([#115](https://github.com/browserbase/sdk-node/issues/115)) ([6a71bb3](https://github.com/browserbase/sdk-node/commit/6a71bb30e5206d2d9c77e605a712185eecee7f34))
+* minor formatting changes ([#82](https://github.com/browserbase/sdk-node/issues/82)) ([414b9b0](https://github.com/browserbase/sdk-node/commit/414b9b0efb0e3b3e1db5a2bd9250fbce85569f2c))
+* minor formatting changes ([#91](https://github.com/browserbase/sdk-node/issues/91)) ([baa864c](https://github.com/browserbase/sdk-node/commit/baa864cb2b3c8da5fffe2f3634bb293f4f0afbac))
+
 ## 2.1.2 (2024-12-29)
 
 Full Changelog: [v2.1.1...v2.1.2](https://github.com/browserbase/sdk-node/compare/v2.1.1...v2.1.2)
