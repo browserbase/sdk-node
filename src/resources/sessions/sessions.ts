@@ -111,6 +111,11 @@ export interface Session {
    * Memory used by the Session
    */
   memoryUsage?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session.
+   */
+  userMetadata?: unknown;
 }
 
 export interface SessionLiveURLs {
@@ -203,6 +208,11 @@ export interface SessionCreateResponse {
    * Memory used by the Session
    */
   memoryUsage?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session.
+   */
+  userMetadata?: unknown;
 }
 
 export type SessionListResponse = Array<Session>;
@@ -246,6 +256,11 @@ export interface SessionCreateParams {
    * the Project's `defaultTimeout`.
    */
   timeout?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session.
+   */
+  userMetadata?: unknown;
 }
 
 export namespace SessionCreateParams {
