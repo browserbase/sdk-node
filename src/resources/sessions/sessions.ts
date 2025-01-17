@@ -445,6 +445,8 @@ export interface SessionUpdateParams {
 }
 
 export interface SessionListParams {
+  q?: string;
+
   status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
