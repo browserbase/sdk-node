@@ -9,6 +9,10 @@ export class Downloads extends APIResource {
    * Session Downloads
    */
   list(id: string, options?: Core.RequestOptions): Core.APIPromise<Response> {
-    return this._client.get(`/v1/sessions/${id}/downloads`, { ...options, __binaryResponse: true });
+    return this._client.get(`/v1/sessions/${id}/downloads`, {
+      ...options,
+      headers: { Accept: 'application/zip', ...options?.headers },
+      __binaryResponse: true,
+    });
   }
 }
