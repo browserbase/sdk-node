@@ -266,6 +266,11 @@ export interface SessionCreateParams {
 export namespace SessionCreateParams {
   export interface BrowserSettings {
     /**
+     * Advanced Browser Stealth Mode
+     */
+    advancedStealth?: boolean;
+
+    /**
      * Enable or disable ad blocking in the browser. Defaults to `false`.
      */
     blockAds?: boolean;
