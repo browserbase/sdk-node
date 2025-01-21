@@ -24,6 +24,7 @@ describe('resource sessions', () => {
     const response = await client.sessions.create({
       projectId: 'projectId',
       browserSettings: {
+        advancedStealth: true,
         blockAds: true,
         context: { id: 'id', persist: true },
         extensionId: 'extensionId',
