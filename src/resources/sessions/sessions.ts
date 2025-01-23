@@ -113,9 +113,10 @@ export interface Session {
   memoryUsage?: number;
 
   /**
-   * Arbitrary user metadata to attach to the session.
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: unknown;
+  userMetadata?: Record<string, unknown>;
 }
 
 export interface SessionLiveURLs {
@@ -210,9 +211,10 @@ export interface SessionCreateResponse {
   memoryUsage?: number;
 
   /**
-   * Arbitrary user metadata to attach to the session.
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: unknown;
+  userMetadata?: Record<string, unknown>;
 }
 
 export type SessionListResponse = Array<Session>;
@@ -258,9 +260,10 @@ export interface SessionCreateParams {
   timeout?: number;
 
   /**
-   * Arbitrary user metadata to attach to the session.
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: unknown;
+  userMetadata?: Record<string, unknown>;
 }
 
 export namespace SessionCreateParams {
@@ -450,6 +453,11 @@ export interface SessionUpdateParams {
 }
 
 export interface SessionListParams {
+  /**
+   * Query sessions by user metadata. See
+   * [Querying Sessions by User Metadata](/features/sessions#querying-sessions-by-user-metadata)
+   * for the schema of this query.
+   */
   q?: string;
 
   status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
