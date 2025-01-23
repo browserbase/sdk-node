@@ -46,7 +46,7 @@ describe('resource sessions', () => {
       proxies: true,
       region: 'us-west-2',
       timeout: 60,
-      userMetadata: {},
+      userMetadata: { foo: 'bar' },
     });
   });
 
