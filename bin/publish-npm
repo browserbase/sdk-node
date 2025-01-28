@@ -5,7 +5,7 @@ set -eux
 npm config set '//registry.npmjs.org/:_authToken' "$NPM_TOKEN"
 
 # Build the project
-yarn build
+npm run build
 
 # Navigate to the dist directory
 cd dist
@@ -22,4 +22,4 @@ else
 fi
 
 # Publish with the appropriate tag
-yarn publish --access public --tag "$TAG"
+npm publish --access public --tag "$TAG"
