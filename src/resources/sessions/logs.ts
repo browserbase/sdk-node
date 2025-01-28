@@ -19,11 +19,6 @@ export interface SessionLog {
 
   sessionId: string;
 
-  /**
-   * milliseconds that have elapsed since the UNIX epoch
-   */
-  timestamp: number;
-
   frameId?: string;
 
   loaderId?: string;
@@ -31,6 +26,11 @@ export interface SessionLog {
   request?: SessionLog.Request;
 
   response?: SessionLog.Response;
+
+  /**
+   * milliseconds that have elapsed since the UNIX epoch
+   */
+  timestamp?: number;
 }
 
 export namespace SessionLog {
@@ -42,7 +42,7 @@ export namespace SessionLog {
     /**
      * milliseconds that have elapsed since the UNIX epoch
      */
-    timestamp: number;
+    timestamp?: number;
   }
 
   export interface Response {
@@ -53,7 +53,7 @@ export namespace SessionLog {
     /**
      * milliseconds that have elapsed since the UNIX epoch
      */
-    timestamp: number;
+    timestamp?: number;
   }
 }
 
