@@ -111,6 +111,12 @@ export interface Session {
    * Memory used by the Session
    */
   memoryUsage?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
+   */
+  userMetadata?: Record<string, unknown>;
 }
 
 export interface SessionLiveURLs {
@@ -203,6 +209,12 @@ export interface SessionCreateResponse {
    * Memory used by the Session
    */
   memoryUsage?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
+   */
+  userMetadata?: Record<string, unknown>;
 }
 
 export type SessionListResponse = Array<Session>;
@@ -246,10 +258,21 @@ export interface SessionCreateParams {
    * the Project's `defaultTimeout`.
    */
   timeout?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
+   */
+  userMetadata?: Record<string, unknown>;
 }
 
 export namespace SessionCreateParams {
   export interface BrowserSettings {
+    /**
+     * Advanced Browser Stealth Mode
+     */
+    advancedStealth?: boolean;
+
     /**
      * Enable or disable ad blocking in the browser. Defaults to `false`.
      */
@@ -430,6 +453,13 @@ export interface SessionUpdateParams {
 }
 
 export interface SessionListParams {
+  /**
+   * Query sessions by user metadata. See
+   * [Querying Sessions by User Metadata](/features/sessions#querying-sessions-by-user-metadata)
+   * for the schema of this query.
+   */
+  q?: string;
+
   status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 

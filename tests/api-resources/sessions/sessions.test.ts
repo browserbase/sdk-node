@@ -24,6 +24,7 @@ describe('resource sessions', () => {
     const response = await client.sessions.create({
       projectId: 'projectId',
       browserSettings: {
+        advancedStealth: true,
         blockAds: true,
         context: { id: 'id', persist: true },
         extensionId: 'extensionId',
@@ -45,6 +46,7 @@ describe('resource sessions', () => {
       proxies: true,
       region: 'us-west-2',
       timeout: 60,
+      userMetadata: { foo: 'bar' },
     });
   });
 
@@ -108,7 +110,7 @@ describe('resource sessions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.sessions.list({ status: 'RUNNING' }, { path: '/_stainless_unknown_path' }),
+      client.sessions.list({ q: 'q', status: 'RUNNING' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
