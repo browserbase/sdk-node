@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.3.0 (2025-02-05)
+
+Full Changelog: [v2.2.0...v2.3.0](https://github.com/browserbase/sdk-node/compare/v2.2.0...v2.3.0)
+
+### Features
+
+* **client:** send `X-Stainless-Timeout` header ([#133](https://github.com/browserbase/sdk-node/issues/133)) ([1b03cd8](https://github.com/browserbase/sdk-node/commit/1b03cd8b5e8a3830915686c429d7188f8c5e1f2f))
+
+
+### Chores
+
+* **internal:** version bump ([#129](https://github.com/browserbase/sdk-node/issues/129)) ([579f065](https://github.com/browserbase/sdk-node/commit/579f065310a7d06b13b9c6a82adf78718fcd3751))
+
 ## 2.2.0 (2025-01-28)
 
 Full Changelog: [v2.1.3...v2.2.0](https://github.com/browserbase/sdk-node/compare/v2.1.3...v2.2.0)
