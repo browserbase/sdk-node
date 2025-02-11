@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.3.1 (2025-02-11)
+
+Full Changelog: [v2.3.0...v2.3.1](https://github.com/browserbase/sdk-node/compare/v2.3.0...v2.3.1)
+
+### Chores
+
+* **internal:** version bump ([#129](https://github.com/browserbase/sdk-node/issues/129)) ([82c57f9](https://github.com/browserbase/sdk-node/commit/82c57f9b9c51dd5e29c4ccdb1855a8883b28ab08))
+
 ## 2.3.0 (2025-02-05)
 
 Full Changelog: [v2.2.0...v2.3.0](https://github.com/browserbase/sdk-node/compare/v2.2.0...v2.3.0)
