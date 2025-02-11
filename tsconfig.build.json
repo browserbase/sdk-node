@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "@browserbasehq/sdk/*": ["dist/src/*"],
-      "@browserbasehq/sdk": ["dist/src/index.ts"],
+      "@browserbasehq/sdk": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
