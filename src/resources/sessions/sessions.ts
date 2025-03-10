@@ -28,7 +28,7 @@ export class Sessions extends APIResource {
   /**
    * Session
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Session> {
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionRetrieveResponse> {
     return this._client.get(`/v1/sessions/${id}`, options);
   }
 
@@ -209,6 +209,78 @@ export interface SessionCreateResponse {
    * Memory used by the Session
    */
   memoryUsage?: number;
+
+  /**
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
+   */
+  userMetadata?: Record<string, unknown>;
+}
+
+export interface SessionRetrieveResponse {
+  id: string;
+
+  createdAt: string;
+
+  expiresAt: string;
+
+  /**
+   * Indicates if the Session was created to be kept alive upon disconnections
+   */
+  keepAlive: boolean;
+
+  /**
+   * The Project ID linked to the Session.
+   */
+  projectId: string;
+
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxyBytes: number;
+
+  /**
+   * The region where the Session is running.
+   */
+  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
+
+  startedAt: string;
+
+  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+
+  updatedAt: string;
+
+  /**
+   * CPU used by the Session
+   */
+  avgCpuUsage?: number;
+
+  /**
+   * WebSocket URL to connect to the Session.
+   */
+  connectUrl?: string;
+
+  /**
+   * Optional. The Context linked to the Session.
+   */
+  contextId?: string;
+
+  endedAt?: string;
+
+  /**
+   * Memory used by the Session
+   */
+  memoryUsage?: number;
+
+  /**
+   * HTTP URL to connect to the Session.
+   */
+  seleniumRemoteUrl?: string;
+
+  /**
+   * Signing key to use when connecting to the Session via HTTP.
+   */
+  signingKey?: string;
 
   /**
    * Arbitrary user metadata to attach to the session. To learn more about user
@@ -473,6 +545,7 @@ export declare namespace Sessions {
     type Session as Session,
     type SessionLiveURLs as SessionLiveURLs,
     type SessionCreateResponse as SessionCreateResponse,
+    type SessionRetrieveResponse as SessionRetrieveResponse,
     type SessionListResponse as SessionListResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
