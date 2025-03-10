@@ -21,6 +21,7 @@ import {
   SessionListParams,
   SessionListResponse,
   SessionLiveURLs,
+  SessionRetrieveResponse,
   SessionUpdateParams,
   Sessions,
 } from './resources/sessions/sessions';
@@ -212,6 +213,7 @@ export declare namespace Browserbase {
     type Session as Session,
     type SessionLiveURLs as SessionLiveURLs,
     type SessionCreateResponse as SessionCreateResponse,
+    type SessionRetrieveResponse as SessionRetrieveResponse,
     type SessionListResponse as SessionListResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
