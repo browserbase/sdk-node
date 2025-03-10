@@ -14,6 +14,7 @@ export {
   type Session,
   type SessionLiveURLs,
   type SessionCreateResponse,
+  type SessionRetrieveResponse,
   type SessionListResponse,
   type SessionCreateParams,
   type SessionUpdateParams,
