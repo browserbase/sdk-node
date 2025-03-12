@@ -31,7 +31,7 @@ describe('resource sessions', () => {
         fingerprint: {
           browsers: ['chrome'],
           devices: ['desktop'],
-          httpVersion: 1,
+          httpVersion: '1',
           locales: ['string'],
           operatingSystems: ['android'],
           screen: { maxHeight: 0, maxWidth: 0, minHeight: 0, minWidth: 0 },

@@ -404,7 +404,7 @@ export namespace SessionCreateParams {
 
       devices?: Array<'desktop' | 'mobile'>;
 
-      httpVersion?: 1 | 2;
+      httpVersion?: '1' | '2';
 
       /**
        * Full list of locales is available
