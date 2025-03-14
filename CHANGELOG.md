@@ -1,5 +1,34 @@
 # Changelog
 
+## 2.4.0 (2025-03-14)
+
+Full Changelog: [v2.3.0...v2.4.0](https://github.com/browserbase/sdk-node/compare/v2.3.0...v2.4.0)
+
+### Features
+
+* **api:** api update ([#142](https://github.com/browserbase/sdk-node/issues/142)) ([b2391f8](https://github.com/browserbase/sdk-node/commit/b2391f8eb6b6a35d033de3b54a8731a59601c177))
+* **api:** api update ([#144](https://github.com/browserbase/sdk-node/issues/144)) ([c7aaea1](https://github.com/browserbase/sdk-node/commit/c7aaea13fae457c258a8ee97b7b1717866f15b2d))
+
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#137](https://github.com/browserbase/sdk-node/issues/137)) ([7e3ba08](https://github.com/browserbase/sdk-node/commit/7e3ba0874d40256119ab5f9f556bff5a43425188))
+* **exports:** ensure resource imports don't require /index ([#146](https://github.com/browserbase/sdk-node/issues/146)) ([c6ec9a5](https://github.com/browserbase/sdk-node/commit/c6ec9a5a8a87c6e1d811945c89bc674188198bf7))
+
+
+### Chores
+
+* **internal:** codegen related update ([#138](https://github.com/browserbase/sdk-node/issues/138)) ([316a6af](https://github.com/browserbase/sdk-node/commit/316a6af67a7c7daa6d78956e7dab1fd88f4bf90c))
+* **internal:** codegen related update ([#143](https://github.com/browserbase/sdk-node/issues/143)) ([d8d3fb9](https://github.com/browserbase/sdk-node/commit/d8d3fb9f1d3ee6497cd781fee475e475416237cf))
+* **internal:** fix devcontainers setup ([#139](https://github.com/browserbase/sdk-node/issues/139)) ([40202bd](https://github.com/browserbase/sdk-node/commit/40202bdf590f7df08d872c70a362ac7c3c1393a2))
+* **internal:** version bump ([#129](https://github.com/browserbase/sdk-node/issues/129)) ([82c57f9](https://github.com/browserbase/sdk-node/commit/82c57f9b9c51dd5e29c4ccdb1855a8883b28ab08))
+* **internal:** version bump ([#135](https://github.com/browserbase/sdk-node/issues/135)) ([90a4906](https://github.com/browserbase/sdk-node/commit/90a4906a5fbddf73b49cd45293619a9deadcb3e0))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#140](https://github.com/browserbase/sdk-node/issues/140)) ([0e240d7](https://github.com/browserbase/sdk-node/commit/0e240d7076fba9e8220d0fadb177426fe7bf3972))
+
 ## 2.3.0 (2025-02-05)
 
 Full Changelog: [v2.2.0...v2.3.0](https://github.com/browserbase/sdk-node/compare/v2.2.0...v2.3.0)
