@@ -29,6 +29,8 @@ export class Projects extends APIResource {
 export interface Project {
   id: string;
 
+  concurrency: number;
+
   createdAt: string;
 
   defaultTimeout: number;
