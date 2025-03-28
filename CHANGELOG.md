@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.5.0 (2025-03-28)
+
+Full Changelog: [v2.4.0...v2.5.0](https://github.com/browserbase/sdk-node/compare/v2.4.0...v2.5.0)
+
+### Features
+
+* **api:** api update ([#151](https://github.com/browserbase/sdk-node/issues/151)) ([9433265](https://github.com/browserbase/sdk-node/commit/9433265b54e3b560152be7642a5a314c82d8ad08))
+* **api:** api update ([#153](https://github.com/browserbase/sdk-node/issues/153)) ([53c928c](https://github.com/browserbase/sdk-node/commit/53c928cbc008d2b8b33d405ecd853a46e960ffd5))
+
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#154](https://github.com/browserbase/sdk-node/issues/154)) ([0288fa5](https://github.com/browserbase/sdk-node/commit/0288fa562ed1397cfba2cc7c77ae060e3e747382))
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#155](https://github.com/browserbase/sdk-node/issues/155)) ([f2b25bc](https://github.com/browserbase/sdk-node/commit/f2b25bc31f4dd4d5a1978065478cca1dfd75526d))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#149](https://github.com/browserbase/sdk-node/issues/149)) ([ef04d35](https://github.com/browserbase/sdk-node/commit/ef04d358436d2883af62c88281dad0a379900512))
+* **exports:** stop using path fallbacks ([#150](https://github.com/browserbase/sdk-node/issues/150)) ([32c5ee7](https://github.com/browserbase/sdk-node/commit/32c5ee7d6de48ac826b608e4e582e37fa92a5188))
+* **internal:** version bump ([#147](https://github.com/browserbase/sdk-node/issues/147)) ([ea90300](https://github.com/browserbase/sdk-node/commit/ea9030070914ad0d790dd89a81a266cc54434161))
+
 ## 2.4.0 (2025-03-14)
 
 Full Changelog: [v2.3.0...v2.4.0](https://github.com/browserbase/sdk-node/compare/v2.3.0...v2.4.0)

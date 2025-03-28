@@ -29,6 +29,11 @@ export class Projects extends APIResource {
 export interface Project {
   id: string;
 
+  /**
+   * The maximum number of sessions that this project can run concurrently.
+   */
+  concurrency: number;
+
   createdAt: string;
 
   defaultTimeout: number;
