@@ -307,8 +307,8 @@ export interface SessionCreateParams {
   extensionId?: string;
 
   /**
-   * Set to true to keep the session alive even after disconnections. This is
-   * available on the Startup plan only.
+   * Set to true to keep the session alive even after disconnections. Available on
+   * the Hobby Plan and above.
    */
   keepAlive?: boolean;
 
