@@ -26,6 +26,8 @@ describe('resource sessions', () => {
       browserSettings: {
         advancedStealth: true,
         blockAds: true,
+        captchaImageSelector: 'captchaImageSelector',
+        captchaInputSelector: 'captchaInputSelector',
         context: { id: 'id', persist: true },
         extensionId: 'extensionId',
         fingerprint: {

@@ -350,6 +350,18 @@ export namespace SessionCreateParams {
      */
     blockAds?: boolean;
 
+    /**
+     * Custom selector for captcha image. See
+     * [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
+     */
+    captchaImageSelector?: string;
+
+    /**
+     * Custom selector for captcha input. See
+     * [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
+     */
+    captchaInputSelector?: string;
+
     context?: BrowserSettings.Context;
 
     /**
