@@ -1,5 +1,37 @@
 # Changelog
 
+## 2.6.0 (2025-05-16)
+
+Full Changelog: [v2.5.0...v2.6.0](https://github.com/browserbase/sdk-node/compare/v2.5.0...v2.6.0)
+
+### Features
+
+* **api:** api update ([0b43bac](https://github.com/browserbase/sdk-node/commit/0b43baccf8dbb13ed4b9bb8feed15849007cc531))
+* **api:** api update ([#158](https://github.com/browserbase/sdk-node/issues/158)) ([1287216](https://github.com/browserbase/sdk-node/commit/12872160a6e7be94d82cb4189cf53dc9eecbfbba))
+
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#163](https://github.com/browserbase/sdk-node/issues/163)) ([758c8e0](https://github.com/browserbase/sdk-node/commit/758c8e048537bdc6d0070a11010ed307b5d4de03))
+* **client:** send `X-Stainless-Timeout` in seconds ([#161](https://github.com/browserbase/sdk-node/issues/161)) ([8aea1ee](https://github.com/browserbase/sdk-node/commit/8aea1ee6f66052fa976087c6dbb57f98385c6eee))
+* **mcp:** remove unused tools.ts ([#164](https://github.com/browserbase/sdk-node/issues/164)) ([b09bd54](https://github.com/browserbase/sdk-node/commit/b09bd54af116847e852f67bf6c7f0e32dfa92509))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([c813b38](https://github.com/browserbase/sdk-node/commit/c813b38b3be8470e2c5b95b58c621ccd7b7ccfe5))
+* **ci:** only use depot for staging repos ([475fe50](https://github.com/browserbase/sdk-node/commit/475fe5018be88d96971697bdc3e1b33ae9669310))
+* **client:** minor internal fixes ([ee36919](https://github.com/browserbase/sdk-node/commit/ee369190b385d25726cac1e3bc0e23559539d8d9))
+* **internal:** add aliases for Record and Array ([#162](https://github.com/browserbase/sdk-node/issues/162)) ([e658ed9](https://github.com/browserbase/sdk-node/commit/e658ed9e739c0479ffd542ffe4b616fc5884d77d))
+* **internal:** codegen related update ([99b8089](https://github.com/browserbase/sdk-node/commit/99b8089de31eb102cb82a9b85b2d13fd57570f5c))
+* **internal:** reduce CI branch coverage ([37d8e14](https://github.com/browserbase/sdk-node/commit/37d8e1406cc38d5e2003f40b43a7632c7f528544))
+* **internal:** upload builds and expand CI branch coverage ([d30a38a](https://github.com/browserbase/sdk-node/commit/d30a38a6331169eb4ef7672ae6fbd561cd5c5b0c))
+
+
+### Documentation
+
+* **readme:** fix typo ([7bc4b9b](https://github.com/browserbase/sdk-node/commit/7bc4b9ba006fef118f7883ed2fab7cc140906f97))
+
 ## 2.5.0 (2025-03-28)
 
 Full Changelog: [v2.4.0...v2.5.0](https://github.com/browserbase/sdk-node/compare/v2.4.0...v2.5.0)
