@@ -307,8 +307,8 @@ export interface SessionCreateParams {
   extensionId?: string;
 
   /**
-   * Set to true to keep the session alive even after disconnections. This is
-   * available on the Startup plan only.
+   * Set to true to keep the session alive even after disconnections. Available on
+   * the Hobby Plan and above.
    */
   keepAlive?: boolean;
 
@@ -349,6 +349,18 @@ export namespace SessionCreateParams {
      * Enable or disable ad blocking in the browser. Defaults to `false`.
      */
     blockAds?: boolean;
+
+    /**
+     * Custom selector for captcha image. See
+     * [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
+     */
+    captchaImageSelector?: string;
+
+    /**
+     * Custom selector for captcha input. See
+     * [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
+     */
+    captchaInputSelector?: string;
 
     context?: BrowserSettings.Context;
 
