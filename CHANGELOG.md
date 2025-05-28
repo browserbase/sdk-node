@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.6.1 (2025-05-28)
+
+Full Changelog: [v2.6.0...v2.6.1](https://github.com/browserbase/sdk-node/compare/v2.6.0...v2.6.1)
+
+### Chores
+
+* **docs:** grammar improvements ([985f2fe](https://github.com/browserbase/sdk-node/commit/985f2fe1bf866f1dc48c8d5f1827dda2e99b6f11))
+* improve publish-npm script --latest tag logic ([88ce3e3](https://github.com/browserbase/sdk-node/commit/88ce3e3a96e34bfeb08d2ac254440b283818d7ef))
+* **internal:** version bump ([690777f](https://github.com/browserbase/sdk-node/commit/690777f5b88d363db563aba093363ed84c7c9ec4))
+
 ## 2.6.0 (2025-05-16)
 
 Full Changelog: [v2.5.0...v2.6.0](https://github.com/browserbase/sdk-node/compare/v2.5.0...v2.6.0)
