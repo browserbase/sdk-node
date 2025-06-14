@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.6.1 (2025-06-14)
+
+Full Changelog: [v2.6.0...v2.6.1](https://github.com/browserbase/sdk-node/compare/v2.6.0...v2.6.1)
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([87c245e](https://github.com/browserbase/sdk-node/commit/87c245e2048dad1586d97fae8c4622c6e2780365))
+
+
+### Chores
+
+* **docs:** grammar improvements ([985f2fe](https://github.com/browserbase/sdk-node/commit/985f2fe1bf866f1dc48c8d5f1827dda2e99b6f11))
+* **docs:** use top-level-await in example snippets ([24c7006](https://github.com/browserbase/sdk-node/commit/24c7006ca4c4dc7c03a48796b2677bdc47728934))
+* improve publish-npm script --latest tag logic ([88ce3e3](https://github.com/browserbase/sdk-node/commit/88ce3e3a96e34bfeb08d2ac254440b283818d7ef))
+* **internal:** make base APIResource abstract ([6ec9d38](https://github.com/browserbase/sdk-node/commit/6ec9d38a92775cb8e46468b05f539f53a01b54c9))
+* **internal:** version bump ([690777f](https://github.com/browserbase/sdk-node/commit/690777f5b88d363db563aba093363ed84c7c9ec4))
+
 ## 2.6.0 (2025-05-16)
 
 Full Changelog: [v2.5.0...v2.6.0](https://github.com/browserbase/sdk-node/compare/v2.5.0...v2.6.0)
