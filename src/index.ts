@@ -128,6 +128,7 @@ export class Browserbase extends Core.APIClient {
 
     super({
       baseURL: options.baseURL!,
+      baseURLOverridden: baseURL ? baseURL !== 'https://api.browserbase.com' : false,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -143,6 +144,13 @@ export class Browserbase extends Core.APIClient {
   extensions: API.Extensions = new API.Extensions(this);
   projects: API.Projects = new API.Projects(this);
   sessions: API.Sessions = new API.Sessions(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== 'https://api.browserbase.com';
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
