@@ -116,7 +116,7 @@ export interface Session {
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
 export interface SessionLiveURLs {
@@ -214,7 +214,7 @@ export interface SessionCreateResponse {
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
 export interface SessionRetrieveResponse {
@@ -286,7 +286,7 @@ export interface SessionRetrieveResponse {
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
 export type SessionListResponse = Array<Session>;
@@ -335,7 +335,7 @@ export interface SessionCreateParams {
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
 export namespace SessionCreateParams {

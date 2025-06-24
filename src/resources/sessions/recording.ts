@@ -17,7 +17,7 @@ export interface SessionRecording {
    * See
    * [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
    */
-  data: Record<string, unknown>;
+  data: { [key: string]: unknown };
 
   sessionId: string;
 

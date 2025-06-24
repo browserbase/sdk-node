@@ -35,7 +35,7 @@ export interface SessionLog {
 
 export namespace SessionLog {
   export interface Request {
-    params: Record<string, unknown>;
+    params: { [key: string]: unknown };
 
     rawBody: string;
 
@@ -48,7 +48,7 @@ export namespace SessionLog {
   export interface Response {
     rawBody: string;
 
-    result: Record<string, unknown>;
+    result: { [key: string]: unknown };
 
     /**
      * milliseconds that have elapsed since the UNIX epoch
