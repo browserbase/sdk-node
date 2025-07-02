@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource sessions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.sessions.create({ projectId: 'projectId' });
+    const responsePromise = client.sessions.create({ projectId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,14 +22,14 @@ describe('resource sessions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.sessions.create({
-      projectId: 'projectId',
+      projectId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       browserSettings: {
         advancedStealth: true,
         blockAds: true,
         captchaImageSelector: 'captchaImageSelector',
         captchaInputSelector: 'captchaInputSelector',
-        context: { id: 'id', persist: true },
-        extensionId: 'extensionId',
+        context: { id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', persist: true },
+        extensionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         fingerprint: {
           browsers: ['chrome'],
           devices: ['desktop'],
@@ -43,9 +43,15 @@ describe('resource sessions', () => {
         solveCaptchas: true,
         viewport: { height: 0, width: 0 },
       },
-      extensionId: 'extensionId',
+      extensionId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       keepAlive: true,
-      proxies: true,
+      proxies: [
+        {
+          type: 'browserbase',
+          domainPattern: 'domainPattern',
+          geolocation: { country: 'xx', city: 'city', state: 'xx' },
+        },
+      ],
       region: 'us-west-2',
       timeout: 60,
       userMetadata: { foo: 'bar' },
@@ -53,7 +59,7 @@ describe('resource sessions', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.sessions.retrieve('id');
+    const responsePromise = client.sessions.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -65,14 +71,14 @@ describe('resource sessions', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Browserbase.NotFoundError,
-    );
+    await expect(
+      client.sessions.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
   test('update: only required params', async () => {
-    const responsePromise = client.sessions.update('id', {
-      projectId: 'projectId',
+    const responsePromise = client.sessions.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      projectId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       status: 'REQUEST_RELEASE',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -85,8 +91,8 @@ describe('resource sessions', () => {
   });
 
   test('update: required and optional params', async () => {
-    const response = await client.sessions.update('id', {
-      projectId: 'projectId',
+    const response = await client.sessions.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      projectId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       status: 'REQUEST_RELEASE',
     });
   });
@@ -117,7 +123,7 @@ describe('resource sessions', () => {
   });
 
   test('debug', async () => {
-    const responsePromise = client.sessions.debug('id');
+    const responsePromise = client.sessions.debug('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -129,8 +135,8 @@ describe('resource sessions', () => {
 
   test('debug: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.debug('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Browserbase.NotFoundError,
-    );
+    await expect(
+      client.sessions.debug('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Browserbase.NotFoundError);
   });
 });
