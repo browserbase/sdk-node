@@ -431,6 +431,10 @@ export namespace SessionCreateParams {
      */
     extensionId?: string;
 
+    /**
+     * See usage examples
+     * [on the Stealth Mode page](/features/stealth-mode#fingerprinting)
+     */
     fingerprint?: BrowserSettings.Fingerprint;
 
     /**
@@ -464,6 +468,10 @@ export namespace SessionCreateParams {
       persist?: boolean;
     }
 
+    /**
+     * See usage examples
+     * [on the Stealth Mode page](/features/stealth-mode#fingerprinting)
+     */
     export interface Fingerprint {
       browsers?: Array<'chrome' | 'edge' | 'firefox' | 'safari'>;
 
@@ -480,13 +488,13 @@ export namespace SessionCreateParams {
 
     export namespace Fingerprint {
       export interface Screen {
-        maxHeight: number;
+        maxHeight?: number;
 
-        maxWidth: number;
+        maxWidth?: number;
 
-        minHeight: number;
+        minHeight?: number;
 
-        minWidth: number;
+        minWidth?: number;
       }
     }
 
