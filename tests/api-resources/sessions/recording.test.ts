@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource recording', () => {
   test('retrieve', async () => {
-    const responsePromise = client.sessions.recording.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.sessions.recording.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,9 +23,7 @@ describe('resource recording', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.sessions.recording.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.sessions.recording.retrieve('id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Browserbase.NotFoundError);
   });
 });

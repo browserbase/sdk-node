@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource uploads', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.sessions.uploads.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+    const responsePromise = client.sessions.uploads.create('id', {
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
     const rawResponse = await responsePromise.asResponse();
@@ -23,7 +23,7 @@ describe('resource uploads', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.sessions.uploads.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+    const response = await client.sessions.uploads.create('id', {
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
   });
