@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource contexts', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.contexts.create({ projectId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e' });
+    const responsePromise = client.contexts.create({ projectId: 'projectId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,11 +21,11 @@ describe('resource contexts', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.contexts.create({ projectId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e' });
+    const response = await client.contexts.create({ projectId: 'projectId' });
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.contexts.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.contexts.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -37,13 +37,13 @@ describe('resource contexts', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.contexts.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+    await expect(client.contexts.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
   });
 
   test('update', async () => {
-    const responsePromise = client.contexts.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.contexts.update('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -55,8 +55,8 @@ describe('resource contexts', () => {
 
   test('update: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.contexts.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+    await expect(client.contexts.update('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
   });
 });

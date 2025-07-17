@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource projects', () => {
   test('retrieve', async () => {
-    const responsePromise = client.projects.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.projects.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,9 +22,9 @@ describe('resource projects', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.projects.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+    await expect(client.projects.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
   });
 
   test('list', async () => {
@@ -46,7 +46,7 @@ describe('resource projects', () => {
   });
 
   test('usage', async () => {
-    const responsePromise = client.projects.usage('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.projects.usage('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -58,8 +58,8 @@ describe('resource projects', () => {
 
   test('usage: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.projects.usage('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+    await expect(client.projects.usage('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
   });
 });

@@ -29,7 +29,7 @@ describe('resource extensions', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.extensions.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.extensions.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -41,15 +41,13 @@ describe('resource extensions', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.extensions.retrieve('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+    await expect(client.extensions.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
   });
 
   test('delete', async () => {
-    const responsePromise = client.extensions.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.extensions.delete('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -61,8 +59,8 @@ describe('resource extensions', () => {
 
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.extensions.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+    await expect(client.extensions.delete('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
   });
 });
