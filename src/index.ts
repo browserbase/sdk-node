@@ -204,6 +204,7 @@ Browserbase.Contexts = Contexts;
 Browserbase.Extensions = Extensions;
 Browserbase.Projects = Projects;
 Browserbase.Sessions = Sessions;
+
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
 
