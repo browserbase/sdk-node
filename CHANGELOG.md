@@ -1,5 +1,49 @@
 # Changelog
 
+## 2.7.0 (2025-08-16)
+
+Full Changelog: [v2.6.0...v2.7.0](https://github.com/browserbase/sdk-node/compare/v2.6.0...v2.7.0)
+
+### Features
+
+* **api:** api update ([d57f23e](https://github.com/browserbase/sdk-node/commit/d57f23ea6d04a61dd523fd9cfea3bba138914483))
+* **api:** api update ([90c9185](https://github.com/browserbase/sdk-node/commit/90c9185c9de52ad0297062906d58ec7bb99ea004))
+* **api:** api update ([0ec3383](https://github.com/browserbase/sdk-node/commit/0ec33838237efd4424249482aac57294f17bdeda))
+* **api:** api update ([ef5f62b](https://github.com/browserbase/sdk-node/commit/ef5f62b267edcfa58fb677db40ae24a9a742ffa0))
+* **client:** add support for endpoint-specific base URLs ([0c69436](https://github.com/browserbase/sdk-node/commit/0c69436d731785b207af5f979e9eb5ae1b975957))
+* **mcp:** support filtering tool results by a jq expression ([0efabac](https://github.com/browserbase/sdk-node/commit/0efabac130794ebc44c4054a19e77bb6fc455749))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([8e59beb](https://github.com/browserbase/sdk-node/commit/8e59beb314e8c07bd14b471121e28ec941168190))
+* **client:** don't send `Content-Type` for bodyless methods ([bfe46e8](https://github.com/browserbase/sdk-node/commit/bfe46e8c3af3377953857072ee39babdaec25820))
+* publish script — handle NPM errors correctly ([87c245e](https://github.com/browserbase/sdk-node/commit/87c245e2048dad1586d97fae8c4622c6e2780365))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([132825d](https://github.com/browserbase/sdk-node/commit/132825d5c65ba9aa1c47afe9b8a7b14885129598))
+* **ci:** only run for pushes and fork pull requests ([a166050](https://github.com/browserbase/sdk-node/commit/a166050ab35ddff365ca60f23ed1243690b7eda2))
+* **deps:** update dependency node-fetch to v2.6.13 ([b657cbe](https://github.com/browserbase/sdk-node/commit/b657cbec9e3603f4fe186141f0e38aa8a3a66bb7))
+* **docs:** grammar improvements ([985f2fe](https://github.com/browserbase/sdk-node/commit/985f2fe1bf866f1dc48c8d5f1827dda2e99b6f11))
+* **docs:** use top-level-await in example snippets ([24c7006](https://github.com/browserbase/sdk-node/commit/24c7006ca4c4dc7c03a48796b2677bdc47728934))
+* improve publish-npm script --latest tag logic ([88ce3e3](https://github.com/browserbase/sdk-node/commit/88ce3e3a96e34bfeb08d2ac254440b283818d7ef))
+* **internal:** formatting change ([29b57d4](https://github.com/browserbase/sdk-node/commit/29b57d4294400969bccde8cacc2b27a5dd90f7fa))
+* **internal:** make base APIResource abstract ([6ec9d38](https://github.com/browserbase/sdk-node/commit/6ec9d38a92775cb8e46468b05f539f53a01b54c9))
+* **internal:** move publish config ([2fb47ce](https://github.com/browserbase/sdk-node/commit/2fb47cec73a9d518866c84f927fbe16327dc9ab9))
+* **internal:** remove redundant imports config ([ddf4087](https://github.com/browserbase/sdk-node/commit/ddf408750a968e8bfcab59a1b86d58be796074de))
+* **internal:** update comment in script ([a549d56](https://github.com/browserbase/sdk-node/commit/a549d56d306c23019fc9cd99f4af5d48345664a5))
+* **internal:** version bump ([690777f](https://github.com/browserbase/sdk-node/commit/690777f5b88d363db563aba093363ed84c7c9ec4))
+* make some internal functions async ([f8111cb](https://github.com/browserbase/sdk-node/commit/f8111cb415bd62ff7d30f6ec7912878042d94eed))
+* mention unit type in timeout docs ([8d864d1](https://github.com/browserbase/sdk-node/commit/8d864d1f6858a655840ec824434e045c886216eb))
+* update @stainless-api/prism-cli to v5.15.0 ([d4ac1f1](https://github.com/browserbase/sdk-node/commit/d4ac1f19f066dc8386a2d7a48123d031763bef46))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([3e0bfd3](https://github.com/browserbase/sdk-node/commit/3e0bfd327332edd2969106d189e650286d13e441))
+
 ## 2.6.0 (2025-05-16)
 
 Full Changelog: [v2.5.0...v2.6.0](https://github.com/browserbase/sdk-node/compare/v2.5.0...v2.6.0)
