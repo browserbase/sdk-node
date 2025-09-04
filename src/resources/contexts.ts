@@ -24,16 +24,6 @@ export class Contexts extends APIResource {
   update(id: string, options?: Core.RequestOptions): Core.APIPromise<ContextUpdateResponse> {
     return this._client.put(`/v1/contexts/${id}`, options);
   }
-
-  /**
-   * Delete a Context
-   */
-  delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.delete(`/v1/contexts/${id}`, {
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
-  }
 }
 
 export interface ContextCreateResponse {

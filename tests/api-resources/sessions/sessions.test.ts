@@ -39,7 +39,6 @@ describe('resource sessions', () => {
           screen: { maxHeight: 0, maxWidth: 0, minHeight: 0, minWidth: 0 },
         },
         logSession: true,
-        os: 'windows',
         recordSession: true,
         solveCaptchas: true,
         viewport: { height: 0, width: 0 },
