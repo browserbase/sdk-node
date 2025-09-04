@@ -15,4 +15,14 @@ export class Downloads extends APIResource {
       __binaryResponse: true,
     });
   }
+
+  /**
+   * Delete Session Downloads
+   */
+  delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
+    return this._client.delete(`/v1/sessions/${id}/downloads`, {
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
+  }
 }
