@@ -443,12 +443,6 @@ export namespace SessionCreateParams {
     logSession?: boolean;
 
     /**
-     * Operating system for stealth mode. Valid values: windows, mac, linux, mobile,
-     * tablet
-     */
-    os?: 'windows' | 'mac' | 'linux' | 'mobile' | 'tablet';
-
-    /**
      * Enable or disable session recording. Defaults to `true`.
      */
     recordSession?: boolean;
