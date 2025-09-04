@@ -11,6 +11,7 @@ Methods:
 - <code title="post /v1/contexts">client.contexts.<a href="./src/resources/contexts.ts">create</a>({ ...params }) -> ContextCreateResponse</code>
 - <code title="get /v1/contexts/{id}">client.contexts.<a href="./src/resources/contexts.ts">retrieve</a>(id) -> ContextRetrieveResponse</code>
 - <code title="put /v1/contexts/{id}">client.contexts.<a href="./src/resources/contexts.ts">update</a>(id) -> ContextUpdateResponse</code>
+- <code title="delete /v1/contexts/{id}">client.contexts.<a href="./src/resources/contexts.ts">delete</a>(id) -> void</code>
 
 # Extensions
 
@@ -62,6 +63,7 @@ Methods:
 Methods:
 
 - <code title="get /v1/sessions/{id}/downloads">client.sessions.downloads.<a href="./src/resources/sessions/downloads.ts">list</a>(id) -> Response</code>
+- <code title="delete /v1/sessions/{id}/downloads">client.sessions.downloads.<a href="./src/resources/sessions/downloads.ts">delete</a>(id) -> void</code>
 
 ## Logs
 
