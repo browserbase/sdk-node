@@ -438,11 +438,6 @@ export namespace SessionCreateParams {
     fingerprint?: BrowserSettings.Fingerprint;
 
     /**
-     * [NOT IN DOCS] Enable or disable headful mode. Defaults to `false`.
-     */
-    headful?: boolean;
-
-    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;

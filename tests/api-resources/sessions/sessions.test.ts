@@ -38,7 +38,6 @@ describe('resource sessions', () => {
           operatingSystems: ['android'],
           screen: { maxHeight: 0, maxWidth: 0, minHeight: 0, minWidth: 0 },
         },
-        headful: true,
         logSession: true,
         os: 'windows',
         recordSession: true,
