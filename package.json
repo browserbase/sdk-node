@@ -125,5 +125,8 @@
       "require": "./dist/*.js",
       "default": "./dist/*.mjs"
     }
+  },
+  "resolutions": {
+    "**/form-data": "^4.0.4"
   }
 }
