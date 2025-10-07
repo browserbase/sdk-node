@@ -382,6 +382,11 @@ export interface SessionCreateParams {
   proxies?: Array<SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1> | boolean;
 
   /**
+   * [NOT IN DOCS] Supplementary proxy settings. Optional.
+   */
+  proxySettings?: SessionCreateParams.ProxySettings;
+
+  /**
    * The region where the Session should run.
    */
   region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
@@ -584,6 +589,16 @@ export namespace SessionCreateParams {
      * Username for external proxy authentication. Optional.
      */
     username?: string;
+  }
+
+  /**
+   * [NOT IN DOCS] Supplementary proxy settings. Optional.
+   */
+  export interface ProxySettings {
+    /**
+     * [NOT IN DOCS] The TLS certificate IDs to trust. Optional.
+     */
+    caCertificates: Array<string>;
   }
 }
 
