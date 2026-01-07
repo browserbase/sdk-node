@@ -36,7 +36,12 @@ describe('resource sessions', () => {
           httpVersion: '1',
           locales: ['string'],
           operatingSystems: ['android'],
-          screen: { maxHeight: 0, maxWidth: 0, minHeight: 0, minWidth: 0 },
+          screen: {
+            maxHeight: 0,
+            maxWidth: 0,
+            minHeight: 0,
+            minWidth: 0,
+          },
         },
         logSession: true,
         os: 'windows',
@@ -50,7 +55,11 @@ describe('resource sessions', () => {
         {
           type: 'browserbase',
           domainPattern: 'domainPattern',
-          geolocation: { country: 'xx', city: 'city', state: 'xx' },
+          geolocation: {
+            country: 'xx',
+            city: 'city',
+            state: 'xx',
+          },
         },
       ],
       region: 'us-west-2',
