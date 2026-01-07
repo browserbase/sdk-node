@@ -87,15 +87,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const session = await client.sessions.create({ projectId: 'your_project_id' }).catch(async (err) => {
-  if (err instanceof Browserbase.APIError) {
-    console.log(err.status); // 400
-    console.log(err.name); // BadRequestError
-    console.log(err.headers); // {server: 'nginx', ...}
-  } else {
-    throw err;
-  }
-});
+const session = await client.sessions
+  .create({ projectId: 'your_project_id' })
+  .catch(async (err) => {
+    if (err instanceof Browserbase.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
