@@ -355,12 +355,6 @@ export namespace SessionDebugResponse {
 }
 
 export interface SessionCreateParams {
-  /**
-   * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
-   */
-  projectId: string;
-
   browserSettings?: SessionCreateParams.BrowserSettings;
 
   /**
@@ -376,10 +370,20 @@ export interface SessionCreateParams {
   keepAlive?: boolean;
 
   /**
+   * The Project ID. Can be found in
+   * [Settings](https://www.browserbase.com/settings).
+   */
+  projectId?: string;
+
+  /**
    * Proxy configuration. Can be true for default proxy, or an array of proxy
    * configurations.
    */
-  proxies?: Array<SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1> | boolean;
+  proxies?:
+    | Array<
+        SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1 | SessionCreateParams.UnionMember2
+      >
+    | boolean;
 
   /**
    * The region where the Session should run.
@@ -585,20 +589,33 @@ export namespace SessionCreateParams {
      */
     username?: string;
   }
+
+  export interface UnionMember2 {
+    /**
+     * Type of proxy. Always 'none' for this config.
+     */
+    type: 'none';
+
+    /**
+     * Domain pattern for which this proxy should be used. If omitted, defaults to all
+     * domains. Optional.
+     */
+    domainPattern?: string;
+  }
 }
 
 export interface SessionUpdateParams {
-  /**
-   * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
-   */
-  projectId: string;
-
   /**
    * Set to `REQUEST_RELEASE` to request that the session complete. Use before
    * session's timeout to avoid additional charges.
    */
   status: 'REQUEST_RELEASE';
+
+  /**
+   * The Project ID. Can be found in
+   * [Settings](https://www.browserbase.com/settings).
+   */
+  projectId?: string;
 }
 
 export interface SessionListParams {

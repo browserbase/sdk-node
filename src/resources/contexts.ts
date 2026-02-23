@@ -96,7 +96,7 @@ export interface ContextCreateParams {
    * The Project ID. Can be found in
    * [Settings](https://www.browserbase.com/settings).
    */
-  projectId: string;
+  projectId?: string;
 }
 
 export declare namespace Contexts {
