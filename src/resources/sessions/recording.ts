@@ -12,27 +12,28 @@ export class Recording extends APIResource {
   }
 }
 
-export type RecordingRetrieveResponse = Array<RecordingRetrieveResponse.RecordingRetrieveResponseItem>;
+export interface SessionRecording {
+  /**
+   * See
+   * [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
+   */
+  data: { [key: string]: unknown };
 
-export namespace RecordingRetrieveResponse {
-  export interface RecordingRetrieveResponseItem {
-    /**
-     * See
-     * [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
-     */
-    data: { [key: string]: unknown };
+  sessionId: string;
 
-    sessionId: string;
+  /**
+   * milliseconds that have elapsed since the UNIX epoch
+   */
+  timestamp: number;
 
-    /**
-     * milliseconds that have elapsed since the UNIX epoch
-     */
-    timestamp: number;
-
-    type: number;
-  }
+  type: number;
 }
 
+export type RecordingRetrieveResponse = Array<SessionRecording>;
+
 export declare namespace Recording {
-  export { type RecordingRetrieveResponse as RecordingRetrieveResponse };
+  export {
+    type SessionRecording as SessionRecording,
+    type RecordingRetrieveResponse as RecordingRetrieveResponse,
+  };
 }
