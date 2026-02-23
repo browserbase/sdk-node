@@ -2,30 +2,20 @@
 
 export {
   Contexts,
+  type Context,
   type ContextCreateResponse,
-  type ContextRetrieveResponse,
   type ContextUpdateResponse,
   type ContextCreateParams,
 } from './contexts';
-export {
-  Extensions,
-  type ExtensionCreateResponse,
-  type ExtensionRetrieveResponse,
-  type ExtensionCreateParams,
-} from './extensions';
-export {
-  Projects,
-  type ProjectRetrieveResponse,
-  type ProjectListResponse,
-  type ProjectUsageResponse,
-} from './projects';
+export { Extensions, type Extension, type ExtensionCreateParams } from './extensions';
+export { Projects, type Project, type ProjectUsage, type ProjectListResponse } from './projects';
 export {
   Sessions,
+  type Session,
+  type SessionLiveURLs,
   type SessionCreateResponse,
   type SessionRetrieveResponse,
-  type SessionUpdateResponse,
   type SessionListResponse,
-  type SessionDebugResponse,
   type SessionCreateParams,
   type SessionUpdateParams,
   type SessionListParams,
