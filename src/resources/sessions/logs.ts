@@ -12,23 +12,32 @@ export class Logs extends APIResource {
   }
 }
 
-export type LogListResponse = Array<LogListResponse.LogListResponseItem>;
+export interface SessionLog {
+  method: string;
 
-export namespace LogListResponse {
-  export interface LogListResponseItem {
-    method: string;
+  pageId: number;
 
-    pageId: number;
+  sessionId: string;
 
-    sessionId: string;
+  frameId?: string;
 
-    frameId?: string;
+  loaderId?: string;
 
-    loaderId?: string;
+  request?: SessionLog.Request;
 
-    request?: LogListResponseItem.Request;
+  response?: SessionLog.Response;
 
-    response?: LogListResponseItem.Response;
+  /**
+   * milliseconds that have elapsed since the UNIX epoch
+   */
+  timestamp?: number;
+}
+
+export namespace SessionLog {
+  export interface Request {
+    params: { [key: string]: unknown };
+
+    rawBody: string;
 
     /**
      * milliseconds that have elapsed since the UNIX epoch
@@ -36,31 +45,20 @@ export namespace LogListResponse {
     timestamp?: number;
   }
 
-  export namespace LogListResponseItem {
-    export interface Request {
-      params: { [key: string]: unknown };
+  export interface Response {
+    rawBody: string;
 
-      rawBody: string;
+    result: { [key: string]: unknown };
 
-      /**
-       * milliseconds that have elapsed since the UNIX epoch
-       */
-      timestamp?: number;
-    }
-
-    export interface Response {
-      rawBody: string;
-
-      result: { [key: string]: unknown };
-
-      /**
-       * milliseconds that have elapsed since the UNIX epoch
-       */
-      timestamp?: number;
-    }
+    /**
+     * milliseconds that have elapsed since the UNIX epoch
+     */
+    timestamp?: number;
   }
 }
 
+export type LogListResponse = Array<SessionLog>;
+
 export declare namespace Logs {
-  export { type LogListResponse as LogListResponse };
+  export { type SessionLog as SessionLog, type LogListResponse as LogListResponse };
 }

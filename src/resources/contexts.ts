@@ -12,18 +12,41 @@ export class Contexts extends APIResource {
   }
 
   /**
-   * Get a Context
+   * Context
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ContextRetrieveResponse> {
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Context> {
     return this._client.get(`/v1/contexts/${id}`, options);
   }
 
   /**
-   * Update a Context
+   * Update Context
    */
   update(id: string, options?: Core.RequestOptions): Core.APIPromise<ContextUpdateResponse> {
     return this._client.put(`/v1/contexts/${id}`, options);
   }
+
+  /**
+   * Delete Context
+   */
+  delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
+    return this._client.delete(`/v1/contexts/${id}`, {
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
+  }
+}
+
+export interface Context {
+  id: string;
+
+  createdAt: string;
+
+  /**
+   * The Project ID linked to the uploaded Context.
+   */
+  projectId: string;
+
+  updatedAt: string;
 }
 
 export interface ContextCreateResponse {
@@ -50,19 +73,6 @@ export interface ContextCreateResponse {
    * An upload URL to upload a custom user-data-directory.
    */
   uploadUrl: string;
-}
-
-export interface ContextRetrieveResponse {
-  id: string;
-
-  createdAt: string;
-
-  /**
-   * The Project ID linked to the uploaded Context.
-   */
-  projectId: string;
-
-  updatedAt: string;
 }
 
 export interface ContextUpdateResponse {
@@ -96,13 +106,13 @@ export interface ContextCreateParams {
    * The Project ID. Can be found in
    * [Settings](https://www.browserbase.com/settings).
    */
-  projectId: string;
+  projectId?: string;
 }
 
 export declare namespace Contexts {
   export {
+    type Context as Context,
     type ContextCreateResponse as ContextCreateResponse,
-    type ContextRetrieveResponse as ContextRetrieveResponse,
     type ContextUpdateResponse as ContextUpdateResponse,
     type ContextCreateParams as ContextCreateParams,
   };
