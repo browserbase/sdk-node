@@ -292,6 +292,12 @@ export interface SessionRetrieveResponse {
 export type SessionListResponse = Array<Session>;
 
 export interface SessionCreateParams {
+  /**
+   * Duration in seconds after which the session will automatically end. Defaults to
+   * the Project's `defaultTimeout`.
+   */
+  api_timeout?: number;
+
   browserSettings?: SessionCreateParams.BrowserSettings;
 
   /**
@@ -328,12 +334,6 @@ export interface SessionCreateParams {
    * The region where the Session should run.
    */
   region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
-
-  /**
-   * Duration in seconds after which the session will automatically end. Defaults to
-   * the Project's `defaultTimeout`.
-   */
-  timeout?: number;
 
   /**
    * Arbitrary user metadata to attach to the session. To learn more about user
