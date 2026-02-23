@@ -9,8 +9,8 @@ const client = new Browserbase({
 });
 
 describe('resource sessions', () => {
-  test('create', async () => {
-    const responsePromise = client.sessions.create({});
+  test('create: only required params', async () => {
+    const responsePromise = client.sessions.create({ projectId: 'projectId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,6 +18,54 @@ describe('resource sessions', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await client.sessions.create({
+      projectId: 'projectId',
+      browserSettings: {
+        advancedStealth: true,
+        blockAds: true,
+        captchaImageSelector: 'captchaImageSelector',
+        captchaInputSelector: 'captchaInputSelector',
+        context: { id: 'id', persist: true },
+        extensionId: 'extensionId',
+        fingerprint: {
+          browsers: ['chrome'],
+          devices: ['desktop'],
+          httpVersion: '1',
+          locales: ['string'],
+          operatingSystems: ['android'],
+          screen: {
+            maxHeight: 0,
+            maxWidth: 0,
+            minHeight: 0,
+            minWidth: 0,
+          },
+        },
+        logSession: true,
+        os: 'windows',
+        recordSession: true,
+        solveCaptchas: true,
+        viewport: { height: 0, width: 0 },
+      },
+      extensionId: 'extensionId',
+      keepAlive: true,
+      proxies: [
+        {
+          type: 'browserbase',
+          domainPattern: 'domainPattern',
+          geolocation: {
+            country: 'xx',
+            city: 'city',
+            state: 'xx',
+          },
+        },
+      ],
+      region: 'us-west-2',
+      timeout: 60,
+      userMetadata: { foo: 'bar' },
+    });
   });
 
   test('retrieve', async () => {
@@ -39,7 +87,10 @@ describe('resource sessions', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = client.sessions.update('id', { status: 'REQUEST_RELEASE' });
+    const responsePromise = client.sessions.update('id', {
+      projectId: 'projectId',
+      status: 'REQUEST_RELEASE',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -51,8 +102,8 @@ describe('resource sessions', () => {
 
   test('update: required and optional params', async () => {
     const response = await client.sessions.update('id', {
-      status: 'REQUEST_RELEASE',
       projectId: 'projectId',
+      status: 'REQUEST_RELEASE',
     });
   });
 

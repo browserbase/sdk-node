@@ -6,23 +6,33 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
-  Context,
   ContextCreateParams,
   ContextCreateResponse,
+  ContextRetrieveResponse,
   ContextUpdateResponse,
   Contexts,
 } from './resources/contexts';
-import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
-import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
 import {
-  Session,
+  ExtensionCreateParams,
+  ExtensionCreateResponse,
+  ExtensionRetrieveResponse,
+  Extensions,
+} from './resources/extensions';
+import {
+  ProjectListResponse,
+  ProjectRetrieveResponse,
+  ProjectUsageResponse,
+  Projects,
+} from './resources/projects';
+import {
   SessionCreateParams,
   SessionCreateResponse,
+  SessionDebugResponse,
   SessionListParams,
   SessionListResponse,
-  SessionLiveURLs,
   SessionRetrieveResponse,
   SessionUpdateParams,
+  SessionUpdateResponse,
   Sessions,
 } from './resources/sessions/sessions';
 
@@ -200,32 +210,33 @@ export declare namespace Browserbase {
 
   export {
     Contexts as Contexts,
-    type Context as Context,
     type ContextCreateResponse as ContextCreateResponse,
+    type ContextRetrieveResponse as ContextRetrieveResponse,
     type ContextUpdateResponse as ContextUpdateResponse,
     type ContextCreateParams as ContextCreateParams,
   };
 
   export {
     Extensions as Extensions,
-    type Extension as Extension,
+    type ExtensionCreateResponse as ExtensionCreateResponse,
+    type ExtensionRetrieveResponse as ExtensionRetrieveResponse,
     type ExtensionCreateParams as ExtensionCreateParams,
   };
 
   export {
     Projects as Projects,
-    type Project as Project,
-    type ProjectUsage as ProjectUsage,
+    type ProjectRetrieveResponse as ProjectRetrieveResponse,
     type ProjectListResponse as ProjectListResponse,
+    type ProjectUsageResponse as ProjectUsageResponse,
   };
 
   export {
     Sessions as Sessions,
-    type Session as Session,
-    type SessionLiveURLs as SessionLiveURLs,
     type SessionCreateResponse as SessionCreateResponse,
     type SessionRetrieveResponse as SessionRetrieveResponse,
+    type SessionUpdateResponse as SessionUpdateResponse,
     type SessionListResponse as SessionListResponse,
+    type SessionDebugResponse as SessionDebugResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
