@@ -60,7 +60,7 @@ $ yarn link @browserbasehq/sdk
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @browserbasehq/sdk
+$ pnpm link --global @browserbasehq/sdk
 ```
 
 ## Running tests
