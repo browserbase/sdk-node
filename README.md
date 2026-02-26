@@ -27,8 +27,6 @@ const client = new Browserbase({
 });
 
 const session = await client.sessions.create({ projectId: 'your_project_id' });
-
-console.log(session.id);
 ```
 
 ### Request & Response types
@@ -175,7 +173,7 @@ const { data: session, response: raw } = await client.sessions
   .create({ projectId: 'your_project_id' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(session.id);
+console.log(session);
 ```
 
 ### Making custom/undocumented requests
