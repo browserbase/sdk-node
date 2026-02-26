@@ -21,7 +21,15 @@ export class Sessions extends APIResource {
   /**
    * Create a Session
    */
-  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
+  create(body?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
+  create(options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
+  create(
+    body: SessionCreateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionCreateResponse> {
+    if (isRequestOptions(body)) {
+      return this.create({}, body);
+    }
     return this._client.post('/v1/sessions', { body, ...options });
   }
 
@@ -115,21 +123,11 @@ export interface SessionCreateResponse {
   updatedAt: string;
 
   /**
-   * CPU used by the Session
-   */
-  avgCpuUsage?: number;
-
-  /**
    * Optional. The Context linked to the Session.
    */
   contextId?: string;
 
   endedAt?: string;
-
-  /**
-   * Memory used by the Session
-   */
-  memoryUsage?: number;
 
   /**
    * Arbitrary user metadata to attach to the session. To learn more about user
@@ -172,11 +170,6 @@ export interface SessionRetrieveResponse {
   updatedAt: string;
 
   /**
-   * CPU used by the Session
-   */
-  avgCpuUsage?: number;
-
-  /**
    * WebSocket URL to connect to the Session.
    */
   connectUrl?: string;
@@ -187,11 +180,6 @@ export interface SessionRetrieveResponse {
   contextId?: string;
 
   endedAt?: string;
-
-  /**
-   * Memory used by the Session
-   */
-  memoryUsage?: number;
 
   /**
    * HTTP URL to connect to the Session.
@@ -244,21 +232,11 @@ export interface SessionUpdateResponse {
   updatedAt: string;
 
   /**
-   * CPU used by the Session
-   */
-  avgCpuUsage?: number;
-
-  /**
    * Optional. The Context linked to the Session.
    */
   contextId?: string;
 
   endedAt?: string;
-
-  /**
-   * Memory used by the Session
-   */
-  memoryUsage?: number;
 
   /**
    * Arbitrary user metadata to attach to the session. To learn more about user
@@ -304,21 +282,11 @@ export namespace SessionListResponse {
     updatedAt: string;
 
     /**
-     * CPU used by the Session
-     */
-    avgCpuUsage?: number;
-
-    /**
      * Optional. The Context linked to the Session.
      */
     contextId?: string;
 
     endedAt?: string;
-
-    /**
-     * Memory used by the Session
-     */
-    memoryUsage?: number;
 
     /**
      * Arbitrary user metadata to attach to the session. To learn more about user
@@ -355,12 +323,6 @@ export namespace SessionDebugResponse {
 }
 
 export interface SessionCreateParams {
-  /**
-   * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
-   */
-  projectId: string;
-
   browserSettings?: SessionCreateParams.BrowserSettings;
 
   /**
@@ -376,10 +338,21 @@ export interface SessionCreateParams {
   keepAlive?: boolean;
 
   /**
+   * The Project ID. Can be found in
+   * [Settings](https://www.browserbase.com/settings). Optional - if not provided,
+   * the project will be inferred from the API key.
+   */
+  projectId?: string;
+
+  /**
    * Proxy configuration. Can be true for default proxy, or an array of proxy
    * configurations.
    */
-  proxies?: Array<SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1> | boolean;
+  proxies?:
+    | Array<
+        SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1 | SessionCreateParams.UnionMember2
+      >
+    | boolean;
 
   /**
    * The region where the Session should run.
@@ -432,12 +405,6 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
-     * See usage examples
-     * [on the Stealth Mode page](/features/stealth-mode#fingerprinting)
-     */
-    fingerprint?: BrowserSettings.Fingerprint;
-
-    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;
@@ -472,36 +439,6 @@ export namespace SessionCreateParams {
        * Whether or not to persist the context after browsing. Defaults to `false`.
        */
       persist?: boolean;
-    }
-
-    /**
-     * See usage examples
-     * [on the Stealth Mode page](/features/stealth-mode#fingerprinting)
-     */
-    export interface Fingerprint {
-      browsers?: Array<'chrome' | 'edge' | 'firefox' | 'safari'>;
-
-      devices?: Array<'desktop' | 'mobile'>;
-
-      httpVersion?: '1' | '2';
-
-      locales?: Array<string>;
-
-      operatingSystems?: Array<'android' | 'ios' | 'linux' | 'macos' | 'windows'>;
-
-      screen?: Fingerprint.Screen;
-    }
-
-    export namespace Fingerprint {
-      export interface Screen {
-        maxHeight?: number;
-
-        maxWidth?: number;
-
-        minHeight?: number;
-
-        minWidth?: number;
-      }
     }
 
     export interface Viewport {
@@ -585,20 +522,34 @@ export namespace SessionCreateParams {
      */
     username?: string;
   }
+
+  export interface UnionMember2 {
+    /**
+     * Type of proxy. Always 'none' for this config.
+     */
+    type: 'none';
+
+    /**
+     * Domain pattern for which this proxy should be used. If omitted, defaults to all
+     * domains. Optional.
+     */
+    domainPattern?: string;
+  }
 }
 
 export interface SessionUpdateParams {
-  /**
-   * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
-   */
-  projectId: string;
-
   /**
    * Set to `REQUEST_RELEASE` to request that the session complete. Use before
    * session's timeout to avoid additional charges.
    */
   status: 'REQUEST_RELEASE';
+
+  /**
+   * The Project ID. Can be found in
+   * [Settings](https://www.browserbase.com/settings). Optional - if not provided,
+   * the project will be inferred from the API key.
+   */
+  projectId?: string;
 }
 
 export interface SessionListParams {

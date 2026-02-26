@@ -1,13 +1,22 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
 import * as Core from '../core';
 
 export class Contexts extends APIResource {
   /**
    * Create a Context
    */
-  create(body: ContextCreateParams, options?: Core.RequestOptions): Core.APIPromise<ContextCreateResponse> {
+  create(body?: ContextCreateParams, options?: Core.RequestOptions): Core.APIPromise<ContextCreateResponse>;
+  create(options?: Core.RequestOptions): Core.APIPromise<ContextCreateResponse>;
+  create(
+    body: ContextCreateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ContextCreateResponse> {
+    if (isRequestOptions(body)) {
+      return this.create({}, body);
+    }
     return this._client.post('/v1/contexts', { body, ...options });
   }
 
@@ -104,9 +113,10 @@ export interface ContextUpdateResponse {
 export interface ContextCreateParams {
   /**
    * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
+   * [Settings](https://www.browserbase.com/settings). Optional - if not provided,
+   * the project will be inferred from the API key.
    */
-  projectId: string;
+  projectId?: string;
 }
 
 export declare namespace Contexts {
