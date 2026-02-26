@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.7.0-alpha.2 (2026-02-26)
+
+Full Changelog: [v2.7.0-alpha.1...v2.7.0-alpha.2](https://github.com/browserbase/sdk-node/compare/v2.7.0-alpha.1...v2.7.0-alpha.2)
+
+### Bug Fixes
+
+* use npm publish instead of yarn publish ([#173](https://github.com/browserbase/sdk-node/issues/173)) ([05b3225](https://github.com/browserbase/sdk-node/commit/05b3225efe94473f2b49988dab63a9e67beb9802))
+
 ## 2.7.0-alpha.1 (2026-02-26)
 
 Full Changelog: [v2.6.0...v2.7.0-alpha.1](https://github.com/browserbase/sdk-node/compare/v2.6.0...v2.7.0-alpha.1)
