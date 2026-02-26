@@ -6,9 +6,9 @@ import * as Core from '../../core';
 import * as DownloadsAPI from './downloads';
 import { Downloads } from './downloads';
 import * as LogsAPI from './logs';
-import { LogListResponse, Logs } from './logs';
+import { LogListResponse, Logs, SessionLog } from './logs';
 import * as RecordingAPI from './recording';
-import { Recording, RecordingRetrieveResponse } from './recording';
+import { Recording, RecordingRetrieveResponse, SessionRecording } from './recording';
 import * as UploadsAPI from './uploads';
 import { UploadCreateParams, UploadCreateResponse, Uploads } from './uploads';
 
@@ -43,11 +43,7 @@ export class Sessions extends APIResource {
   /**
    * Update a Session
    */
-  update(
-    id: string,
-    body: SessionUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionUpdateResponse> {
+  update(id: string, body: SessionUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Session> {
     return this._client.post(`/v1/sessions/${id}`, { body, ...options });
   }
 
@@ -69,136 +65,12 @@ export class Sessions extends APIResource {
   /**
    * Session Live URLs
    */
-  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionDebugResponse> {
+  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionLiveURLs> {
     return this._client.get(`/v1/sessions/${id}/debug`, options);
   }
 }
 
-export interface SessionCreateResponse {
-  id: string;
-
-  /**
-   * WebSocket URL to connect to the Session.
-   */
-  connectUrl: string;
-
-  createdAt: string;
-
-  expiresAt: string;
-
-  /**
-   * Indicates if the Session was created to be kept alive upon disconnections
-   */
-  keepAlive: boolean;
-
-  /**
-   * The Project ID linked to the Session.
-   */
-  projectId: string;
-
-  /**
-   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-   */
-  proxyBytes: number;
-
-  /**
-   * The region where the Session is running.
-   */
-  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
-
-  /**
-   * HTTP URL to connect to the Session.
-   */
-  seleniumRemoteUrl: string;
-
-  /**
-   * Signing key to use when connecting to the Session via HTTP.
-   */
-  signingKey: string;
-
-  startedAt: string;
-
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
-
-  updatedAt: string;
-
-  /**
-   * Optional. The Context linked to the Session.
-   */
-  contextId?: string;
-
-  endedAt?: string;
-
-  /**
-   * Arbitrary user metadata to attach to the session. To learn more about user
-   * metadata, see [User Metadata](/features/sessions#user-metadata).
-   */
-  userMetadata?: { [key: string]: unknown };
-}
-
-export interface SessionRetrieveResponse {
-  id: string;
-
-  createdAt: string;
-
-  expiresAt: string;
-
-  /**
-   * Indicates if the Session was created to be kept alive upon disconnections
-   */
-  keepAlive: boolean;
-
-  /**
-   * The Project ID linked to the Session.
-   */
-  projectId: string;
-
-  /**
-   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-   */
-  proxyBytes: number;
-
-  /**
-   * The region where the Session is running.
-   */
-  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
-
-  startedAt: string;
-
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
-
-  updatedAt: string;
-
-  /**
-   * WebSocket URL to connect to the Session.
-   */
-  connectUrl?: string;
-
-  /**
-   * Optional. The Context linked to the Session.
-   */
-  contextId?: string;
-
-  endedAt?: string;
-
-  /**
-   * HTTP URL to connect to the Session.
-   */
-  seleniumRemoteUrl?: string;
-
-  /**
-   * Signing key to use when connecting to the Session via HTTP.
-   */
-  signingKey?: string;
-
-  /**
-   * Arbitrary user metadata to attach to the session. To learn more about user
-   * metadata, see [User Metadata](/features/sessions#user-metadata).
-   */
-  userMetadata?: { [key: string]: unknown };
-}
-
-export interface SessionUpdateResponse {
+export interface Session {
   id: string;
 
   createdAt: string;
@@ -245,68 +117,17 @@ export interface SessionUpdateResponse {
   userMetadata?: { [key: string]: unknown };
 }
 
-export type SessionListResponse = Array<SessionListResponse.SessionListResponseItem>;
-
-export namespace SessionListResponse {
-  export interface SessionListResponseItem {
-    id: string;
-
-    createdAt: string;
-
-    expiresAt: string;
-
-    /**
-     * Indicates if the Session was created to be kept alive upon disconnections
-     */
-    keepAlive: boolean;
-
-    /**
-     * The Project ID linked to the Session.
-     */
-    projectId: string;
-
-    /**
-     * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-     */
-    proxyBytes: number;
-
-    /**
-     * The region where the Session is running.
-     */
-    region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
-
-    startedAt: string;
-
-    status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
-
-    updatedAt: string;
-
-    /**
-     * Optional. The Context linked to the Session.
-     */
-    contextId?: string;
-
-    endedAt?: string;
-
-    /**
-     * Arbitrary user metadata to attach to the session. To learn more about user
-     * metadata, see [User Metadata](/features/sessions#user-metadata).
-     */
-    userMetadata?: { [key: string]: unknown };
-  }
-}
-
-export interface SessionDebugResponse {
+export interface SessionLiveURLs {
   debuggerFullscreenUrl: string;
 
   debuggerUrl: string;
 
-  pages: Array<SessionDebugResponse.Page>;
+  pages: Array<SessionLiveURLs.Page>;
 
   wsUrl: string;
 }
 
-export namespace SessionDebugResponse {
+export namespace SessionLiveURLs {
   export interface Page {
     id: string;
 
@@ -321,6 +142,42 @@ export namespace SessionDebugResponse {
     url: string;
   }
 }
+
+export interface SessionCreateResponse extends Session {
+  /**
+   * WebSocket URL to connect to the Session.
+   */
+  connectUrl: string;
+
+  /**
+   * HTTP URL to connect to the Session.
+   */
+  seleniumRemoteUrl: string;
+
+  /**
+   * Signing key to use when connecting to the Session via HTTP.
+   */
+  signingKey: string;
+}
+
+export interface SessionRetrieveResponse extends Session {
+  /**
+   * WebSocket URL to connect to the Session.
+   */
+  connectUrl?: string;
+
+  /**
+   * HTTP URL to connect to the Session.
+   */
+  seleniumRemoteUrl?: string;
+
+  /**
+   * Signing key to use when connecting to the Session via HTTP.
+   */
+  signingKey?: string;
+}
+
+export type SessionListResponse = Array<Session>;
 
 export interface SessionCreateParams {
   browserSettings?: SessionCreateParams.BrowserSettings;
@@ -350,7 +207,9 @@ export interface SessionCreateParams {
    */
   proxies?:
     | Array<
-        SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1 | SessionCreateParams.UnionMember2
+        | SessionCreateParams.BrowserbaseProxyConfig
+        | SessionCreateParams.ExternalProxyConfig
+        | SessionCreateParams.NoneProxyConfig
       >
     | boolean;
 
@@ -454,7 +313,7 @@ export namespace SessionCreateParams {
     }
   }
 
-  export interface UnionMember0 {
+  export interface BrowserbaseProxyConfig {
     /**
      * Type of proxy. Always use 'browserbase' for the Browserbase managed proxy
      * network.
@@ -470,10 +329,10 @@ export namespace SessionCreateParams {
     /**
      * Geographic location for the proxy. Optional.
      */
-    geolocation?: UnionMember0.Geolocation;
+    geolocation?: BrowserbaseProxyConfig.Geolocation;
   }
 
-  export namespace UnionMember0 {
+  export namespace BrowserbaseProxyConfig {
     /**
      * Geographic location for the proxy. Optional.
      */
@@ -495,7 +354,7 @@ export namespace SessionCreateParams {
     }
   }
 
-  export interface UnionMember1 {
+  export interface ExternalProxyConfig {
     /**
      * Server URL for external proxy. Required.
      */
@@ -523,7 +382,7 @@ export namespace SessionCreateParams {
     username?: string;
   }
 
-  export interface UnionMember2 {
+  export interface NoneProxyConfig {
     /**
      * Type of proxy. Always 'none' for this config.
      */
@@ -570,11 +429,11 @@ Sessions.Uploads = Uploads;
 
 export declare namespace Sessions {
   export {
+    type Session as Session,
+    type SessionLiveURLs as SessionLiveURLs,
     type SessionCreateResponse as SessionCreateResponse,
     type SessionRetrieveResponse as SessionRetrieveResponse,
-    type SessionUpdateResponse as SessionUpdateResponse,
     type SessionListResponse as SessionListResponse,
-    type SessionDebugResponse as SessionDebugResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
@@ -582,9 +441,13 @@ export declare namespace Sessions {
 
   export { Downloads as Downloads };
 
-  export { Logs as Logs, type LogListResponse as LogListResponse };
+  export { Logs as Logs, type SessionLog as SessionLog, type LogListResponse as LogListResponse };
 
-  export { Recording as Recording, type RecordingRetrieveResponse as RecordingRetrieveResponse };
+  export {
+    Recording as Recording,
+    type SessionRecording as SessionRecording,
+    type RecordingRetrieveResponse as RecordingRetrieveResponse,
+  };
 
   export {
     Uploads as Uploads,

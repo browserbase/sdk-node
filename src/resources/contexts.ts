@@ -23,7 +23,7 @@ export class Contexts extends APIResource {
   /**
    * Get a Context
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ContextRetrieveResponse> {
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Context> {
     return this._client.get(`/v1/contexts/${id}`, options);
   }
 
@@ -43,6 +43,19 @@ export class Contexts extends APIResource {
       headers: { Accept: '*/*', ...options?.headers },
     });
   }
+}
+
+export interface Context {
+  id: string;
+
+  createdAt: string;
+
+  /**
+   * The Project ID linked to the uploaded Context.
+   */
+  projectId: string;
+
+  updatedAt: string;
 }
 
 export interface ContextCreateResponse {
@@ -69,19 +82,6 @@ export interface ContextCreateResponse {
    * An upload URL to upload a custom user-data-directory.
    */
   uploadUrl: string;
-}
-
-export interface ContextRetrieveResponse {
-  id: string;
-
-  createdAt: string;
-
-  /**
-   * The Project ID linked to the uploaded Context.
-   */
-  projectId: string;
-
-  updatedAt: string;
 }
 
 export interface ContextUpdateResponse {
@@ -121,8 +121,8 @@ export interface ContextCreateParams {
 
 export declare namespace Contexts {
   export {
+    type Context as Context,
     type ContextCreateResponse as ContextCreateResponse,
-    type ContextRetrieveResponse as ContextRetrieveResponse,
     type ContextUpdateResponse as ContextUpdateResponse,
     type ContextCreateParams as ContextCreateParams,
   };
