@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.7.0-alpha.3 (2026-02-26)
+
+Full Changelog: [v2.7.0-alpha.2...v2.7.0-alpha.3](https://github.com/browserbase/sdk-node/compare/v2.7.0-alpha.2...v2.7.0-alpha.3)
+
+### Features
+
+* [CORE-] Restore models and components in SDK ([e9a85f1](https://github.com/browserbase/sdk-node/commit/e9a85f1ffe0fa59490cca612a82a17cd3de21df2))
+
 ## 2.7.0-alpha.2 (2026-02-26)
 
 Full Changelog: [v2.7.0-alpha.1...v2.7.0-alpha.2](https://github.com/browserbase/sdk-node/compare/v2.7.0-alpha.1...v2.7.0-alpha.2)
