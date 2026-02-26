@@ -2,7 +2,7 @@
 
 import type { Browserbase } from './index';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: Browserbase;
 
   constructor(client: Browserbase) {

@@ -5,28 +5,28 @@ import * as Core from '../core';
 
 export class Projects extends APIResource {
   /**
-   * Project
+   * Get a Project
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Project> {
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ProjectRetrieveResponse> {
     return this._client.get(`/v1/projects/${id}`, options);
   }
 
   /**
-   * List projects
+   * List Projects
    */
   list(options?: Core.RequestOptions): Core.APIPromise<ProjectListResponse> {
     return this._client.get('/v1/projects', options);
   }
 
   /**
-   * Project Usage
+   * Get Project Usage
    */
-  usage(id: string, options?: Core.RequestOptions): Core.APIPromise<ProjectUsage> {
+  usage(id: string, options?: Core.RequestOptions): Core.APIPromise<ProjectUsageResponse> {
     return this._client.get(`/v1/projects/${id}/usage`, options);
   }
 }
 
-export interface Project {
+export interface ProjectRetrieveResponse {
   id: string;
 
   /**
@@ -45,18 +45,39 @@ export interface Project {
   updatedAt: string;
 }
 
-export interface ProjectUsage {
+export type ProjectListResponse = Array<ProjectListResponse.ProjectListResponseItem>;
+
+export namespace ProjectListResponse {
+  export interface ProjectListResponseItem {
+    id: string;
+
+    /**
+     * The maximum number of sessions that this project can run concurrently.
+     */
+    concurrency: number;
+
+    createdAt: string;
+
+    defaultTimeout: number;
+
+    name: string;
+
+    ownerId: string;
+
+    updatedAt: string;
+  }
+}
+
+export interface ProjectUsageResponse {
   browserMinutes: number;
 
   proxyBytes: number;
 }
 
-export type ProjectListResponse = Array<Project>;
-
 export declare namespace Projects {
   export {
-    type Project as Project,
-    type ProjectUsage as ProjectUsage,
+    type ProjectRetrieveResponse as ProjectRetrieveResponse,
     type ProjectListResponse as ProjectListResponse,
+    type ProjectUsageResponse as ProjectUsageResponse,
   };
 }

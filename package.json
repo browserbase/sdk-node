@@ -1,6 +1,6 @@
 {
   "name": "@browserbasehq/sdk",
-  "version": "2.6.0",
+  "version": "2.7.0-alpha.1",
   "description": "The official Node.js library for the Browserbase API",
   "author": "Browserbase <support@browserbase.com>",
   "types": "dist/index.d.ts",
@@ -12,6 +12,9 @@
     "**/*"
   ],
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "./scripts/test",
     "build": "./scripts/build",
@@ -64,10 +67,6 @@
     "./shims/web.js",
     "./shims/web.mjs"
   ],
-  "imports": {
-    "@browserbasehq/sdk": ".",
-    "@browserbasehq/sdk/*": "./src/*"
-  },
   "exports": {
     "./_shims/auto/*": {
       "deno": {

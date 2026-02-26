@@ -7,19 +7,22 @@ export class Extensions extends APIResource {
   /**
    * Upload an Extension
    */
-  create(body: ExtensionCreateParams, options?: Core.RequestOptions): Core.APIPromise<Extension> {
+  create(
+    body: ExtensionCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ExtensionCreateResponse> {
     return this._client.post('/v1/extensions', Core.multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
-   * Extension
+   * Get an Extension
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Extension> {
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ExtensionRetrieveResponse> {
     return this._client.get(`/v1/extensions/${id}`, options);
   }
 
   /**
-   * Delete Extension
+   * Delete an Extension
    */
   delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.delete(`/v1/extensions/${id}`, {
@@ -29,7 +32,22 @@ export class Extensions extends APIResource {
   }
 }
 
-export interface Extension {
+export interface ExtensionCreateResponse {
+  id: string;
+
+  createdAt: string;
+
+  fileName: string;
+
+  /**
+   * The Project ID linked to the uploaded Extension.
+   */
+  projectId: string;
+
+  updatedAt: string;
+}
+
+export interface ExtensionRetrieveResponse {
   id: string;
 
   createdAt: string;
@@ -49,5 +67,9 @@ export interface ExtensionCreateParams {
 }
 
 export declare namespace Extensions {
-  export { type Extension as Extension, type ExtensionCreateParams as ExtensionCreateParams };
+  export {
+    type ExtensionCreateResponse as ExtensionCreateResponse,
+    type ExtensionRetrieveResponse as ExtensionRetrieveResponse,
+    type ExtensionCreateParams as ExtensionCreateParams,
+  };
 }

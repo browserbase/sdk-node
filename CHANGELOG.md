@@ -1,5 +1,94 @@
 # Changelog
 
+## 2.7.0-alpha.1 (2026-02-26)
+
+Full Changelog: [v2.6.0...v2.7.0-alpha.1](https://github.com/browserbase/sdk-node/compare/v2.6.0...v2.7.0-alpha.1)
+
+### Features
+
+* **api:** api update ([3e4e63e](https://github.com/browserbase/sdk-node/commit/3e4e63ebc319a9e4dacb17a4a2d7322dfb7a95ac))
+* **api:** api update ([a4abc41](https://github.com/browserbase/sdk-node/commit/a4abc414b984d8fee927cdedee246a27024d0287))
+* **api:** api update ([3318432](https://github.com/browserbase/sdk-node/commit/3318432579ed035eb0093dadcfb0704961341d17))
+* **api:** api update ([f44ef24](https://github.com/browserbase/sdk-node/commit/f44ef24579d2fb2473a4cabc1c8307d063a29810))
+* **api:** api update ([7967442](https://github.com/browserbase/sdk-node/commit/796744236d9a1a05602680b06a6a0d0c3d56bdc4))
+* **api:** api update ([890aa00](https://github.com/browserbase/sdk-node/commit/890aa008e4a798a0e179c85d3b1344d657f30d58))
+* **api:** api update ([3348e1a](https://github.com/browserbase/sdk-node/commit/3348e1a8e2cd6093142953283cedeaab44dfba81))
+* **api:** api update ([d80e4ac](https://github.com/browserbase/sdk-node/commit/d80e4acd14c12d8eed735ae11ed41cc07077dbde))
+* **api:** api update ([d661869](https://github.com/browserbase/sdk-node/commit/d661869a4b91bdc914195961b63ec5080060b178))
+* **api:** api update ([d57f23e](https://github.com/browserbase/sdk-node/commit/d57f23ea6d04a61dd523fd9cfea3bba138914483))
+* **api:** api update ([90c9185](https://github.com/browserbase/sdk-node/commit/90c9185c9de52ad0297062906d58ec7bb99ea004))
+* **api:** api update ([0ec3383](https://github.com/browserbase/sdk-node/commit/0ec33838237efd4424249482aac57294f17bdeda))
+* **api:** api update ([ef5f62b](https://github.com/browserbase/sdk-node/commit/ef5f62b267edcfa58fb677db40ae24a9a742ffa0))
+* **api:** manual updates ([31b7212](https://github.com/browserbase/sdk-node/commit/31b7212a87ea28c0a6a39bf90210bdb56cac3a21))
+* **api:** manual updates ([ffdf6f3](https://github.com/browserbase/sdk-node/commit/ffdf6f3eb5d0b39cda43f8a705106fade7245a58))
+* **api:** manual updates ([2b60d30](https://github.com/browserbase/sdk-node/commit/2b60d30cbed5a53407eff00230cfecb37f166445))
+* **api:** manual updates ([83d57f0](https://github.com/browserbase/sdk-node/commit/83d57f08249edc0b76e2a5575bdade34f6a93c2a))
+* **api:** manual updates ([b9152d8](https://github.com/browserbase/sdk-node/commit/b9152d86ca7438ef769cb0dc19bd211e661eb603))
+* **api:** manual updates ([d808751](https://github.com/browserbase/sdk-node/commit/d808751c5283bc3f78114980263784c8cf5fec2e))
+* **api:** manual updates ([d249ec3](https://github.com/browserbase/sdk-node/commit/d249ec32a00f2824acea4cd87ceb945429a4964f))
+* **api:** manual updates ([8b48f9b](https://github.com/browserbase/sdk-node/commit/8b48f9bba7d01d88eaa158de36ccc8e99a9caaca))
+* **api:** manual updates ([b2ac95c](https://github.com/browserbase/sdk-node/commit/b2ac95c9014672c812f352f5c9ca8a4c325c9a2f))
+* **api:** manual updates ([59bb2a5](https://github.com/browserbase/sdk-node/commit/59bb2a5665c3bebf073c7084d8dbfbef40148e38))
+* **client:** add support for endpoint-specific base URLs ([0c69436](https://github.com/browserbase/sdk-node/commit/0c69436d731785b207af5f979e9eb5ae1b975957))
+* **mcp:** support filtering tool results by a jq expression ([0efabac](https://github.com/browserbase/sdk-node/commit/0efabac130794ebc44c4054a19e77bb6fc455749))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([8e59beb](https://github.com/browserbase/sdk-node/commit/8e59beb314e8c07bd14b471121e28ec941168190))
+* **client:** don't send `Content-Type` for bodyless methods ([bfe46e8](https://github.com/browserbase/sdk-node/commit/bfe46e8c3af3377953857072ee39babdaec25820))
+* coerce nullable values to undefined ([6108dc5](https://github.com/browserbase/sdk-node/commit/6108dc5e49ed0623e8d91159e65c8a2a6399c811))
+* **docs/contributing:** correct pnpm link command ([fa166b7](https://github.com/browserbase/sdk-node/commit/fa166b7530064beddc69f0740f878d5e7f62dd14))
+* **internal:** skip tests that depend on mock server ([efbf3ab](https://github.com/browserbase/sdk-node/commit/efbf3ab35a46c5904696ea613b3bd50147b742d9))
+* **mcp:** correct code tool API endpoint ([e28c890](https://github.com/browserbase/sdk-node/commit/e28c89078c01cc4b5f2c2626da38b69ce9bc0680))
+* **mcp:** return correct lines on typescript errors ([80ae079](https://github.com/browserbase/sdk-node/commit/80ae079773e9b0e0e97b02f550c524333f9bcbec))
+* publish script — handle NPM errors correctly ([87c245e](https://github.com/browserbase/sdk-node/commit/87c245e2048dad1586d97fae8c4622c6e2780365))
+
+
+### Performance Improvements
+
+* faster formatting ([44cd7a6](https://github.com/browserbase/sdk-node/commit/44cd7a6321dc1dc6f0ebffef9f39db191efd4576))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([48d6458](https://github.com/browserbase/sdk-node/commit/48d6458a73da3a2da5e1016a3b13ed5b851f9e17))
+* ci build action ([4fe59cd](https://github.com/browserbase/sdk-node/commit/4fe59cd495df620609a05b8556d04d1968ef004b))
+* **ci:** enable for pull requests ([132825d](https://github.com/browserbase/sdk-node/commit/132825d5c65ba9aa1c47afe9b8a7b14885129598))
+* **ci:** only run for pushes and fork pull requests ([a166050](https://github.com/browserbase/sdk-node/commit/a166050ab35ddff365ca60f23ed1243690b7eda2))
+* **ci:** upgrade `actions/github-script` ([8818cfb](https://github.com/browserbase/sdk-node/commit/8818cfb698e19648a44ce9a9608de974b2115a1a))
+* **client:** do not parse responses with empty content-length ([c9d1b79](https://github.com/browserbase/sdk-node/commit/c9d1b7994557bfc994a0f85508323e3cb827f184))
+* **deps:** update dependency node-fetch to v2.6.13 ([b657cbe](https://github.com/browserbase/sdk-node/commit/b657cbec9e3603f4fe186141f0e38aa8a3a66bb7))
+* do not install brew dependencies in ./scripts/bootstrap by default ([ea703c8](https://github.com/browserbase/sdk-node/commit/ea703c8de75098582591496bdb0b3d81c9f1605a))
+* **docs:** grammar improvements ([985f2fe](https://github.com/browserbase/sdk-node/commit/985f2fe1bf866f1dc48c8d5f1827dda2e99b6f11))
+* **docs:** use top-level-await in example snippets ([24c7006](https://github.com/browserbase/sdk-node/commit/24c7006ca4c4dc7c03a48796b2677bdc47728934))
+* improve publish-npm script --latest tag logic ([88ce3e3](https://github.com/browserbase/sdk-node/commit/88ce3e3a96e34bfeb08d2ac254440b283818d7ef))
+* **internal:** codegen related update ([6eabc90](https://github.com/browserbase/sdk-node/commit/6eabc90c17805698fc4f3c43e7b9adabe2260b4b))
+* **internal:** codegen related update ([3dd3df4](https://github.com/browserbase/sdk-node/commit/3dd3df48e900410326c20d8d1f28498a171b4e17))
+* **internal:** codegen related update ([eb99387](https://github.com/browserbase/sdk-node/commit/eb993878d68dc8e787877ce2fad439430933bf8d))
+* **internal:** fix incremental formatting in some cases ([4057bd2](https://github.com/browserbase/sdk-node/commit/4057bd22ec1c05b8625d6efb8e9ed377d776da24))
+* **internal:** formatting change ([29b57d4](https://github.com/browserbase/sdk-node/commit/29b57d4294400969bccde8cacc2b27a5dd90f7fa))
+* **internal:** ignore .eslintcache ([adee655](https://github.com/browserbase/sdk-node/commit/adee65511c2b345665703b88b1a2c14da18967cd))
+* **internal:** make base APIResource abstract ([6ec9d38](https://github.com/browserbase/sdk-node/commit/6ec9d38a92775cb8e46468b05f539f53a01b54c9))
+* **internal:** move publish config ([2fb47ce](https://github.com/browserbase/sdk-node/commit/2fb47cec73a9d518866c84f927fbe16327dc9ab9))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([80a6db7](https://github.com/browserbase/sdk-node/commit/80a6db70bd87d690cc98db33b59e2ed4d929eb55))
+* **internal:** remove redundant imports config ([ddf4087](https://github.com/browserbase/sdk-node/commit/ddf408750a968e8bfcab59a1b86d58be796074de))
+* **internal:** update `actions/checkout` version ([dfe82a1](https://github.com/browserbase/sdk-node/commit/dfe82a1f2420a59f93c18b3adc0dbd3dcaa57f3a))
+* **internal:** update comment in script ([a549d56](https://github.com/browserbase/sdk-node/commit/a549d56d306c23019fc9cd99f4af5d48345664a5))
+* **internal:** upgrade babel, qs, js-yaml ([fe654da](https://github.com/browserbase/sdk-node/commit/fe654daf83853d7529fb80028d22484426287fc8))
+* **internal:** use npm pack for build uploads ([b1ddfd9](https://github.com/browserbase/sdk-node/commit/b1ddfd9e4f4e5afb6a0df0185570a4eeaf0fd1b7))
+* **internal:** version bump ([690777f](https://github.com/browserbase/sdk-node/commit/690777f5b88d363db563aba093363ed84c7c9ec4))
+* make some internal functions async ([f8111cb](https://github.com/browserbase/sdk-node/commit/f8111cb415bd62ff7d30f6ec7912878042d94eed))
+* mention unit type in timeout docs ([8d864d1](https://github.com/browserbase/sdk-node/commit/8d864d1f6858a655840ec824434e045c886216eb))
+* update @stainless-api/prism-cli to v5.15.0 ([d4ac1f1](https://github.com/browserbase/sdk-node/commit/d4ac1f19f066dc8386a2d7a48123d031763bef46))
+* update CI script ([2cd3501](https://github.com/browserbase/sdk-node/commit/2cd3501a6fa3368e8ad48dcd97f8cafd03b92dca))
+* update mock server docs ([54a36bf](https://github.com/browserbase/sdk-node/commit/54a36bfe34a444092247686a828331556d8dc003))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([3e0bfd3](https://github.com/browserbase/sdk-node/commit/3e0bfd327332edd2969106d189e650286d13e441))
+
 ## 2.6.0 (2025-05-16)
 
 Full Changelog: [v2.5.0...v2.6.0](https://github.com/browserbase/sdk-node/compare/v2.5.0...v2.6.0)

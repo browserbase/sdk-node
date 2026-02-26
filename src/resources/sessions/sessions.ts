@@ -6,9 +6,9 @@ import * as Core from '../../core';
 import * as DownloadsAPI from './downloads';
 import { Downloads } from './downloads';
 import * as LogsAPI from './logs';
-import { LogListResponse, Logs, SessionLog } from './logs';
+import { LogListResponse, Logs } from './logs';
 import * as RecordingAPI from './recording';
-import { Recording, RecordingRetrieveResponse, SessionRecording } from './recording';
+import { Recording, RecordingRetrieveResponse } from './recording';
 import * as UploadsAPI from './uploads';
 import { UploadCreateParams, UploadCreateResponse, Uploads } from './uploads';
 
@@ -21,21 +21,33 @@ export class Sessions extends APIResource {
   /**
    * Create a Session
    */
-  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
+  create(body?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
+  create(options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
+  create(
+    body: SessionCreateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionCreateResponse> {
+    if (isRequestOptions(body)) {
+      return this.create({}, body);
+    }
     return this._client.post('/v1/sessions', { body, ...options });
   }
 
   /**
-   * Session
+   * Get a Session
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionRetrieveResponse> {
     return this._client.get(`/v1/sessions/${id}`, options);
   }
 
   /**
-   * Update Session
+   * Update a Session
    */
-  update(id: string, body: SessionUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Session> {
+  update(
+    id: string,
+    body: SessionUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionUpdateResponse> {
     return this._client.post(`/v1/sessions/${id}`, { body, ...options });
   }
 
@@ -57,91 +69,8 @@ export class Sessions extends APIResource {
   /**
    * Session Live URLs
    */
-  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionLiveURLs> {
+  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionDebugResponse> {
     return this._client.get(`/v1/sessions/${id}/debug`, options);
-  }
-}
-
-export interface Session {
-  id: string;
-
-  createdAt: string;
-
-  expiresAt: string;
-
-  /**
-   * Indicates if the Session was created to be kept alive upon disconnections
-   */
-  keepAlive: boolean;
-
-  /**
-   * The Project ID linked to the Session.
-   */
-  projectId: string;
-
-  /**
-   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
-   */
-  proxyBytes: number;
-
-  /**
-   * The region where the Session is running.
-   */
-  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
-
-  startedAt: string;
-
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
-
-  updatedAt: string;
-
-  /**
-   * CPU used by the Session
-   */
-  avgCpuUsage?: number;
-
-  /**
-   * Optional. The Context linked to the Session.
-   */
-  contextId?: string;
-
-  endedAt?: string;
-
-  /**
-   * Memory used by the Session
-   */
-  memoryUsage?: number;
-
-  /**
-   * Arbitrary user metadata to attach to the session. To learn more about user
-   * metadata, see [User Metadata](/features/sessions#user-metadata).
-   */
-  userMetadata?: Record<string, unknown>;
-}
-
-export interface SessionLiveURLs {
-  debuggerFullscreenUrl: string;
-
-  debuggerUrl: string;
-
-  pages: Array<SessionLiveURLs.Page>;
-
-  wsUrl: string;
-}
-
-export namespace SessionLiveURLs {
-  export interface Page {
-    id: string;
-
-    debuggerFullscreenUrl: string;
-
-    debuggerUrl: string;
-
-    faviconUrl: string;
-
-    title: string;
-
-    url: string;
   }
 }
 
@@ -194,11 +123,6 @@ export interface SessionCreateResponse {
   updatedAt: string;
 
   /**
-   * CPU used by the Session
-   */
-  avgCpuUsage?: number;
-
-  /**
    * Optional. The Context linked to the Session.
    */
   contextId?: string;
@@ -206,15 +130,10 @@ export interface SessionCreateResponse {
   endedAt?: string;
 
   /**
-   * Memory used by the Session
-   */
-  memoryUsage?: number;
-
-  /**
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
 export interface SessionRetrieveResponse {
@@ -251,11 +170,6 @@ export interface SessionRetrieveResponse {
   updatedAt: string;
 
   /**
-   * CPU used by the Session
-   */
-  avgCpuUsage?: number;
-
-  /**
    * WebSocket URL to connect to the Session.
    */
   connectUrl?: string;
@@ -266,11 +180,6 @@ export interface SessionRetrieveResponse {
   contextId?: string;
 
   endedAt?: string;
-
-  /**
-   * Memory used by the Session
-   */
-  memoryUsage?: number;
 
   /**
    * HTTP URL to connect to the Session.
@@ -286,18 +195,134 @@ export interface SessionRetrieveResponse {
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
-export type SessionListResponse = Array<Session>;
+export interface SessionUpdateResponse {
+  id: string;
 
-export interface SessionCreateParams {
+  createdAt: string;
+
+  expiresAt: string;
+
   /**
-   * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
+   * Indicates if the Session was created to be kept alive upon disconnections
+   */
+  keepAlive: boolean;
+
+  /**
+   * The Project ID linked to the Session.
    */
   projectId: string;
 
+  /**
+   * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+   */
+  proxyBytes: number;
+
+  /**
+   * The region where the Session is running.
+   */
+  region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
+
+  startedAt: string;
+
+  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+
+  updatedAt: string;
+
+  /**
+   * Optional. The Context linked to the Session.
+   */
+  contextId?: string;
+
+  endedAt?: string;
+
+  /**
+   * Arbitrary user metadata to attach to the session. To learn more about user
+   * metadata, see [User Metadata](/features/sessions#user-metadata).
+   */
+  userMetadata?: { [key: string]: unknown };
+}
+
+export type SessionListResponse = Array<SessionListResponse.SessionListResponseItem>;
+
+export namespace SessionListResponse {
+  export interface SessionListResponseItem {
+    id: string;
+
+    createdAt: string;
+
+    expiresAt: string;
+
+    /**
+     * Indicates if the Session was created to be kept alive upon disconnections
+     */
+    keepAlive: boolean;
+
+    /**
+     * The Project ID linked to the Session.
+     */
+    projectId: string;
+
+    /**
+     * Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
+     */
+    proxyBytes: number;
+
+    /**
+     * The region where the Session is running.
+     */
+    region: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
+
+    startedAt: string;
+
+    status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+
+    updatedAt: string;
+
+    /**
+     * Optional. The Context linked to the Session.
+     */
+    contextId?: string;
+
+    endedAt?: string;
+
+    /**
+     * Arbitrary user metadata to attach to the session. To learn more about user
+     * metadata, see [User Metadata](/features/sessions#user-metadata).
+     */
+    userMetadata?: { [key: string]: unknown };
+  }
+}
+
+export interface SessionDebugResponse {
+  debuggerFullscreenUrl: string;
+
+  debuggerUrl: string;
+
+  pages: Array<SessionDebugResponse.Page>;
+
+  wsUrl: string;
+}
+
+export namespace SessionDebugResponse {
+  export interface Page {
+    id: string;
+
+    debuggerFullscreenUrl: string;
+
+    debuggerUrl: string;
+
+    faviconUrl: string;
+
+    title: string;
+
+    url: string;
+  }
+}
+
+export interface SessionCreateParams {
   browserSettings?: SessionCreateParams.BrowserSettings;
 
   /**
@@ -313,12 +338,21 @@ export interface SessionCreateParams {
   keepAlive?: boolean;
 
   /**
+   * The Project ID. Can be found in
+   * [Settings](https://www.browserbase.com/settings). Optional - if not provided,
+   * the project will be inferred from the API key.
+   */
+  projectId?: string;
+
+  /**
    * Proxy configuration. Can be true for default proxy, or an array of proxy
    * configurations.
    */
   proxies?:
-    | boolean
-    | Array<SessionCreateParams.BrowserbaseProxyConfig | SessionCreateParams.ExternalProxyConfig>;
+    | Array<
+        SessionCreateParams.UnionMember0 | SessionCreateParams.UnionMember1 | SessionCreateParams.UnionMember2
+      >
+    | boolean;
 
   /**
    * The region where the Session should run.
@@ -335,7 +369,7 @@ export interface SessionCreateParams {
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
-  userMetadata?: Record<string, unknown>;
+  userMetadata?: { [key: string]: unknown };
 }
 
 export namespace SessionCreateParams {
@@ -371,15 +405,15 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
-     * See usage examples
-     * [in the Stealth Mode page](/features/stealth-mode#fingerprinting).
-     */
-    fingerprint?: BrowserSettings.Fingerprint;
-
-    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;
+
+    /**
+     * Operating system for stealth mode. Valid values: windows, mac, linux, mobile,
+     * tablet
+     */
+    os?: 'windows' | 'mac' | 'linux' | 'mobile' | 'tablet';
 
     /**
      * Enable or disable session recording. Defaults to `true`.
@@ -407,52 +441,20 @@ export namespace SessionCreateParams {
       persist?: boolean;
     }
 
-    /**
-     * See usage examples
-     * [in the Stealth Mode page](/features/stealth-mode#fingerprinting).
-     */
-    export interface Fingerprint {
-      browsers?: Array<'chrome' | 'edge' | 'firefox' | 'safari'>;
-
-      devices?: Array<'desktop' | 'mobile'>;
-
-      httpVersion?: '1' | '2';
-
-      /**
-       * Full list of locales is available
-       * [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language).
-       */
-      locales?: Array<string>;
-
-      /**
-       * Note: `operatingSystems` set to `ios` or `android` requires `devices` to include
-       * `"mobile"`.
-       */
-      operatingSystems?: Array<'android' | 'ios' | 'linux' | 'macos' | 'windows'>;
-
-      screen?: Fingerprint.Screen;
-    }
-
-    export namespace Fingerprint {
-      export interface Screen {
-        maxHeight?: number;
-
-        maxWidth?: number;
-
-        minHeight?: number;
-
-        minWidth?: number;
-      }
-    }
-
     export interface Viewport {
+      /**
+       * The height of the browser.
+       */
       height?: number;
 
+      /**
+       * The width of the browser.
+       */
       width?: number;
     }
   }
 
-  export interface BrowserbaseProxyConfig {
+  export interface UnionMember0 {
     /**
      * Type of proxy. Always use 'browserbase' for the Browserbase managed proxy
      * network.
@@ -466,14 +468,14 @@ export namespace SessionCreateParams {
     domainPattern?: string;
 
     /**
-     * Configuration for geolocation
+     * Geographic location for the proxy. Optional.
      */
-    geolocation?: BrowserbaseProxyConfig.Geolocation;
+    geolocation?: UnionMember0.Geolocation;
   }
 
-  export namespace BrowserbaseProxyConfig {
+  export namespace UnionMember0 {
     /**
-     * Configuration for geolocation
+     * Geographic location for the proxy. Optional.
      */
     export interface Geolocation {
       /**
@@ -493,7 +495,7 @@ export namespace SessionCreateParams {
     }
   }
 
-  export interface ExternalProxyConfig {
+  export interface UnionMember1 {
     /**
      * Server URL for external proxy. Required.
      */
@@ -520,20 +522,34 @@ export namespace SessionCreateParams {
      */
     username?: string;
   }
+
+  export interface UnionMember2 {
+    /**
+     * Type of proxy. Always 'none' for this config.
+     */
+    type: 'none';
+
+    /**
+     * Domain pattern for which this proxy should be used. If omitted, defaults to all
+     * domains. Optional.
+     */
+    domainPattern?: string;
+  }
 }
 
 export interface SessionUpdateParams {
-  /**
-   * The Project ID. Can be found in
-   * [Settings](https://www.browserbase.com/settings).
-   */
-  projectId: string;
-
   /**
    * Set to `REQUEST_RELEASE` to request that the session complete. Use before
    * session's timeout to avoid additional charges.
    */
   status: 'REQUEST_RELEASE';
+
+  /**
+   * The Project ID. Can be found in
+   * [Settings](https://www.browserbase.com/settings). Optional - if not provided,
+   * the project will be inferred from the API key.
+   */
+  projectId?: string;
 }
 
 export interface SessionListParams {
@@ -554,11 +570,11 @@ Sessions.Uploads = Uploads;
 
 export declare namespace Sessions {
   export {
-    type Session as Session,
-    type SessionLiveURLs as SessionLiveURLs,
     type SessionCreateResponse as SessionCreateResponse,
     type SessionRetrieveResponse as SessionRetrieveResponse,
+    type SessionUpdateResponse as SessionUpdateResponse,
     type SessionListResponse as SessionListResponse,
+    type SessionDebugResponse as SessionDebugResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
@@ -566,13 +582,9 @@ export declare namespace Sessions {
 
   export { Downloads as Downloads };
 
-  export { Logs as Logs, type SessionLog as SessionLog, type LogListResponse as LogListResponse };
+  export { Logs as Logs, type LogListResponse as LogListResponse };
 
-  export {
-    Recording as Recording,
-    type SessionRecording as SessionRecording,
-    type RecordingRetrieveResponse as RecordingRetrieveResponse,
-  };
+  export { Recording as Recording, type RecordingRetrieveResponse as RecordingRetrieveResponse };
 
   export {
     Uploads as Uploads,

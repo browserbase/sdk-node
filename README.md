@@ -26,13 +26,9 @@ const client = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const session = await client.sessions.create({ projectId: 'your_project_id' });
+const session = await client.sessions.create({ projectId: 'your_project_id' });
 
-  console.log(session.id);
-}
-
-main();
+console.log(session.id);
 ```
 
 ### Request & Response types
@@ -47,12 +43,8 @@ const client = new Browserbase({
   apiKey: process.env['BROWSERBASE_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: Browserbase.SessionCreateParams = { projectId: 'your_project_id' };
-  const session: Browserbase.SessionCreateResponse = await client.sessions.create(params);
-}
-
-main();
+const params: Browserbase.SessionCreateParams = { projectId: 'your_project_id' };
+const session: Browserbase.SessionCreateResponse = await client.sessions.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -95,8 +87,9 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const session = await client.sessions.create({ projectId: 'your_project_id' }).catch(async (err) => {
+const session = await client.sessions
+  .create({ projectId: 'your_project_id' })
+  .catch(async (err) => {
     if (err instanceof Browserbase.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -105,9 +98,6 @@ async function main() {
       throw err;
     }
   });
-}
-
-main();
 ```
 
 Error codes are as follows:

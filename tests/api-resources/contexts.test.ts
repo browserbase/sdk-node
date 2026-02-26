@@ -9,8 +9,8 @@ const client = new Browserbase({
 });
 
 describe('resource contexts', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.contexts.create({ projectId: 'projectId' });
+  test('create', async () => {
+    const responsePromise = client.contexts.create();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,8 +20,18 @@ describe('resource contexts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.contexts.create({ projectId: 'projectId' });
+  test('create: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.contexts.create({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
+  });
+
+  test('create: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.contexts.create({ projectId: 'projectId' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
   test('retrieve', async () => {
@@ -56,6 +66,24 @@ describe('resource contexts', () => {
   test('update: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.contexts.update('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
+  });
+
+  test('delete', async () => {
+    const responsePromise = client.contexts.delete('id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('delete: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.contexts.delete('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Browserbase.NotFoundError,
     );
   });

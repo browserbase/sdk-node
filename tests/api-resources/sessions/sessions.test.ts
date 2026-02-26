@@ -9,8 +9,8 @@ const client = new Browserbase({
 });
 
 describe('resource sessions', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.sessions.create({ projectId: 'projectId' });
+  test('create', async () => {
+    const responsePromise = client.sessions.create();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,36 +20,52 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.sessions.create({
-      projectId: 'projectId',
-      browserSettings: {
-        advancedStealth: true,
-        blockAds: true,
-        captchaImageSelector: 'captchaImageSelector',
-        captchaInputSelector: 'captchaInputSelector',
-        context: { id: 'id', persist: true },
-        extensionId: 'extensionId',
-        fingerprint: {
-          browsers: ['chrome'],
-          devices: ['desktop'],
-          httpVersion: '1',
-          locales: ['string'],
-          operatingSystems: ['android'],
-          screen: { maxHeight: 0, maxWidth: 0, minHeight: 0, minWidth: 0 },
+  test('create: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.sessions.create({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
+  });
+
+  test('create: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.sessions.create(
+        {
+          browserSettings: {
+            advancedStealth: true,
+            blockAds: true,
+            captchaImageSelector: 'captchaImageSelector',
+            captchaInputSelector: 'captchaInputSelector',
+            context: { id: 'id', persist: true },
+            extensionId: 'extensionId',
+            logSession: true,
+            os: 'windows',
+            recordSession: true,
+            solveCaptchas: true,
+            viewport: { height: 0, width: 0 },
+          },
+          extensionId: 'extensionId',
+          keepAlive: true,
+          projectId: 'projectId',
+          proxies: [
+            {
+              type: 'browserbase',
+              domainPattern: 'domainPattern',
+              geolocation: {
+                country: 'xx',
+                city: 'city',
+                state: 'xx',
+              },
+            },
+          ],
+          region: 'us-west-2',
+          timeout: 60,
+          userMetadata: { foo: 'bar' },
         },
-        logSession: true,
-        recordSession: true,
-        solveCaptchas: true,
-        viewport: { height: 0, width: 0 },
-      },
-      extensionId: 'extensionId',
-      keepAlive: true,
-      proxies: true,
-      region: 'us-west-2',
-      timeout: 60,
-      userMetadata: { foo: 'bar' },
-    });
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
   test('retrieve', async () => {
@@ -71,10 +87,7 @@ describe('resource sessions', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = client.sessions.update('id', {
-      projectId: 'projectId',
-      status: 'REQUEST_RELEASE',
-    });
+    const responsePromise = client.sessions.update('id', { status: 'REQUEST_RELEASE' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -86,8 +99,8 @@ describe('resource sessions', () => {
 
   test('update: required and optional params', async () => {
     const response = await client.sessions.update('id', {
-      projectId: 'projectId',
       status: 'REQUEST_RELEASE',
+      projectId: 'projectId',
     });
   });
 
