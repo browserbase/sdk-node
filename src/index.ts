@@ -13,6 +13,7 @@ import {
   Contexts,
 } from './resources/contexts';
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
+import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
 import {
   Session,
@@ -144,6 +145,7 @@ export class Browserbase extends Core.APIClient {
 
   contexts: API.Contexts = new API.Contexts(this);
   extensions: API.Extensions = new API.Extensions(this);
+  fetchAPI: API.FetchAPI = new API.FetchAPI(this);
   projects: API.Projects = new API.Projects(this);
   sessions: API.Sessions = new API.Sessions(this);
 
@@ -192,6 +194,7 @@ export class Browserbase extends Core.APIClient {
 
 Browserbase.Contexts = Contexts;
 Browserbase.Extensions = Extensions;
+Browserbase.FetchAPI = FetchAPI;
 Browserbase.Projects = Projects;
 Browserbase.Sessions = Sessions;
 
@@ -210,6 +213,12 @@ export declare namespace Browserbase {
     Extensions as Extensions,
     type Extension as Extension,
     type ExtensionCreateParams as ExtensionCreateParams,
+  };
+
+  export {
+    FetchAPI as FetchAPI,
+    type FetchAPICreateResponse as FetchAPICreateResponse,
+    type FetchAPICreateParams as FetchAPICreateParams,
   };
 
   export {

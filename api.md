@@ -25,6 +25,16 @@ Methods:
 - <code title="get /v1/extensions/{id}">client.extensions.<a href="./src/resources/extensions.ts">retrieve</a>(id) -> Extension</code>
 - <code title="delete /v1/extensions/{id}">client.extensions.<a href="./src/resources/extensions.ts">delete</a>(id) -> void</code>
 
+# FetchAPI
+
+Types:
+
+- <code><a href="./src/resources/fetch-api.ts">FetchAPICreateResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/fetch">client.fetchAPI.<a href="./src/resources/fetch-api.ts">create</a>({ ...params }) -> FetchAPICreateResponse</code>
+
 # Projects
 
 Types:
