@@ -8,6 +8,7 @@ export {
   type ContextCreateParams,
 } from './contexts';
 export { Extensions, type Extension, type ExtensionCreateParams } from './extensions';
+export { FetchAPI, type FetchAPICreateResponse, type FetchAPICreateParams } from './fetch-api';
 export { Projects, type Project, type ProjectUsage, type ProjectListResponse } from './projects';
 export {
   Sessions,

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Browserbase, { toFile } from '@browserbasehq/sdk';
+import Browserbase from '@browserbasehq/sdk';
 import { Response } from 'node-fetch';
 
 const client = new Browserbase({
@@ -8,11 +8,9 @@ const client = new Browserbase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource uploads', () => {
+describe('resource fetchAPI', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.sessions.uploads.create('id', {
-      file: await toFile(Buffer.from('Example data'), 'README.md'),
-    });
+    const responsePromise = client.fetchAPI.create({ url: 'https://example.com' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,8 +21,11 @@ describe('resource uploads', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.sessions.uploads.create('id', {
-      file: await toFile(Buffer.from('Example data'), 'README.md'),
+    const response = await client.fetchAPI.create({
+      url: 'https://example.com',
+      allowInsecureSsl: true,
+      allowRedirects: true,
+      proxies: true,
     });
   });
 });
