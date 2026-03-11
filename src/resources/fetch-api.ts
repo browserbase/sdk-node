@@ -12,9 +12,6 @@ export class FetchAPI extends APIResource {
   }
 }
 
-/**
- * Response body for fetch
- */
 export interface FetchAPICreateResponse {
   /**
    * Unique identifier for the fetch request
