@@ -10,6 +10,7 @@ export {
 export { Extensions, type Extension, type ExtensionCreateParams } from './extensions';
 export { FetchAPI, type FetchAPICreateResponse, type FetchAPICreateParams } from './fetch-api';
 export { Projects, type Project, type ProjectUsage, type ProjectListResponse } from './projects';
+export { Search, type SearchWebResponse, type SearchWebParams } from './search';
 export {
   Sessions,
   type Session,

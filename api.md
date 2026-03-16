@@ -49,6 +49,16 @@ Methods:
 - <code title="get /v1/projects">client.projects.<a href="./src/resources/projects.ts">list</a>() -> ProjectListResponse</code>
 - <code title="get /v1/projects/{id}/usage">client.projects.<a href="./src/resources/projects.ts">usage</a>(id) -> ProjectUsage</code>
 
+# Search
+
+Types:
+
+- <code><a href="./src/resources/search.ts">SearchWebResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/search">client.search.<a href="./src/resources/search.ts">web</a>({ ...params }) -> SearchWebResponse</code>
+
 # Sessions
 
 Types:
