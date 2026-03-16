@@ -15,6 +15,7 @@ import {
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
 import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
+import { Search, SearchWebParams, SearchWebResponse } from './resources/search';
 import {
   Session,
   SessionCreateParams,
@@ -147,6 +148,7 @@ export class Browserbase extends Core.APIClient {
   extensions: API.Extensions = new API.Extensions(this);
   fetchAPI: API.FetchAPI = new API.FetchAPI(this);
   projects: API.Projects = new API.Projects(this);
+  search: API.Search = new API.Search(this);
   sessions: API.Sessions = new API.Sessions(this);
 
   /**
@@ -196,6 +198,7 @@ Browserbase.Contexts = Contexts;
 Browserbase.Extensions = Extensions;
 Browserbase.FetchAPI = FetchAPI;
 Browserbase.Projects = Projects;
+Browserbase.Search = Search;
 Browserbase.Sessions = Sessions;
 
 export declare namespace Browserbase {
@@ -226,6 +229,12 @@ export declare namespace Browserbase {
     type Project as Project,
     type ProjectUsage as ProjectUsage,
     type ProjectListResponse as ProjectListResponse,
+  };
+
+  export {
+    Search as Search,
+    type SearchWebResponse as SearchWebResponse,
+    type SearchWebParams as SearchWebParams,
   };
 
   export {
