@@ -12,9 +12,6 @@ export class Search extends APIResource {
   }
 }
 
-/**
- * Response body for web search
- */
 export interface SearchWebResponse {
   /**
    * The search query that was executed
