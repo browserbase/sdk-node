@@ -8,8 +8,7 @@ const client = new Browserbase({
 });
 
 describe('resource downloads', () => {
-  // Mock server doesn't support application/zip responses
-  test.skip('list: request options instead of params are passed correctly', async () => {
+  test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.sessions.downloads.list('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Browserbase.NotFoundError,
