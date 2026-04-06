@@ -1,5 +1,33 @@
 # Changelog
 
+## 2.10.0 (2026-04-06)
+
+Full Changelog: [v2.9.0...v2.10.0](https://github.com/browserbase/sdk-node/compare/v2.9.0...v2.10.0)
+
+### Features
+
+* [CORE-000][apps/api] Add verified to SDK ([3d5d8ee](https://github.com/browserbase/sdk-node/commit/3d5d8eeed45b4bba8e82b04560a97e0c0038bee7))
+* Update search docs by removing description from typebox schemas ([5a80f2e](https://github.com/browserbase/sdk-node/commit/5a80f2eb54c7be11989bbb7e1820c966b3511e3d))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([b2635a7](https://github.com/browserbase/sdk-node/commit/b2635a75dbda16d58becdb0a2ea163fcd2793597))
+* **internal:** tweak CI branches ([6a01e18](https://github.com/browserbase/sdk-node/commit/6a01e18b448edc29f94d5a3d8de3707f28b95f6d))
+* **internal:** update gitignore ([a493763](https://github.com/browserbase/sdk-node/commit/a493763a688700867b9050b662e946aac6b92b41))
+* **internal:** update multipart form array serialization ([bd86f6a](https://github.com/browserbase/sdk-node/commit/bd86f6af8731af88d432b75991634ab067de3e16))
+* **tests:** bump steady to v0.19.4 ([22a2654](https://github.com/browserbase/sdk-node/commit/22a2654495e703ed6bc2c3245df0ab86995c8356))
+* **tests:** bump steady to v0.19.5 ([67408e0](https://github.com/browserbase/sdk-node/commit/67408e0ad8667e63becdcc7810e8d5e5d2103e9f))
+* **tests:** bump steady to v0.19.6 ([41df179](https://github.com/browserbase/sdk-node/commit/41df179422074d46093c489479ad8aab341c4cb6))
+* **tests:** bump steady to v0.19.7 ([e83612a](https://github.com/browserbase/sdk-node/commit/e83612a756439d0f4d9dac4eac84cc549f6e69b2))
+* **tests:** bump steady to v0.20.1 ([deda749](https://github.com/browserbase/sdk-node/commit/deda749dc700a4c823165fa0e8d92a380e5fe59b))
+* **tests:** bump steady to v0.20.2 ([26bfaca](https://github.com/browserbase/sdk-node/commit/26bfaca318277fafd9be39861a6a4c7ebe4bfea6))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([d38c181](https://github.com/browserbase/sdk-node/commit/d38c18152f14979fdcd788c4036e5e084fdd0a6b))
+
 ## 2.9.0 (2026-03-16)
 
 Full Changelog: [v2.8.0...v2.9.0](https://github.com/browserbase/sdk-node/compare/v2.8.0...v2.9.0)
