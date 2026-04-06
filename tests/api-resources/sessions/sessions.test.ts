@@ -43,6 +43,7 @@ describe('resource sessions', () => {
             os: 'windows',
             recordSession: true,
             solveCaptchas: true,
+            verified: true,
             viewport: { height: 0, width: 0 },
           },
           extensionId: 'extensionId',
