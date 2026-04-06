@@ -284,6 +284,11 @@ export namespace SessionCreateParams {
      */
     solveCaptchas?: boolean;
 
+    /**
+     * Verified Browser Mode
+     */
+    verified?: boolean;
+
     viewport?: BrowserSettings.Viewport;
   }
 
