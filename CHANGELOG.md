@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.11.0 (2026-04-09)
+
+Full Changelog: [v2.10.0...v2.11.0](https://github.com/browserbase/sdk-node/compare/v2.10.0...v2.11.0)
+
+### Features
+
+* [CORE-1928][apps/api] Add `PENDING` as a valid session state ([6c1dc59](https://github.com/browserbase/sdk-node/commit/6c1dc59e8ed581d88c26483a84efecd3903f4379))
+
+
+### Chores
+
+* **internal:** codegen related update ([e079c39](https://github.com/browserbase/sdk-node/commit/e079c39733d21312ee5d9e11fed35a2b8bba93be))
+
 ## 2.10.0 (2026-04-06)
 
 Full Changelog: [v2.9.0...v2.10.0](https://github.com/browserbase/sdk-node/compare/v2.9.0...v2.10.0)
