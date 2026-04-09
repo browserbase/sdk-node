@@ -99,7 +99,7 @@ export interface Session {
 
   startedAt: string;
 
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+  status: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 
   updatedAt: string;
 
@@ -424,7 +424,7 @@ export interface SessionListParams {
    */
   q?: string;
 
-  status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+  status?: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
 Sessions.Downloads = Downloads;
