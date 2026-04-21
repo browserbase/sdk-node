@@ -264,6 +264,15 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
+     * Controls how the browser handles invalid TLS certificates. When `true` (current
+     * default), self-signed, expired, and hostname-mismatched certificates are
+     * accepted silently. When `false`, the browser validates certificates like Chrome
+     * and surfaces standard Chromium errors (`ERR_CERT_AUTHORITY_INVALID`,
+     * `ERR_CERT_DATE_INVALID`, etc.) on invalid certs.
+     */
+    ignoreCertificateErrors?: boolean;
+
+    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;
