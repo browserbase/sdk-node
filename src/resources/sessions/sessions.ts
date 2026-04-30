@@ -264,6 +264,12 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
+     * Enable or disable ignoring of certificate errors in the browser. Defaults to
+     * `true`.
+     */
+    ignoreCertificateErrors?: boolean;
+
+    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;
