@@ -39,6 +39,7 @@ describe('resource sessions', () => {
             captchaInputSelector: 'captchaInputSelector',
             context: { id: 'id', persist: true },
             extensionId: 'extensionId',
+            ignoreCertificateErrors: true,
             logSession: true,
             os: 'windows',
             recordSession: true,
@@ -126,7 +127,7 @@ describe('resource sessions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.sessions.list({ q: 'q', status: 'RUNNING' }, { path: '/_stainless_unknown_path' }),
+      client.sessions.list({ q: 'q', status: 'PENDING' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Browserbase.NotFoundError);
   });
 

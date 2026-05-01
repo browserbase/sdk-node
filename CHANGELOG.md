@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.11.0 (2026-05-01)
+
+Full Changelog: [v2.10.0...v2.11.0](https://github.com/browserbase/sdk-node/compare/v2.10.0...v2.11.0)
+
+### Features
+
+* [CORE-1928][apps/api] Add `PENDING` as a valid session state ([6c1dc59](https://github.com/browserbase/sdk-node/commit/6c1dc59e8ed581d88c26483a84efecd3903f4379))
+* [CORE-1979] [apps/api] Regenerate OpenAPI spec to match current routes ([90f048c](https://github.com/browserbase/sdk-node/commit/90f048c79e02ead952b73d6bd185f6d58fa25076))
+* support setting headers via env ([c4bce5e](https://github.com/browserbase/sdk-node/commit/c4bce5e45f6dc0d2f560313ea70fd9bb1ac28fa6))
+
+
+### Chores
+
+* **internal:** codegen related update ([e079c39](https://github.com/browserbase/sdk-node/commit/e079c39733d21312ee5d9e11fed35a2b8bba93be))
+* **internal:** more robust bootstrap script ([39adddf](https://github.com/browserbase/sdk-node/commit/39adddf3d60bcf94349cb9103a7f41a1b0bb9f9f))
+* **tests:** bump steady to v0.22.1 ([cd4bf1a](https://github.com/browserbase/sdk-node/commit/cd4bf1aad650b63d38638218919715a790c1c819))
+
 ## 2.10.0 (2026-04-06)
 
 Full Changelog: [v2.9.0...v2.10.0](https://github.com/browserbase/sdk-node/compare/v2.9.0...v2.10.0)

@@ -99,7 +99,7 @@ export interface Session {
 
   startedAt: string;
 
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+  status: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 
   updatedAt: string;
 
@@ -264,6 +264,12 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
+     * Enable or disable ignoring of certificate errors in the browser. Defaults to
+     * `true`.
+     */
+    ignoreCertificateErrors?: boolean;
+
+    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;
@@ -424,7 +430,7 @@ export interface SessionListParams {
    */
   q?: string;
 
-  status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+  status?: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
 Sessions.Downloads = Downloads;
