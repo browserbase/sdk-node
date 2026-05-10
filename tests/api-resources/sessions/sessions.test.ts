@@ -39,6 +39,7 @@ describe('resource sessions', () => {
             captchaInputSelector: 'captchaInputSelector',
             context: { id: 'id', persist: true },
             extensionId: 'extensionId',
+            ignoreCertificateErrors: true,
             logSession: true,
             os: 'windows',
             recordSession: true,
