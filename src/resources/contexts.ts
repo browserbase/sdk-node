@@ -81,7 +81,7 @@ export interface ContextCreateResponse {
   /**
    * An upload URL to upload a custom user-data-directory.
    */
-  uploadUrl: string;
+  uploadUrl?: string;
 }
 
 export interface ContextUpdateResponse {
@@ -107,7 +107,7 @@ export interface ContextUpdateResponse {
   /**
    * An upload URL to upload a custom user-data-directory.
    */
-  uploadUrl: string;
+  uploadUrl?: string;
 }
 
 export interface ContextCreateParams {
