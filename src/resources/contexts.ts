@@ -79,9 +79,10 @@ export interface ContextCreateResponse {
   publicKey: string;
 
   /**
-   * An upload URL to upload a custom user-data-directory.
+   * An upload URL to upload a custom user-data-directory. Omitted when context
+   * uploads are disabled for the project.
    */
-  uploadUrl: string;
+  uploadUrl?: string;
 }
 
 export interface ContextUpdateResponse {
@@ -105,9 +106,10 @@ export interface ContextUpdateResponse {
   publicKey: string;
 
   /**
-   * An upload URL to upload a custom user-data-directory.
+   * An upload URL to upload a custom user-data-directory. Omitted when context
+   * uploads are disabled for the project.
    */
-  uploadUrl: string;
+  uploadUrl?: string;
 }
 
 export interface ContextCreateParams {
