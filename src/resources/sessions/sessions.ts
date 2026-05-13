@@ -9,6 +9,8 @@ import * as LogsAPI from './logs';
 import { LogListResponse, Logs, SessionLog } from './logs';
 import * as RecordingAPI from './recording';
 import { Recording, RecordingRetrieveResponse, SessionRecording } from './recording';
+import * as ReplaysAPI from './replays';
+import { ReplayRetrieveResponse, Replays } from './replays';
 import * as UploadsAPI from './uploads';
 import { UploadCreateParams, UploadCreateResponse, Uploads } from './uploads';
 
@@ -17,6 +19,7 @@ export class Sessions extends APIResource {
   logs: LogsAPI.Logs = new LogsAPI.Logs(this._client);
   recording: RecordingAPI.Recording = new RecordingAPI.Recording(this._client);
   uploads: UploadsAPI.Uploads = new UploadsAPI.Uploads(this._client);
+  replays: ReplaysAPI.Replays = new ReplaysAPI.Replays(this._client);
 
   /**
    * Create a Session
@@ -99,7 +102,7 @@ export interface Session {
 
   startedAt: string;
 
-  status: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+  status: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 
   updatedAt: string;
 
@@ -264,6 +267,12 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
+     * Enable or disable ignoring of certificate errors in the browser. Defaults to
+     * `true`.
+     */
+    ignoreCertificateErrors?: boolean;
+
+    /**
      * Enable or disable session logging. Defaults to `true`.
      */
     logSession?: boolean;
@@ -424,13 +433,14 @@ export interface SessionListParams {
    */
   q?: string;
 
-  status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
+  status?: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
 Sessions.Downloads = Downloads;
 Sessions.Logs = Logs;
 Sessions.Recording = Recording;
 Sessions.Uploads = Uploads;
+Sessions.Replays = Replays;
 
 export declare namespace Sessions {
   export {
@@ -459,4 +469,6 @@ export declare namespace Sessions {
     type UploadCreateResponse as UploadCreateResponse,
     type UploadCreateParams as UploadCreateParams,
   };
+
+  export { Replays as Replays, type ReplayRetrieveResponse as ReplayRetrieveResponse };
 }
