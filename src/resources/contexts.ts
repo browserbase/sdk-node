@@ -65,23 +65,23 @@ export interface ContextCreateResponse {
    * The cipher algorithm used to encrypt the user-data-directory. AES-256-CBC is
    * currently the only supported algorithm.
    */
-  cipherAlgorithm: string;
+  cipherAlgorithm?: string;
 
   /**
    * The initialization vector size used to encrypt the user-data-directory.
    * [Read more about how to use it](/features/contexts).
    */
-  initializationVectorSize: number;
+  initializationVectorSize?: number;
 
   /**
    * The public key to encrypt the user-data-directory.
    */
-  publicKey: string;
+  publicKey?: string;
 
   /**
    * An upload URL to upload a custom user-data-directory.
    */
-  uploadUrl: string;
+  uploadUrl?: string;
 }
 
 export interface ContextUpdateResponse {
@@ -91,23 +91,23 @@ export interface ContextUpdateResponse {
    * The cipher algorithm used to encrypt the user-data-directory. AES-256-CBC is
    * currently the only supported algorithm.
    */
-  cipherAlgorithm: string;
+  cipherAlgorithm?: string;
 
   /**
    * The initialization vector size used to encrypt the user-data-directory.
    * [Read more about how to use it](/features/contexts).
    */
-  initializationVectorSize: number;
+  initializationVectorSize?: number;
 
   /**
    * The public key to encrypt the user-data-directory.
    */
-  publicKey: string;
+  publicKey?: string;
 
   /**
    * An upload URL to upload a custom user-data-directory.
    */
-  uploadUrl: string;
+  uploadUrl?: string;
 }
 
 export interface ContextCreateParams {
