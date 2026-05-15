@@ -3,7 +3,6 @@
 export { Downloads } from './downloads';
 export { Logs, type SessionLog, type LogListResponse } from './logs';
 export { Recording, type SessionRecording, type RecordingRetrieveResponse } from './recording';
-export { Replays, type ReplayRetrieveResponse } from './replays';
 export {
   Sessions,
   type Session,

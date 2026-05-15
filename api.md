@@ -114,14 +114,3 @@ Types:
 Methods:
 
 - <code title="post /v1/sessions/{id}/uploads">client.sessions.uploads.<a href="./src/resources/sessions/uploads.ts">create</a>(id, { ...params }) -> UploadCreateResponse</code>
-
-## Replays
-
-Types:
-
-- <code><a href="./src/resources/sessions/replays.ts">ReplayRetrieveResponse</a></code>
-
-Methods:
-
-- <code title="get /v1/sessions/{id}/replays">client.sessions.replays.<a href="./src/resources/sessions/replays.ts">retrieve</a>(id) -> ReplayRetrieveResponse</code>
-- <code title="get /v1/sessions/{id}/replays/{pageId}">client.sessions.replays.<a href="./src/resources/sessions/replays.ts">retrievePage</a>(id, pageId) -> Response</code>
