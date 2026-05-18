@@ -19,9 +19,10 @@ export interface FetchAPICreateResponse {
   id: string;
 
   /**
-   * The response body content
+   * The response body content. A string for `raw` and `markdown` formats; a
+   * structured object for `json` format (the schema-extracted result).
    */
-  content: string;
+  content: string | { [key: string]: unknown };
 
   /**
    * The MIME type of the response
