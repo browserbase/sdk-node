@@ -62,9 +62,22 @@ export interface FetchAPICreateParams {
   allowRedirects?: boolean;
 
   /**
+   * Output format for the response content. `raw` (default) returns the response
+   * body unchanged; `json` returns structured data (requires `schema`); `markdown`
+   * returns the page as markdown.
+   */
+  format?: 'raw' | 'json' | 'markdown';
+
+  /**
    * Whether to enable proxy support for the request
    */
   proxies?: boolean;
+
+  /**
+   * JSON Schema describing the desired structure of the response. Only used when
+   * `format` is `json`.
+   */
+  schema?: { [key: string]: unknown };
 }
 
 export declare namespace FetchAPI {
