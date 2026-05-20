@@ -25,7 +25,9 @@ describe('resource fetchAPI', () => {
       url: 'https://example.com',
       allowInsecureSsl: true,
       allowRedirects: true,
+      format: 'raw',
       proxies: true,
+      schema: { foo: 'bar' },
     });
   });
 });
