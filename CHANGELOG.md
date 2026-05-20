@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.12.0 (2026-05-20)
+
+Full Changelog: [v2.11.0...v2.12.0](https://github.com/browserbase/sdk-node/compare/v2.11.0...v2.12.0)
+
+### Features
+
+* [AI-1748][apps/api] Obtain custom certificates in API during session reservation ([0123bc8](https://github.com/browserbase/sdk-node/commit/0123bc8dd7754b7dad06692cf4d6032492d23576))
+* [AI-1972] - Move fetch v2 handler into /v1/fetch ([397c60f](https://github.com/browserbase/sdk-node/commit/397c60f9a97e8a8a587b00138586ac7a2797cee5))
+* [AI-1993] - Surface structured JSON content on /v2/fetch ([95c8dfa](https://github.com/browserbase/sdk-node/commit/95c8dfa7988a9784df18a5bf12e6298a2d6e3de4))
+* **api:** manual updates ([d18107b](https://github.com/browserbase/sdk-node/commit/d18107b210c64be3ce0541789f74adb47136734f))
+* **api:** manual updates ([cce765a](https://github.com/browserbase/sdk-node/commit/cce765af5828449b905cf647afcc2d90df4bd567))
+
 ## 2.11.0 (2026-05-13)
 
 Full Changelog: [v2.10.0...v2.11.0](https://github.com/browserbase/sdk-node/compare/v2.10.0...v2.11.0)
