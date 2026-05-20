@@ -19,10 +19,9 @@ export interface FetchAPICreateResponse {
   id: string;
 
   /**
-   * The response body content. A string for `raw` and `markdown` formats; a
-   * structured object for `json` format (the schema-extracted result).
+   * The response body content
    */
-  content: string | { [key: string]: unknown };
+  content: string;
 
   /**
    * The MIME type of the response
@@ -62,22 +61,9 @@ export interface FetchAPICreateParams {
   allowRedirects?: boolean;
 
   /**
-   * Output format for the response content. `raw` (default) returns the response
-   * body unchanged; `json` returns structured data (requires `schema`); `markdown`
-   * returns the page as markdown.
-   */
-  format?: 'raw' | 'json' | 'markdown';
-
-  /**
    * Whether to enable proxy support for the request
    */
   proxies?: boolean;
-
-  /**
-   * JSON Schema describing the desired structure of the response. Only used when
-   * `format` is `json`.
-   */
-  schema?: { [key: string]: unknown };
 }
 
 export declare namespace FetchAPI {
