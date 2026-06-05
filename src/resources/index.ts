@@ -1,6 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  Certificates,
+  type Certificate,
+  type CertificateListResponse,
+  type CertificateCreateParams,
+} from './certificates';
+export {
   Contexts,
   type Context,
   type ContextCreateResponse,

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.13.0 (2026-06-05)
+
+Full Changelog: [v2.12.0...v2.13.0](https://github.com/browserbase/sdk-node/compare/v2.12.0...v2.13.0)
+
+### Features
+
+* [CORE-2194][apps/api] Add BYOC (cert) CRUD to SDKs ([06b3a85](https://github.com/browserbase/sdk-node/commit/06b3a850b9e8955a7770ecdb43cd0820480b7c5f))
+
 ## 2.12.0 (2026-05-20)
 
 Full Changelog: [v2.11.0...v2.12.0](https://github.com/browserbase/sdk-node/compare/v2.11.0...v2.12.0)
