@@ -6,6 +6,12 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  Certificate,
+  CertificateCreateParams,
+  CertificateListResponse,
+  Certificates,
+} from './resources/certificates';
+import {
   Context,
   ContextCreateParams,
   ContextCreateResponse,
@@ -156,6 +162,7 @@ export class Browserbase extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
+  certificates: API.Certificates = new API.Certificates(this);
   contexts: API.Contexts = new API.Contexts(this);
   extensions: API.Extensions = new API.Extensions(this);
   fetchAPI: API.FetchAPI = new API.FetchAPI(this);
@@ -206,6 +213,7 @@ export class Browserbase extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
+Browserbase.Certificates = Certificates;
 Browserbase.Contexts = Contexts;
 Browserbase.Extensions = Extensions;
 Browserbase.FetchAPI = FetchAPI;
@@ -215,6 +223,13 @@ Browserbase.Sessions = Sessions;
 
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
+
+  export {
+    Certificates as Certificates,
+    type Certificate as Certificate,
+    type CertificateListResponse as CertificateListResponse,
+    type CertificateCreateParams as CertificateCreateParams,
+  };
 
   export {
     Contexts as Contexts,

@@ -1,3 +1,17 @@
+# Certificates
+
+Types:
+
+- <code><a href="./src/resources/certificates.ts">Certificate</a></code>
+- <code><a href="./src/resources/certificates.ts">CertificateListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/certificates">client.certificates.<a href="./src/resources/certificates.ts">create</a>({ ...params }) -> Certificate</code>
+- <code title="get /v1/certificates/{id}">client.certificates.<a href="./src/resources/certificates.ts">retrieve</a>(id) -> Certificate</code>
+- <code title="get /v1/certificates">client.certificates.<a href="./src/resources/certificates.ts">list</a>() -> CertificateListResponse</code>
+- <code title="delete /v1/certificates/{id}">client.certificates.<a href="./src/resources/certificates.ts">delete</a>(id) -> void</code>
+
 # Contexts
 
 Types:
