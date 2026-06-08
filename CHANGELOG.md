@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.14.0 (2026-06-08)
+
+Full Changelog: [v2.13.0...v2.14.0](https://github.com/browserbase/sdk-node/compare/v2.13.0...v2.14.0)
+
+### Features
+
+* [AI-2206][apps/api] Surface proxySettings.caCertificates in public SDK & docs ([f24f27a](https://github.com/browserbase/sdk-node/commit/f24f27a51e025152adfbe81654eba52df13e4a6c))
+
 ## 2.13.0 (2026-06-05)
 
 Full Changelog: [v2.12.0...v2.13.0](https://github.com/browserbase/sdk-node/compare/v2.12.0...v2.13.0)

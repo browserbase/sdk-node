@@ -217,6 +217,11 @@ export interface SessionCreateParams {
     | boolean;
 
   /**
+   * Supplementary proxy settings. Optional.
+   */
+  proxySettings?: SessionCreateParams.ProxySettings;
+
+  /**
    * The region where the Session should run.
    */
   region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
@@ -407,6 +412,16 @@ export namespace SessionCreateParams {
      * domains. Optional.
      */
     domainPattern?: string;
+  }
+
+  /**
+   * Supplementary proxy settings. Optional.
+   */
+  export interface ProxySettings {
+    /**
+     * The TLS certificate IDs to trust. Optional.
+     */
+    caCertificates?: Array<string>;
   }
 }
 
