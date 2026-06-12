@@ -34,6 +34,7 @@ describe('resource sessions', () => {
         {
           browserSettings: {
             advancedStealth: true,
+            allowedDomains: ['string'],
             blockAds: true,
             captchaImageSelector: 'captchaImageSelector',
             captchaInputSelector: 'captchaInputSelector',
