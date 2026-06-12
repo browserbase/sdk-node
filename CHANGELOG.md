@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.14.1 (2026-06-12)
+
+Full Changelog: [v2.14.0...v2.14.1](https://github.com/browserbase/sdk-node/compare/v2.14.0...v2.14.1)
+
+### Documentation
+
+* document and un-gate allowedDomains session setting ([eb0113d](https://github.com/browserbase/sdk-node/commit/eb0113dd0c7336a68a01f0451258aaf97fc14413))
+
 ## 2.14.0 (2026-06-08)
 
 Full Changelog: [v2.13.0...v2.14.0](https://github.com/browserbase/sdk-node/compare/v2.13.0...v2.14.0)
