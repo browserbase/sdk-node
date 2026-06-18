@@ -61,16 +61,18 @@ export interface ClientOptions {
   /**
    * An HTTP agent used to manage HTTP(S) connections.
    *
-   * If not provided, an agent will be constructed by default in the Node.js environment,
-   * otherwise no agent is used.
+   * If provided in Node.js, requests use the legacy `node-fetch` transport so the agent can be
+   * honored. The default modern Node.js transport uses `globalThis.fetch` and does not attach
+   * a node:http Agent.
    */
   httpAgent?: Agent | undefined;
 
   /**
    * Specify a custom `fetch` function implementation.
    *
-   * If not provided, we use `node-fetch` on Node.js and otherwise expect that `fetch` is
-   * defined globally.
+   * If not provided, we use `globalThis.fetch` in Node.js when available, fall back to
+   * `node-fetch` in older Node.js environments, and otherwise expect that `fetch` is defined
+   * globally.
    */
   fetch?: Core.Fetch | undefined;
 

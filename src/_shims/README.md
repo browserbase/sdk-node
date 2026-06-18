@@ -3,7 +3,9 @@
 `@browserbasehq/sdk` supports a wide variety of runtime environments like Node.js, Deno, Bun, browsers, and various
 edge runtimes, as well as both CommonJS (CJS) and EcmaScript Modules (ESM).
 
-To do this, `@browserbasehq/sdk` provides shims for either using `node-fetch` when in Node (because `fetch` is still experimental there) or the global `fetch` API built into the environment when not in Node.
+To do this, `@browserbasehq/sdk` provides shims for using `globalThis.fetch` in modern Node.js,
+falling back to `node-fetch` in older Node.js environments, or using the global `fetch` API built
+into non-Node runtimes.
 
 It uses [conditional exports](https://nodejs.org/api/packages.html#conditional-exports) to
 automatically select the correct shims for each environment. However, conditional exports are a fairly new
@@ -33,7 +35,8 @@ All client code imports shims from `@browserbasehq/sdk/_shims/index`, which:
 - re-exports the installed shims from `@browserbasehq/sdk/_shims/registry`.
 
 `@browserbasehq/sdk/_shims/auto/runtime` exports web runtime shims.
-If the `node` export condition is set, the export map replaces it with `@browserbasehq/sdk/_shims/auto/runtime-node`.
+If the `node` export condition is set, the export map replaces it with `@browserbasehq/sdk/_shims/auto/runtime-node`,
+which prefers native `globalThis.fetch` when available and falls back to the Node runtime shim when needed.
 
 ### How it works - Type time
 
