@@ -12,14 +12,17 @@ export { ReadableStream } from 'node:stream/web';
 export const fetch: typeof nf.default;
 
 export type Request = nf.Request;
+export const Request: typeof nf.Request;
 export type RequestInfo = nf.RequestInfo;
 export type RequestInit = nf.RequestInit;
 
 export type Response = nf.Response;
+export const Response: typeof nf.Response;
 export type ResponseInit = nf.ResponseInit;
 export type ResponseType = nf.ResponseType;
 export type BodyInit = nf.BodyInit;
 export type Headers = nf.Headers;
+export const Headers: typeof nf.Headers;
 export type HeadersInit = nf.HeadersInit;
 
 type EndingType = 'native' | 'transparent';
