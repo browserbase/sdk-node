@@ -16,19 +16,20 @@ function usesNodeFetchOnlyFeatures(init: FetchInitWithAgent | undefined): boolea
 
   // Node's native fetch does not use node:http Agent instances. Preserve
   // historical behavior for callers who explicitly configure httpAgent.
-  if (init.agent) return true;
-
-  // Multipart uploads are encoded as node:stream Readable bodies by the Node
-  // runtime shim. Keep those on node-fetch to avoid requiring undici's
-  // stream-specific `duplex` option here.
-  const body = init.body;
-  return body instanceof Readable || typeof (body as any)?.pipe === 'function';
+  return Boolean(init.agent);
 }
 
-function stripNodeFetchOptions(init: FetchInitWithAgent | undefined): FetchInitWithAgent | undefined {
-  if (!init || !('agent' in init)) return init;
+function buildNativeFetchOptions(init: FetchInitWithAgent | undefined): FetchInitWithAgent | undefined {
+  if (!init) return init;
 
   const { agent: _agent, ...fetchInit } = init;
+
+  // Node's native fetch requires `duplex: 'half'` when the body is a stream.
+  const body = fetchInit.body;
+  if (body instanceof Readable || typeof (body as any)?.pipe === 'function') {
+    return { duplex: 'half', ...fetchInit };
+  }
+
   return fetchInit;
 }
 
@@ -47,7 +48,7 @@ export function getRuntime(): Shims {
         return nodeRuntime.fetch(url, init);
       }
 
-      return nativeFetch.call(undefined, url, stripNodeFetchOptions(init));
+      return nativeFetch.call(undefined, url, buildNativeFetchOptions(init));
     },
     Request:
       typeof (globalThis as any).Request !== 'undefined' ? (globalThis as any).Request : nodeRuntime.Request,

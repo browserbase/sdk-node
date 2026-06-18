@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Browserbase, { toFile } from '@browserbasehq/sdk';
-import { Response } from 'node-fetch';
+import { Response } from '@browserbasehq/sdk/_shims/index';
 
 const client = new Browserbase({
   apiKey: 'My API Key',
