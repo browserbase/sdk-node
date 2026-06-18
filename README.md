@@ -222,11 +222,11 @@ validate or strip extra properties from the response from the API.
 
 ### Customizing the fetch client
 
-By default, this library uses `node-fetch` in Node, and expects a global `fetch` function in other environments.
+By default, this library uses `globalThis.fetch` in modern Node.js, falls back to `node-fetch`
+in older Node.js environments, and expects a global `fetch` function in other runtimes.
 
-If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
-(for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Browserbase"`:
+If you would like to force the web-standard fetch shim, add the following import before your first
+import `from "Browserbase"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
@@ -235,7 +235,7 @@ import '@browserbasehq/sdk/shims/web';
 import Browserbase from '@browserbasehq/sdk';
 ```
 
-To do the inverse, add `import "@browserbasehq/sdk/shims/node"` (which does import polyfills).
+To force the legacy Node.js shim, add `import "@browserbasehq/sdk/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/browserbase/sdk-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -262,9 +262,13 @@ This is intended for debugging purposes only and may change in the future withou
 
 ### Configuring an HTTP(S) Agent (e.g., for proxies)
 
-By default, this library uses a stable agent for all http/https requests to reuse TCP connections, eliminating many TCP & TLS handshakes and shaving around 100ms off most requests.
+By default, modern Node.js uses `globalThis.fetch` and no node:http Agent is attached. In older
+Node.js environments, or when you force the legacy Node.js shim, this library uses a stable agent
+for all http/https requests to reuse TCP connections, eliminating many TCP & TLS handshakes.
 
-If you would like to disable or customize this behavior, for example to use the API behind a proxy, you can pass an `httpAgent` which is used for all requests (be they http or https), for example:
+If you would like to customize agent behavior, for example to use the API behind a proxy, you can
+pass an `httpAgent`. In modern Node.js this uses the legacy `node-fetch` transport for that request
+so the node:http Agent can be honored:
 
 <!-- prettier-ignore -->
 ```ts

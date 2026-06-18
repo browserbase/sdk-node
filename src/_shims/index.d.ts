@@ -18,12 +18,16 @@ export const fetch: SelectType<typeof manual.fetch, typeof auto.fetch>;
 // @ts-ignore
 export type Request = SelectType<manual.Request, auto.Request>;
 // @ts-ignore
+export const Request: SelectType<typeof manual.Request, typeof auto.Request>;
+// @ts-ignore
 export type RequestInfo = SelectType<manual.RequestInfo, auto.RequestInfo>;
 // @ts-ignore
 export type RequestInit = SelectType<manual.RequestInit, auto.RequestInit>;
 
 // @ts-ignore
 export type Response = SelectType<manual.Response, auto.Response>;
+// @ts-ignore
+export const Response: SelectType<typeof manual.Response, typeof auto.Response>;
 // @ts-ignore
 export type ResponseInit = SelectType<manual.ResponseInit, auto.ResponseInit>;
 // @ts-ignore
