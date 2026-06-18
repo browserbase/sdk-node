@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.14.1 (2026-06-18)
+
+### Bug Fixes
+
+* Fix for https://github.com/nodejs/node/issues/63989.
+
 ## 2.14.0 (2026-06-08)
 
 Full Changelog: [v2.13.0...v2.14.0](https://github.com/browserbase/sdk-node/compare/v2.13.0...v2.14.0)
