@@ -1,4 +1,5 @@
 import { getRuntime } from '@browserbasehq/sdk/_shims/auto/runtime';
+import http from 'node:http';
 import { Readable } from 'node:stream';
 
 describe('auto node runtime', () => {
@@ -36,5 +37,20 @@ describe('auto node runtime', () => {
       method: 'post',
       body,
     });
+  });
+
+  test('uses node-fetch when an agent is provided', async () => {
+    const nativeFetch = jest.fn().mockRejectedValue(new Error('native fetch should not be called'));
+    (globalThis as any).fetch = nativeFetch;
+
+    const agent = new http.Agent({ keepAlive: false });
+
+    try {
+      const runtime = getRuntime();
+      await expect(runtime.fetch('not a url', { agent })).rejects.toThrow();
+      expect(nativeFetch).not.toHaveBeenCalled();
+    } finally {
+      agent.destroy();
+    }
   });
 });
