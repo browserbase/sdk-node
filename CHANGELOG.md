@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.15.0 (2026-07-02)
+
+Full Changelog: [v2.14.1...v2.15.0](https://github.com/browserbase/sdk-node/compare/v2.14.1...v2.15.0)
+
+### Features
+
+* [CORE-000][apps/sdk] Add agents to SDK ([1f1fb26](https://github.com/browserbase/sdk-node/commit/1f1fb26aaa11928cdc6b26baa7452c8577ea206c))
+
+
+### Documentation
+
+* document and un-gate allowedDomains session setting ([d18989f](https://github.com/browserbase/sdk-node/commit/d18989f3085093d85cf8e52825c8920ce753e7b9))
+
 ## 2.14.1 (2026-06-18)
 
 ### Bug Fixes
