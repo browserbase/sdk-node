@@ -23,6 +23,16 @@ import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resour
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
 import { Search, SearchWebParams, SearchWebResponse } from './resources/search';
 import {
+  AgentCreateParams,
+  AgentCreateResponse,
+  AgentListParams,
+  AgentListResponse,
+  AgentRetrieveResponse,
+  AgentUpdateParams,
+  AgentUpdateResponse,
+  Agents,
+} from './resources/agents/agents';
+import {
   Session,
   SessionCreateParams,
   SessionCreateResponse,
@@ -169,6 +179,7 @@ export class Browserbase extends Core.APIClient {
   projects: API.Projects = new API.Projects(this);
   search: API.Search = new API.Search(this);
   sessions: API.Sessions = new API.Sessions(this);
+  agents: API.Agents = new API.Agents(this);
 
   /**
    * Check whether the base URL is set to its default.
@@ -220,6 +231,7 @@ Browserbase.FetchAPI = FetchAPI;
 Browserbase.Projects = Projects;
 Browserbase.Search = Search;
 Browserbase.Sessions = Sessions;
+Browserbase.Agents = Agents;
 
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
@@ -274,6 +286,17 @@ export declare namespace Browserbase {
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
+  };
+
+  export {
+    Agents as Agents,
+    type AgentCreateResponse as AgentCreateResponse,
+    type AgentRetrieveResponse as AgentRetrieveResponse,
+    type AgentUpdateResponse as AgentUpdateResponse,
+    type AgentListResponse as AgentListResponse,
+    type AgentCreateParams as AgentCreateParams,
+    type AgentUpdateParams as AgentUpdateParams,
+    type AgentListParams as AgentListParams,
   };
 }
 
