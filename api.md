@@ -139,3 +139,36 @@ Methods:
 
 - <code title="get /v1/sessions/{id}/replays">client.sessions.replays.<a href="./src/resources/sessions/replays.ts">retrieve</a>(id) -> ReplayRetrieveResponse</code>
 - <code title="get /v1/sessions/{id}/replays/{pageId}">client.sessions.replays.<a href="./src/resources/sessions/replays.ts">retrievePage</a>(id, pageId) -> Response</code>
+
+# Agents
+
+Types:
+
+- <code><a href="./src/resources/agents/agents.ts">AgentCreateResponse</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentRetrieveResponse</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentUpdateResponse</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/agents">client.agents.<a href="./src/resources/agents/agents.ts">create</a>({ ...params }) -> AgentCreateResponse</code>
+- <code title="get /v1/agents/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">retrieve</a>(agentId) -> AgentRetrieveResponse</code>
+- <code title="patch /v1/agents/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">update</a>(agentId, { ...params }) -> AgentUpdateResponse</code>
+- <code title="get /v1/agents">client.agents.<a href="./src/resources/agents/agents.ts">list</a>({ ...params }) -> AgentListResponse</code>
+- <code title="delete /v1/agents/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">delete</a>(agentId) -> void</code>
+
+## Runs
+
+Types:
+
+- <code><a href="./src/resources/agents/runs.ts">RunCreateResponse</a></code>
+- <code><a href="./src/resources/agents/runs.ts">RunRetrieveResponse</a></code>
+- <code><a href="./src/resources/agents/runs.ts">RunListResponse</a></code>
+- <code><a href="./src/resources/agents/runs.ts">RunListMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/agents/runs">client.agents.runs.<a href="./src/resources/agents/runs.ts">create</a>({ ...params }) -> RunCreateResponse</code>
+- <code title="get /v1/agents/runs/{runId}">client.agents.runs.<a href="./src/resources/agents/runs.ts">retrieve</a>(runId) -> RunRetrieveResponse</code>
+- <code title="get /v1/agents/runs">client.agents.runs.<a href="./src/resources/agents/runs.ts">list</a>({ ...params }) -> RunListResponse</code>
+- <code title="get /v1/agents/runs/{runId}/messages">client.agents.runs.<a href="./src/resources/agents/runs.ts">listMessages</a>(runId, { ...params }) -> RunListMessagesResponse</code>

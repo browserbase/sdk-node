@@ -8,9 +8,9 @@ const client = new Browserbase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource sessions', () => {
-  test('create', async () => {
-    const responsePromise = client.sessions.create();
+describe('resource agents', () => {
+  test('create: only required params', async () => {
+    const responsePromise = client.agents.create({ name: 'x' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,60 +20,16 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.create({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Browserbase.NotFoundError,
-    );
-  });
-
-  test('create: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.sessions.create(
-        {
-          browserSettings: {
-            advancedStealth: true,
-            allowedDomains: ['string'],
-            blockAds: true,
-            captchaImageSelector: 'captchaImageSelector',
-            captchaInputSelector: 'captchaInputSelector',
-            context: { id: 'id', persist: true },
-            extensionId: 'extensionId',
-            ignoreCertificateErrors: true,
-            logSession: true,
-            os: 'windows',
-            recordSession: true,
-            solveCaptchas: true,
-            verified: true,
-            viewport: { height: 0, width: 0 },
-          },
-          extensionId: 'extensionId',
-          keepAlive: true,
-          projectId: 'projectId',
-          proxies: [
-            {
-              type: 'browserbase',
-              domainPattern: 'domainPattern',
-              geolocation: {
-                country: 'xx',
-                city: 'city',
-                state: 'xx',
-              },
-            },
-          ],
-          proxySettings: { caCertificates: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'] },
-          region: 'us-west-2',
-          timeout: 60,
-          userMetadata: { foo: 'bar' },
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Browserbase.NotFoundError);
+  test('create: required and optional params', async () => {
+    const response = await client.agents.create({
+      name: 'x',
+      resultSchema: { foo: 'bar' },
+      systemPrompt: 'x',
+    });
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.sessions.retrieve('id');
+    const responsePromise = client.agents.retrieve('agentId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -85,13 +41,13 @@ describe('resource sessions', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.agents.retrieve('agentId', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Browserbase.NotFoundError,
     );
   });
 
-  test('update: only required params', async () => {
-    const responsePromise = client.sessions.update('id', { status: 'REQUEST_RELEASE' });
+  test('update', async () => {
+    const responsePromise = client.agents.update('agentId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -101,15 +57,30 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('update: required and optional params', async () => {
-    const response = await client.sessions.update('id', {
-      status: 'REQUEST_RELEASE',
-      projectId: 'projectId',
-    });
+  test('update: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.agents.update('agentId', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Browserbase.NotFoundError,
+    );
+  });
+
+  test('update: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.agents.update(
+        'agentId',
+        {
+          name: 'x',
+          resultSchema: { foo: 'bar' },
+          systemPrompt: 'x',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.sessions.list();
+    const responsePromise = client.agents.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -121,7 +92,7 @@ describe('resource sessions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.agents.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Browserbase.NotFoundError,
     );
   });
@@ -129,12 +100,20 @@ describe('resource sessions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.sessions.list({ q: 'q', status: 'PENDING' }, { path: '/_stainless_unknown_path' }),
+      client.agents.list(
+        {
+          cursor: 'cursor',
+          endAt: '2019-12-27T18:11:19.117Z',
+          limit: 1,
+          startAt: '2019-12-27T18:11:19.117Z',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
-  test('debug', async () => {
-    const responsePromise = client.sessions.debug('id');
+  test('delete', async () => {
+    const responsePromise = client.agents.delete('agentId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -144,9 +123,9 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('debug: request options instead of params are passed correctly', async () => {
+  test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.debug('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.agents.delete('agentId', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Browserbase.NotFoundError,
     );
   });
