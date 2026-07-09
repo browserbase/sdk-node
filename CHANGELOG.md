@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.16.0](https://github.com/stainless-sdks/browserbase-node-prod/compare/v2.15.0...v2.16.0) (2026-07-09)
+
+
+### Features
+
+* initial stlc build ([5ce3fdf](https://github.com/stainless-sdks/browserbase-node-prod/commit/5ce3fdfeaf6df56bfd264c5575d8798bba414e35))
+
+
+### Chores
+
+* add stlc automation workflows ([8f106c3](https://github.com/stainless-sdks/browserbase-node-prod/commit/8f106c38cadbcfdc5d3f205a95f3ee80d4ac9006))
+
 ## 2.15.0 (2026-07-02)
 
 Full Changelog: [v2.14.1...v2.15.0](https://github.com/browserbase/sdk-node/compare/v2.14.1...v2.15.0)
