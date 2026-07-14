@@ -7,12 +7,12 @@ import * as DownloadsAPI from './downloads';
 import { Downloads } from './downloads';
 import * as LogsAPI from './logs';
 import { LogListResponse, Logs, SessionLog } from './logs';
-import * as RecordingAPI from './recording';
-import { Recording, RecordingRetrieveResponse, SessionRecording } from './recording';
 import * as ReplaysAPI from './replays';
 import { ReplayRetrieveResponse, Replays } from './replays';
 import * as UploadsAPI from './uploads';
 import { UploadCreateParams, UploadCreateResponse, Uploads } from './uploads';
+import * as RecordingAPI from './recording/recording';
+import { Recording, RecordingRetrieveResponse, SessionRecording } from './recording/recording';
 
 export class Sessions extends APIResource {
   downloads: DownloadsAPI.Downloads = new DownloadsAPI.Downloads(this._client);
