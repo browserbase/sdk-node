@@ -112,12 +112,25 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/sessions/recording.ts">SessionRecording</a></code>
-- <code><a href="./src/resources/sessions/recording.ts">RecordingRetrieveResponse</a></code>
+- <code><a href="./src/resources/sessions/recording/recording.ts">SessionRecording</a></code>
+- <code><a href="./src/resources/sessions/recording/recording.ts">RecordingRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /v1/sessions/{id}/recording">client.sessions.recording.<a href="./src/resources/sessions/recording.ts">retrieve</a>(id) -> RecordingRetrieveResponse</code>
+- <code title="get /v1/sessions/{id}/recording">client.sessions.recording.<a href="./src/resources/sessions/recording/recording.ts">retrieve</a>(id) -> RecordingRetrieveResponse</code>
+
+### Downloads
+
+Types:
+
+- <code><a href="./src/resources/sessions/recording/downloads.ts">RecordingDownload</a></code>
+- <code><a href="./src/resources/sessions/recording/downloads.ts">DownloadCreateResponse</a></code>
+- <code><a href="./src/resources/sessions/recording/downloads.ts">DownloadListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/sessions/{id}/recording/downloads">client.sessions.recording.downloads.<a href="./src/resources/sessions/recording/downloads.ts">create</a>(id) -> DownloadCreateResponse</code>
+- <code title="get /v1/sessions/{id}/recording/downloads">client.sessions.recording.downloads.<a href="./src/resources/sessions/recording/downloads.ts">list</a>(id) -> DownloadListResponse</code>
 
 ## Uploads
 
