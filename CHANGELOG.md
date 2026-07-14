@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.16.0 (2026-07-14)
+
+Full Changelog: [v2.15.0...v2.16.0](https://github.com/browserbase/sdk-node/compare/v2.15.0...v2.16.0)
+
+### Features
+
+* **api:** manual updates ([036d917](https://github.com/browserbase/sdk-node/commit/036d917c294fb56c387abcb05ea1dc66db1c83f2))
+
 ## 2.15.0 (2026-07-02)
 
 Full Changelog: [v2.14.1...v2.15.0](https://github.com/browserbase/sdk-node/compare/v2.14.1...v2.15.0)
