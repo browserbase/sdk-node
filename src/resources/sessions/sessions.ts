@@ -24,16 +24,17 @@ export class Sessions extends APIResource {
   /**
    * Create a Session
    */
-  create(body?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
+  create(params?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
   create(options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
   create(
-    body: SessionCreateParams | Core.RequestOptions = {},
+    params: SessionCreateParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<SessionCreateResponse> {
-    if (isRequestOptions(body)) {
-      return this.create({}, body);
+    if (isRequestOptions(params)) {
+      return this.create({}, params);
     }
-    return this._client.post('/v1/sessions', { body, ...options });
+    const { api_timeout, ...body } = params;
+    return this._client.post('/v1/sessions', { body: { timeout: api_timeout, ...body }, ...options });
   }
 
   /**
@@ -230,7 +231,7 @@ export interface SessionCreateParams {
    * Duration in seconds after which the session will automatically end. Defaults to
    * the Project's `defaultTimeout`.
    */
-  timeout?: number;
+  api_timeout?: number;
 
   /**
    * Arbitrary user metadata to attach to the session. To learn more about user
