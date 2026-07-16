@@ -1,5 +1,5 @@
 import Browserbase from '@browserbasehq/sdk';
-import type { Fetch, Response } from '@browserbasehq/sdk/core';
+import type { Fetch } from '@browserbasehq/sdk/core';
 import http from 'node:http';
 import type { AddressInfo } from 'node:net';
 
@@ -19,13 +19,14 @@ async function captureRequest(
   });
 
   const server = http.createServer((request, response) => {
-    const chunks: Buffer[] = [];
+    const chunks: string[] = [];
 
-    request.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+    request.setEncoding('utf8');
+    request.on('data', (chunk: string) => chunks.push(chunk));
     request.on('error', rejectCapture);
     request.on('aborted', () => rejectCapture(new Error('request aborted before the body was received')));
     request.on('end', () => {
-      const body = Buffer.concat(chunks).toString('utf8');
+      const body = chunks.join('');
       response.writeHead(200, { 'content-type': 'application/json' });
       response.end('{}');
       resolveCapture({ body, contentLength: request.headers['content-length'] });
@@ -80,10 +81,10 @@ describe('Content-Length on the wire', () => {
   });
 
   test('fetch middleware can transform the body before the byte length is calculated', async () => {
+    const nativeFetch = (globalThis as unknown as { fetch: Fetch }).fetch;
     const minifyingFetch: Fetch = async (url, init) => {
       const body = typeof init?.body === 'string' ? JSON.stringify(JSON.parse(init.body)) : init?.body;
-      const nativeInit = { ...init, body } as unknown as Parameters<typeof globalThis.fetch>[1];
-      return (await globalThis.fetch(String(url), nativeInit)) as unknown as Response;
+      return nativeFetch(url, { ...init, body });
     };
 
     const request = await captureRequest({ fetch: minifyingFetch });
