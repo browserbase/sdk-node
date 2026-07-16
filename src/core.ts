@@ -288,24 +288,6 @@ export abstract class APIClient {
     return this.requestAPIList(Page, { method: 'get', path, ...opts });
   }
 
-  private calculateContentLength(body: unknown): string | null {
-    if (typeof body === 'string') {
-      if (typeof Buffer !== 'undefined') {
-        return Buffer.byteLength(body, 'utf8').toString();
-      }
-
-      if (typeof TextEncoder !== 'undefined') {
-        const encoder = new TextEncoder();
-        const encoded = encoder.encode(body);
-        return encoded.length.toString();
-      }
-    } else if (ArrayBuffer.isView(body)) {
-      return body.byteLength.toString();
-    }
-
-    return null;
-  }
-
   async buildRequest<Req>(
     inputOptions: FinalRequestOptions<Req>,
     { retryCount = 0 }: { retryCount?: number } = {},
@@ -319,8 +301,6 @@ export abstract class APIClient {
       : isMultipartBody(options.body) ? options.body.body
       : options.body ? JSON.stringify(options.body, null, 2)
       : null;
-    const contentLength = this.calculateContentLength(body);
-
     const url = this.buildURL(path!, query, defaultBaseURL);
     if ('timeout' in options) validatePositiveInteger('timeout', options.timeout);
     options.timeout = options.timeout ?? this.timeout;
@@ -342,7 +322,7 @@ export abstract class APIClient {
       headers[this.idempotencyHeader] = inputOptions.idempotencyKey;
     }
 
-    const reqHeaders = this.buildHeaders({ options, headers, contentLength, retryCount });
+    const reqHeaders = this.buildHeaders({ options, headers, retryCount });
 
     const req: RequestInit = {
       method,
@@ -360,18 +340,13 @@ export abstract class APIClient {
   private buildHeaders({
     options,
     headers,
-    contentLength,
     retryCount,
   }: {
     options: FinalRequestOptions;
     headers: Record<string, string | null | undefined>;
-    contentLength: string | null | undefined;
     retryCount: number;
   }): Record<string, string> {
     const reqHeaders: Record<string, string> = {};
-    if (contentLength) {
-      reqHeaders['content-length'] = contentLength;
-    }
 
     const defaultHeaders = this.defaultHeaders(options);
     applyHeadersMut(reqHeaders, defaultHeaders);
