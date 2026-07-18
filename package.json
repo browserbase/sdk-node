@@ -1,6 +1,6 @@
 {
   "name": "@browserbasehq/sdk",
-  "version": "2.16.0",
+  "version": "2.17.0",
   "description": "The official Node.js library for the Browserbase API",
   "author": "Browserbase <support@browserbase.com>",
   "license": "Apache-2.0",
