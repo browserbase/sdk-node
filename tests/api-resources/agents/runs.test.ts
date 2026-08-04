@@ -26,7 +26,17 @@ describe('resource runs', () => {
       agentId: 'agentId',
       browserSettings: {
         context: { id: 'id', persist: true },
-        proxies: true,
+        proxies: [
+          {
+            type: 'browserbase',
+            domainPattern: 'domainPattern',
+            geolocation: {
+              country: 'xx',
+              city: 'city',
+              state: 'xx',
+            },
+          },
+        ],
         verified: true,
       },
       resultSchema: { foo: 'bar' },
