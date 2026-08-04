@@ -56,6 +56,13 @@ export interface Context {
   projectId: string;
 
   updatedAt: string;
+
+  /**
+   * Optional user-defined name for the Context. Leading and trailing whitespace is
+   * trimmed before storage. Names are unique within the project among active
+   * Contexts, compared case-insensitively.
+   */
+  name?: string;
 }
 
 export interface ContextCreateResponse {
@@ -111,6 +118,13 @@ export interface ContextUpdateResponse {
 }
 
 export interface ContextCreateParams {
+  /**
+   * Optional user-defined name for the Context. Leading and trailing whitespace is
+   * trimmed before storage. Names are unique within the project among active
+   * Contexts, compared case-insensitively.
+   */
+  name?: string;
+
   /**
    * The Project ID. Can be found in
    * [Settings](https://www.browserbase.com/settings). Optional - if not provided,
