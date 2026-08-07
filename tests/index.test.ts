@@ -157,6 +157,19 @@ describe('instantiate client', () => {
     expect(req.headers as Headers).not.toHaveProperty('content-type');
   });
 
+  test('sets Content-Type on DELETE when a JSON body is present', async () => {
+    const client = new Browserbase({
+      baseURL: 'http://localhost:5000/',
+      apiKey: 'My API Key',
+    });
+    const { req } = await client.buildRequest({
+      path: '/v1/contexts/id',
+      method: 'delete',
+      body: { force: true },
+    });
+    expect((req.headers as Headers)['content-type']).toEqual('application/json');
+  });
+
   test('still sets Content-Type on POST', async () => {
     const client = new Browserbase({
       baseURL: 'http://localhost:5000/',

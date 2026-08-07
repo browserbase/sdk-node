@@ -222,9 +222,15 @@ export abstract class APIClient {
    *  }
    */
   protected defaultHeaders(opts: FinalRequestOptions): Headers {
+    // Omit default JSON Content-Type for bodyless methods. DELETE still needs
+    // application/json when the caller sends a body (#180 / Codex follow-up).
+    const omitDefaultContentType =
+      opts.method === 'head' ||
+      opts.method === 'get' ||
+      (opts.method === 'delete' && (opts.body === undefined || opts.body === null));
     return {
       Accept: 'application/json',
-      ...(['head', 'get', 'delete'].includes(opts.method) ? {} : { 'Content-Type': 'application/json' }),
+      ...(omitDefaultContentType ? {} : { 'Content-Type': 'application/json' }),
       'User-Agent': this.getUserAgent(),
       ...getPlatformHeaders(),
       ...this.authHeaders(opts),
