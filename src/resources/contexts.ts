@@ -29,6 +29,8 @@ export class Contexts extends APIResource {
 
   /**
    * Update a Context
+   *
+   * @deprecated
    */
   update(id: string, options?: Core.RequestOptions): Core.APIPromise<ContextUpdateResponse> {
     return this._client.put(`/v1/contexts/${id}`, options);
@@ -86,7 +88,9 @@ export interface ContextCreateResponse {
   publicKey: string;
 
   /**
-   * An upload URL to upload a custom user-data-directory.
+   * @deprecated Deprecated. Browserbase no longer supports context uploads via the
+   * API; this field always contains a non-functional sentinel URL and remains only
+   * for backwards compatibility.
    */
   uploadUrl: string;
 }
@@ -112,7 +116,9 @@ export interface ContextUpdateResponse {
   publicKey: string;
 
   /**
-   * An upload URL to upload a custom user-data-directory.
+   * @deprecated Deprecated. Browserbase no longer supports context uploads via the
+   * API; this field always contains a non-functional sentinel URL and remains only
+   * for backwards compatibility.
    */
   uploadUrl: string;
 }
