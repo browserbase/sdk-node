@@ -64,7 +64,7 @@ describe('resource sessions', () => {
           ],
           proxySettings: { caCertificates: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'] },
           region: 'us-west-2',
-          timeout: 60,
+          api_timeout: 60,
           userMetadata: { foo: 'bar' },
         },
         { path: '/_stainless_unknown_path' },
