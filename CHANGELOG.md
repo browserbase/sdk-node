@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.17.1 (2026-08-14)
+
+Full Changelog: [v2.17.0...v2.17.1](https://github.com/browserbase/sdk-node/compare/v2.17.0...v2.17.1)
+
+### Bug Fixes
+
+* **api:** document session timeout bounds in create-session description ([427f966](https://github.com/browserbase/sdk-node/commit/427f966679bc668925d2b46c3728515abc9d62c8))
+
 ## 2.17.0 (2026-08-10)
 
 Full Changelog: [v2.16.0...v2.17.0](https://github.com/browserbase/sdk-node/compare/v2.16.0...v2.17.0)
