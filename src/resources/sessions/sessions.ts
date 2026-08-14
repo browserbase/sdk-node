@@ -229,7 +229,8 @@ export interface SessionCreateParams {
 
   /**
    * Duration in seconds after which the session will automatically end. Defaults to
-   * the Project's `defaultTimeout`.
+   * the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6
+   * hours).
    */
   api_timeout?: number;
 
