@@ -265,6 +265,54 @@ describe('request building', () => {
 });
 
 describe('retries', () => {
+  test('custom signal aborts retry backoff promptly', async () => {
+    let count = 0;
+    const testFetch = async (): Promise<Response> => {
+      count++;
+      return new Response(undefined, {
+        status: 429,
+        headers: { 'Retry-After-Ms': '1000' },
+      });
+    };
+    const client = new Browserbase({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 1 });
+    const controller = new AbortController();
+    const addEventListener = jest.spyOn(controller.signal, 'addEventListener');
+    const removeEventListener = jest.spyOn(controller.signal, 'removeEventListener');
+    const request = client.get('/foo', { signal: controller.signal });
+
+    while (addEventListener.mock.calls.length < 2) await Promise.resolve();
+    const retryAbortHandler = addEventListener.mock.calls[1]![1];
+    controller.abort();
+
+    await expect(
+      Promise.race([
+        request,
+        new Promise((_, reject) => setTimeout(() => reject(new Error('abort was not prompt')), 100)),
+      ]),
+    ).rejects.toThrow(APIUserAbortError);
+    expect(count).toBe(1);
+    expect(removeEventListener).toHaveBeenCalledWith('abort', retryAbortHandler);
+  });
+
+  test('cleans up the abort listener after retry backoff completes', async () => {
+    let count = 0;
+    const testFetch = async (): Promise<Response> => {
+      if (count++ === 0) {
+        return new Response(undefined, { status: 429, headers: { 'Retry-After-Ms': '10' } });
+      }
+      return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
+    };
+    const client = new Browserbase({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 1 });
+    const controller = new AbortController();
+    const addEventListener = jest.spyOn(controller.signal, 'addEventListener');
+    const removeEventListener = jest.spyOn(controller.signal, 'removeEventListener');
+
+    await expect(client.get('/foo', { signal: controller.signal })).resolves.toEqual({ a: 1 });
+
+    const retryAbortHandler = addEventListener.mock.calls[1]![1];
+    expect(removeEventListener).toHaveBeenCalledWith('abort', retryAbortHandler);
+  });
+
   test('retry on timeout', async () => {
     let count = 0;
     const testFetch = async (url: RequestInfo, { signal }: RequestInit = {}): Promise<Response> => {
