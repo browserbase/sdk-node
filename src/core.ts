@@ -54,41 +54,64 @@ type APIResponseProps = {
   response: Response;
   options: FinalRequestOptions;
   controller: AbortController;
+  timeout: number;
+  requestStartedAt: number;
 };
 
 async function defaultParseResponse<T>(props: APIResponseProps): Promise<T> {
-  const { response } = props;
-  // fetch refuses to read the body when the status code is 204.
-  if (response.status === 204) {
-    return null as T;
-  }
-
-  if (props.options.__binaryResponse) {
-    return response as unknown as T;
-  }
-
-  const contentType = response.headers.get('content-type');
-  const mediaType = contentType?.split(';')[0]?.trim();
-  const isJSON = mediaType?.includes('application/json') || mediaType?.endsWith('+json');
-  if (isJSON) {
-    const contentLength = response.headers.get('content-length');
-    if (contentLength === '0') {
-      // if there is no content we can't do anything
-      return undefined as T;
+  return readResponseBodyWithTimeout(props, async () => {
+    const { response } = props;
+    // fetch refuses to read the body when the status code is 204.
+    if (response.status === 204) {
+      return null as T;
     }
 
-    const json = await response.json();
+    if (props.options.__binaryResponse) {
+      return response as unknown as T;
+    }
 
-    debug('response', response.status, response.url, response.headers, json);
+    const contentType = response.headers.get('content-type');
+    const mediaType = contentType?.split(';')[0]?.trim();
+    const isJSON = mediaType?.includes('application/json') || mediaType?.endsWith('+json');
+    if (isJSON) {
+      const contentLength = response.headers.get('content-length');
+      if (contentLength === '0') {
+        // if there is no content we can't do anything
+        return undefined as T;
+      }
 
-    return json as T;
+      const json = await response.json();
+
+      debug('response', response.status, response.url, response.headers, json);
+
+      return json as T;
+    }
+
+    const text = await response.text();
+    debug('response', response.status, response.url, response.headers, text);
+
+    // TODO handle blob, arraybuffer, other content types, etc.
+    return text as unknown as T;
+  });
+}
+
+async function readResponseBodyWithTimeout<T>(
+  props: APIResponseProps,
+  readBody: () => Promise<T>,
+): Promise<T> {
+  const remaining = Math.max(props.timeout - (Date.now() - props.requestStartedAt), 0);
+  const timeoutId = setTimeout(() => props.controller.abort(), remaining);
+  try {
+    return await readBody();
+  } catch (err) {
+    if (props.controller.signal.aborted) {
+      if (props.options.signal?.aborted) throw new APIUserAbortError();
+      throw new APIConnectionTimeoutError();
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
   }
-
-  const text = await response.text();
-  debug('response', response.status, response.url, response.headers, text);
-
-  // TODO handle blob, arraybuffer, other content types, etc.
-  return text as unknown as T;
 }
 
 /**
@@ -470,6 +493,7 @@ export abstract class APIClient {
     }
 
     const controller = new AbortController();
+    const requestStartedAt = Date.now();
     const response = await this.fetchWithTimeout(url, req, timeout, controller).catch(castToError);
 
     if (response instanceof Error) {
@@ -494,7 +518,14 @@ export abstract class APIClient {
         return this.retryRequest(options, retriesRemaining, responseHeaders);
       }
 
-      const errText = await response.text().catch((e) => castToError(e).message);
+      const responseProps = { response, options, controller, timeout, requestStartedAt };
+      let errText: string;
+      try {
+        errText = await readResponseBodyWithTimeout(responseProps, () => response.text());
+      } catch (err) {
+        if (err instanceof APIConnectionTimeoutError || err instanceof APIUserAbortError) throw err;
+        errText = castToError(err).message;
+      }
       const errJSON = safeJSON(errText);
       const errMessage = errJSON ? undefined : errText;
       const retryMessage = retriesRemaining ? `(error; no more retries left)` : `(error; not retryable)`;
@@ -505,7 +536,7 @@ export abstract class APIClient {
       throw err;
     }
 
-    return { response, options, controller };
+    return { response, options, controller, timeout, requestStartedAt };
   }
 
   requestAPIList<Item = unknown, PageClass extends AbstractPage<Item> = AbstractPage<Item>>(
