@@ -148,6 +148,59 @@ describe('instantiate client', () => {
     expect(capturedRequest?.method).toEqual('PATCH');
   });
 
+  describe('response body timeout', () => {
+    const makeBodyResponse = (
+      signal: RequestInit['signal'],
+      { contentType, status = 200 }: { contentType: string; status?: number },
+    ): Response => {
+      const readBody = () =>
+        new Promise<never>((_resolve, reject) => {
+          signal?.addEventListener('abort', () => {
+            const error = new Error('aborted');
+            error.name = 'AbortError';
+            reject(error);
+          });
+        });
+
+      return {
+        headers: new Response(undefined, { headers: { 'Content-Type': contentType } }).headers,
+        json: readBody,
+        ok: status >= 200 && status < 300,
+        status,
+        text: readBody,
+        url: 'https://example.com/stalled',
+      } as unknown as Response;
+    };
+
+    test('allows a response body to complete before the deadline', async () => {
+      const client = new Browserbase({
+        apiKey: 'My API Key',
+        timeout: 100,
+        fetch: async () =>
+          new Response(JSON.stringify({ ok: true }), {
+            headers: { 'Content-Type': 'application/json' },
+          }),
+      });
+
+      await expect(client.get('/foo')).resolves.toEqual({ ok: true });
+    });
+
+    test.each([
+      ['JSON', 'application/json', 200],
+      ['text', 'text/plain', 200],
+      ['error', 'text/plain', 500],
+    ])('times out while reading a stalled %s response body', async (_name, contentType, status) => {
+      const client = new Browserbase({
+        apiKey: 'My API Key',
+        timeout: 10,
+        maxRetries: 0,
+        fetch: async (_url, init) => makeBodyResponse(init?.signal, { contentType, status }),
+      });
+
+      await expect(client.get('/foo')).rejects.toThrow(Browserbase.APIConnectionTimeoutError);
+    });
+  });
+
   describe('baseUrl', () => {
     test('trailing slash', () => {
       const client = new Browserbase({ baseURL: 'http://localhost:5000/custom/path/', apiKey: 'My API Key' });
