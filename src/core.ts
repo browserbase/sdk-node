@@ -547,7 +547,12 @@ export abstract class APIClient {
     controller: AbortController,
   ): Promise<Response> {
     const { signal, ...options } = init || {};
-    if (signal) signal.addEventListener('abort', () => controller.abort());
+    const abortHandler = () => controller.abort();
+    if (signal?.aborted) {
+      controller.abort();
+    } else if (signal) {
+      signal.addEventListener('abort', abortHandler);
+    }
 
     const timeout = setTimeout(() => controller.abort(), ms);
 
@@ -565,6 +570,7 @@ export abstract class APIClient {
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
       this.fetch.call(undefined, url, fetchOptions).finally(() => {
         clearTimeout(timeout);
+        signal?.removeEventListener('abort', abortHandler);
       })
     );
   }
