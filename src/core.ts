@@ -273,7 +273,8 @@ export abstract class APIClient {
           opts && isBlobLike(opts?.body) ? new DataView(await opts.body.arrayBuffer())
           : opts?.body instanceof DataView ? opts.body
           : opts?.body instanceof ArrayBuffer ? new DataView(opts.body)
-          : opts && ArrayBuffer.isView(opts?.body) ? new DataView(opts.body.buffer)
+          : opts && ArrayBuffer.isView(opts?.body) ?
+            new DataView(opts.body.buffer, opts.body.byteOffset, opts.body.byteLength)
           : opts?.body;
         return { method, path, ...opts, body };
       }),

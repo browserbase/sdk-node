@@ -236,6 +236,30 @@ describe('instantiate client', () => {
 describe('request building', () => {
   const client = new Browserbase({ apiKey: 'My API Key' });
 
+  describe('binary bodies', () => {
+    test.each([
+      ['Uint8Array', new Uint8Array([10, 20, 30, 40]), [10, 20, 30, 40]],
+      ['Uint8Array subarray', new Uint8Array([10, 20, 30, 40]).subarray(1, 3), [20, 30]],
+      ['Buffer subarray', Buffer.from([10, 20, 30, 40]).subarray(1, 3), [20, 30]],
+    ])('preserves the bounds of a %s', async (_name, input, expected) => {
+      let capturedBody: unknown;
+      const binaryClient = new Browserbase({
+        apiKey: 'My API Key',
+        maxRetries: 0,
+        fetch: async (_url, init) => {
+          capturedBody = init?.body;
+          return new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } });
+        },
+      });
+
+      await binaryClient.post('/foo', { body: input, __binaryRequest: true });
+
+      expect(capturedBody).toBeInstanceOf(DataView);
+      const view = capturedBody as DataView;
+      expect(Array.from(new Uint8Array(view.buffer, view.byteOffset, view.byteLength))).toEqual(expected);
+    });
+  });
+
   describe('Content-Length', () => {
     test('handles multi-byte characters', async () => {
       const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: '—' } });
