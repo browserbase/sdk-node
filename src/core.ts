@@ -490,6 +490,7 @@ export abstract class APIClient {
     if (!response.ok) {
       if (retriesRemaining && this.shouldRetry(response)) {
         const retryMessage = `retrying, ${retriesRemaining} attempts remaining`;
+        await cancelResponseBody(response.body);
         debug(`response (error; ${retryMessage})`, response.status, url, responseHeaders);
         return this.retryRequest(options, retriesRemaining, responseHeaders);
       }
@@ -1018,6 +1019,21 @@ const isAbsoluteURL = (url: string): boolean => {
 };
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** Release a response body that will not be consumed before retrying. */
+const cancelResponseBody = async (body: any): Promise<void> => {
+  if (body === null || typeof body !== 'object') return;
+
+  if (body[Symbol.asyncIterator]) {
+    await body[Symbol.asyncIterator]().return?.();
+    return;
+  }
+
+  const reader = body.getReader();
+  const cancelPromise = reader.cancel();
+  reader.releaseLock();
+  await cancelPromise;
+};
 
 const validatePositiveInteger = (name: string, n: unknown): number => {
   if (typeof n !== 'number' || !Number.isInteger(n)) {
