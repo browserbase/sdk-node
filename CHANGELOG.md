@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.18.1](https://github.com/browserbase/sdk-node/compare/v2.18.0...v2.18.1) (2026-08-17)
+
+
+### Chores
+
+* add CODEOWNERS — core-browser owns this repo ([#201](https://github.com/browserbase/sdk-node/issues/201)) ([ba34ebf](https://github.com/browserbase/sdk-node/commit/ba34ebf73fd95632cdb1466a27cb69aff4e52cb7))
+
 ## [2.18.0](https://github.com/browserbase/sdk-node/compare/v2.17.0...v2.18.0) (2026-08-14)
 
 
