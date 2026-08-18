@@ -237,14 +237,9 @@ describe('request building', () => {
   const client = new Browserbase({ apiKey: 'My API Key' });
 
   describe('Content-Length', () => {
-    test('handles multi-byte characters', async () => {
-      const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: '—' } });
-      expect((req.headers as Record<string, string>)['content-length']).toEqual('20');
-    });
-
-    test('handles standard characters', async () => {
+    test('lets fetch compute the request content length', async () => {
       const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: 'hello' } });
-      expect((req.headers as Record<string, string>)['content-length']).toEqual('22');
+      expect(req.headers as Record<string, string>).not.toHaveProperty('content-length');
     });
   });
 
