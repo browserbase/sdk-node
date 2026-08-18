@@ -148,6 +148,37 @@ describe('instantiate client', () => {
     expect(capturedRequest?.method).toEqual('PATCH');
   });
 
+  test('does not set Content-Type on DELETE (#180)', async () => {
+    const client = new Browserbase({
+      baseURL: 'http://localhost:5000/',
+      apiKey: 'My API Key',
+    });
+    const { req } = await client.buildRequest({ path: '/v1/contexts/id', method: 'delete' });
+    expect(req.headers as Headers).not.toHaveProperty('content-type');
+  });
+
+  test('sets Content-Type on DELETE when a JSON body is present', async () => {
+    const client = new Browserbase({
+      baseURL: 'http://localhost:5000/',
+      apiKey: 'My API Key',
+    });
+    const { req } = await client.buildRequest({
+      path: '/v1/contexts/id',
+      method: 'delete',
+      body: { force: true },
+    });
+    expect((req.headers as Headers)['content-type']).toEqual('application/json');
+  });
+
+  test('still sets Content-Type on POST', async () => {
+    const client = new Browserbase({
+      baseURL: 'http://localhost:5000/',
+      apiKey: 'My API Key',
+    });
+    const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { a: 1 } });
+    expect((req.headers as Headers)['content-type']).toEqual('application/json');
+  });
+
   describe('baseUrl', () => {
     test('trailing slash', () => {
       const client = new Browserbase({ baseURL: 'http://localhost:5000/custom/path/', apiKey: 'My API Key' });
