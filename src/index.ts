@@ -36,6 +36,7 @@ import {
   Session,
   SessionCreateParams,
   SessionCreateResponse,
+  SessionDebugParams,
   SessionListParams,
   SessionListResponse,
   SessionLiveURLs,
@@ -286,6 +287,7 @@ export declare namespace Browserbase {
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
+    type SessionDebugParams as SessionDebugParams,
   };
 
   export {

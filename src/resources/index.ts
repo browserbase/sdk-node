@@ -37,4 +37,5 @@ export {
   type SessionCreateParams,
   type SessionUpdateParams,
   type SessionListParams,
+  type SessionDebugParams,
 } from './sessions/sessions';

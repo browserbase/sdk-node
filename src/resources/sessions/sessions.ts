@@ -69,8 +69,21 @@ export class Sessions extends APIResource {
   /**
    * Session Live URLs
    */
-  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionLiveURLs> {
-    return this._client.get(`/v1/sessions/${id}/debug`, options);
+  debug(
+    id: string,
+    query?: SessionDebugParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionLiveURLs>;
+  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionLiveURLs>;
+  debug(
+    id: string,
+    query: SessionDebugParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionLiveURLs> {
+    if (isRequestOptions(query)) {
+      return this.debug(id, {}, query);
+    }
+    return this._client.get(`/v1/sessions/${id}/debug`, { query, ...options });
   }
 }
 
@@ -465,6 +478,14 @@ export interface SessionListParams {
   status?: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
+export interface SessionDebugParams {
+  /**
+   * Time-to-live of the generated live view URLs, in seconds. If omitted, the URLs
+   * expire with the session, up to a maximum of 21600 seconds (6 hours).
+   */
+  expiresIn?: number;
+}
+
 Sessions.Downloads = Downloads;
 Sessions.Logs = Logs;
 Sessions.Recording = Recording;
@@ -481,6 +502,7 @@ export declare namespace Sessions {
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
+    type SessionDebugParams as SessionDebugParams,
   };
 
   export { Downloads as Downloads };
