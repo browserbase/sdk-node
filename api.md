@@ -89,7 +89,7 @@ Methods:
 - <code title="get /v1/sessions/{id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">retrieve</a>(id) -> SessionRetrieveResponse</code>
 - <code title="post /v1/sessions/{id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">update</a>(id, { ...params }) -> Session</code>
 - <code title="get /v1/sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">list</a>({ ...params }) -> SessionListResponse</code>
-- <code title="get /v1/sessions/{id}/debug">client.sessions.<a href="./src/resources/sessions/sessions.ts">debug</a>(id) -> SessionLiveURLs</code>
+- <code title="get /v1/sessions/{id}/debug">client.sessions.<a href="./src/resources/sessions/sessions.ts">debug</a>(id, { ...params }) -> SessionLiveURLs</code>
 
 ## Downloads
 
