@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.18.0](https://github.com/browserbase/sdk-node/compare/v2.17.0...v2.18.0) (2026-08-14)
+
+
+### Features
+
+* initial stlc build ([4ff2b49](https://github.com/browserbase/sdk-node/commit/4ff2b494fc44e5074860040553d5af6d3ec7d618))
+* stlc workspace + generate workflow ([360299b](https://github.com/browserbase/sdk-node/commit/360299b07135a55fac7856243ed2a969b1f5a6c0))
+
+
+### Bug Fixes
+
+* **api:** document session timeout bounds in create-session description ([a21a546](https://github.com/browserbase/sdk-node/commit/a21a54679baf176e06dbe6e2a657f2cf7405edf8))
+
+
+### Chores
+
+* sync production releases back into staging ([9dabbf3](https://github.com/browserbase/sdk-node/commit/9dabbf3d7ce7b0c72a03d17590fea3e119e718f3))
+
 ## 2.17.0 (2026-08-10)
 
 Full Changelog: [v2.16.0...v2.17.0](https://github.com/browserbase/sdk-node/compare/v2.16.0...v2.17.0)
