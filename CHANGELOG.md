@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.19.0](https://github.com/browserbase/sdk-node/compare/v2.18.1...v2.19.0) (2026-08-25)
+
+
+### Features
+
+* **sessions:** support expiresIn for debug URLs ([c49d5ff](https://github.com/browserbase/sdk-node/commit/c49d5ff9b25a2362f466e1b1eedae1d5e6537b8d))
+
+
+### Bug Fixes
+
+* **client:** omit Content-Type on bodyless DELETE requests ([#4](https://github.com/browserbase/sdk-node/issues/4)) ([2051799](https://github.com/browserbase/sdk-node/commit/205179994d8bb14823301c6f653f2ed41b1817a4))
+
+
+### Chores
+
+* add CODEOWNERS — core-browser owns this repo ([#3](https://github.com/browserbase/sdk-node/issues/3)) ([87176b8](https://github.com/browserbase/sdk-node/commit/87176b8606e156193b639a8f2d7f0285c6217989))
+* reconcile trunk fork from independently-added CODEOWNERS ([6021c23](https://github.com/browserbase/sdk-node/commit/6021c23b4d076788e04b1dcd21057a6a1ee81574))
+* reconcile trunk fork from the 2.18.1 release squash ([9a85609](https://github.com/browserbase/sdk-node/commit/9a85609c3f160b6ef0369ac652c59aa81429c45b))
+* reconcile trunk fork from the 2.18.1 release squash ([c4e0ee9](https://github.com/browserbase/sdk-node/commit/c4e0ee93e7af9f3839e19ce594037d99abfbbc95))
+
 ## [2.18.1](https://github.com/browserbase/sdk-node/compare/v2.18.0...v2.18.1) (2026-08-17)
 
 
