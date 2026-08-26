@@ -20,5 +20,3 @@ jobs:
         env:
           STLC_BOT_APP_ID: ${{ secrets.STLC_BOT_APP_ID }}
           STLC_BOT_PRIVATE_KEY: ${{ secrets.STLC_BOT_PRIVATE_KEY }}
-          NPM_TOKEN: ${{ secrets.BROWSERBASE_NPM_TOKEN || secrets.NPM_TOKEN }}
-
