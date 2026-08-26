@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.19.1](https://github.com/browserbase/sdk-node/compare/v2.19.0...v2.19.1) (2026-08-26)
+
+
+### Chores
+
+* **ci:** use NPM trusted publishing ([#216](https://github.com/browserbase/sdk-node/issues/216)) ([3f118b5](https://github.com/browserbase/sdk-node/commit/3f118b5ea4be55868c68b193662df898dd44bee1))
+
 ## [2.19.0](https://github.com/browserbase/sdk-node/compare/v2.18.1...v2.19.0) (2026-08-25)
 
 
