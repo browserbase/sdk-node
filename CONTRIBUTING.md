@@ -99,9 +99,10 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/browserbase/sdk-node/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
+You can release to npm by using [the `Publish NPM` GitHub action](https://www.github.com/browserbase/sdk-node/actions/workflows/publish-npm.yml). The workflow authenticates to npm through trusted publishing with GitHub Actions OIDC; it doesn't require an npm token secret.
+
+The `@browserbasehq/sdk` package's trusted publisher must authorize the `browserbase/sdk-node` repository and the `publish-npm.yml` workflow.
 
 ### Publish manually
 
-If you need to manually release a package, you can run the `bin/publish-npm` script with an `NPM_TOKEN` set on
-the environment.
+If you need to release a package outside GitHub Actions, authenticate the npm CLI locally and run the `bin/publish-npm` script.
