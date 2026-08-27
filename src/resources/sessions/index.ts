@@ -14,5 +14,6 @@ export {
   type SessionCreateParams,
   type SessionUpdateParams,
   type SessionListParams,
+  type SessionDebugParams,
 } from './sessions';
 export { Uploads, type UploadCreateResponse, type UploadCreateParams } from './uploads';

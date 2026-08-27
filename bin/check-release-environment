@@ -2,8 +2,10 @@
 
 errors=()
 
-if [ -z "${NPM_TOKEN}" ]; then
-  errors+=("The NPM_TOKEN secret has not been set. Please set it in either this repository's secrets or your organization secrets")
+# release-please and the back-sync mint per-run tokens from the
+# browserbase-stlc-bot GitHub App instead of a RELEASE_PLEASE_TOKEN PAT (CB-19).
+if [ -z "${STLC_BOT_APP_ID}" ] || [ -z "${STLC_BOT_PRIVATE_KEY}" ]; then
+  errors+=("The STLC_BOT_APP_ID / STLC_BOT_PRIVATE_KEY secrets are not set. Releases mint tokens from the browserbase-stlc-bot GitHub App; check the org secrets' repository access.")
 fi
 
 lenErrors=${#errors[@]}
@@ -19,4 +21,3 @@ if [[ lenErrors -gt 0 ]]; then
 fi
 
 echo "The environment is ready to push releases!"
-

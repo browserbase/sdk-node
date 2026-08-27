@@ -148,7 +148,7 @@ describe('instantiate client', () => {
     expect(capturedRequest?.method).toEqual('PATCH');
   });
 
-  test('does not set Content-Type on DELETE (#180)', async () => {
+  test('does not set Content-Type on a bodyless DELETE', async () => {
     const client = new Browserbase({
       baseURL: 'http://localhost:5000/',
       apiKey: 'My API Key',

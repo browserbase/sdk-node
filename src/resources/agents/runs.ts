@@ -440,9 +440,16 @@ export namespace RunCreateParams {
     context?: BrowserSettings.Context;
 
     /**
-     * Set true to route the agent's browser session through the default proxy.
+     * Proxy configuration. Can be true for default proxy, or an array of proxy
+     * configurations.
      */
-    proxies?: boolean;
+    proxies?:
+      | Array<
+          | BrowserSettings.BrowserbaseProxyConfig
+          | BrowserSettings.ExternalProxyConfig
+          | BrowserSettings.NoneProxyConfig
+        >
+      | boolean;
 
     /**
      * Set true to enable Browserbase Verified for the session.
@@ -461,6 +468,88 @@ export namespace RunCreateParams {
        * Whether to persist the context after browsing. Defaults to false.
        */
       persist?: boolean;
+    }
+
+    export interface BrowserbaseProxyConfig {
+      /**
+       * Type of proxy. Always use 'browserbase' for the Browserbase managed proxy
+       * network.
+       */
+      type: 'browserbase';
+
+      /**
+       * Domain pattern for which this proxy should be used. If omitted, defaults to all
+       * domains. Optional.
+       */
+      domainPattern?: string;
+
+      /**
+       * Geographic location for the proxy. Optional.
+       */
+      geolocation?: BrowserbaseProxyConfig.Geolocation;
+    }
+
+    export namespace BrowserbaseProxyConfig {
+      /**
+       * Geographic location for the proxy. Optional.
+       */
+      export interface Geolocation {
+        /**
+         * Country code in ISO 3166-1 alpha-2 format
+         */
+        country: string;
+
+        /**
+         * Name of the city. Use spaces for multi-word city names. Optional.
+         */
+        city?: string;
+
+        /**
+         * US state code (2 characters). Must also specify US as the country. Optional.
+         */
+        state?: string;
+      }
+    }
+
+    export interface ExternalProxyConfig {
+      /**
+       * Server URL for external proxy. Required.
+       */
+      server: string;
+
+      /**
+       * Type of proxy. Always 'external' for this config.
+       */
+      type: 'external';
+
+      /**
+       * Domain pattern for which this proxy should be used. If omitted, defaults to all
+       * domains. Optional.
+       */
+      domainPattern?: string;
+
+      /**
+       * Password for external proxy authentication. Optional.
+       */
+      password?: string;
+
+      /**
+       * Username for external proxy authentication. Optional.
+       */
+      username?: string;
+    }
+
+    export interface NoneProxyConfig {
+      /**
+       * Type of proxy. Always 'none' for this config.
+       */
+      type: 'none';
+
+      /**
+       * Domain pattern for which this proxy should be used. If omitted, defaults to all
+       * domains. Optional.
+       */
+      domainPattern?: string;
     }
   }
 

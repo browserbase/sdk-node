@@ -24,16 +24,17 @@ export class Sessions extends APIResource {
   /**
    * Create a Session
    */
-  create(body?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
+  create(params?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
   create(options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
   create(
-    body: SessionCreateParams | Core.RequestOptions = {},
+    params: SessionCreateParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<SessionCreateResponse> {
-    if (isRequestOptions(body)) {
-      return this.create({}, body);
+    if (isRequestOptions(params)) {
+      return this.create({}, params);
     }
-    return this._client.post('/v1/sessions', { body, ...options });
+    const { api_timeout, ...body } = params;
+    return this._client.post('/v1/sessions', { body: { timeout: api_timeout, ...body }, ...options });
   }
 
   /**
@@ -68,8 +69,21 @@ export class Sessions extends APIResource {
   /**
    * Session Live URLs
    */
-  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionLiveURLs> {
-    return this._client.get(`/v1/sessions/${id}/debug`, options);
+  debug(
+    id: string,
+    query?: SessionDebugParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionLiveURLs>;
+  debug(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionLiveURLs>;
+  debug(
+    id: string,
+    query: SessionDebugParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionLiveURLs> {
+    if (isRequestOptions(query)) {
+      return this.debug(id, {}, query);
+    }
+    return this._client.get(`/v1/sessions/${id}/debug`, { query, ...options });
   }
 }
 
@@ -228,9 +242,10 @@ export interface SessionCreateParams {
 
   /**
    * Duration in seconds after which the session will automatically end. Defaults to
-   * the Project's `defaultTimeout`.
+   * the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6
+   * hours).
    */
-  timeout?: number;
+  api_timeout?: number;
 
   /**
    * Arbitrary user metadata to attach to the session. To learn more about user
@@ -463,6 +478,14 @@ export interface SessionListParams {
   status?: 'PENDING' | 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED';
 }
 
+export interface SessionDebugParams {
+  /**
+   * Time-to-live of the generated live view URLs, in seconds. If omitted, the URLs
+   * expire with the session, up to a maximum of 21600 seconds (6 hours).
+   */
+  expiresIn?: number;
+}
+
 Sessions.Downloads = Downloads;
 Sessions.Logs = Logs;
 Sessions.Recording = Recording;
@@ -479,6 +502,7 @@ export declare namespace Sessions {
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
+    type SessionDebugParams as SessionDebugParams,
   };
 
   export { Downloads as Downloads };

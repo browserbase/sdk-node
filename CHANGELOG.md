@@ -1,5 +1,62 @@
 # Changelog
 
+## [2.19.0](https://github.com/browserbase/sdk-node/compare/v2.18.1...v2.19.0) (2026-08-25)
+
+
+### Features
+
+* **sessions:** support expiresIn for debug URLs ([c49d5ff](https://github.com/browserbase/sdk-node/commit/c49d5ff9b25a2362f466e1b1eedae1d5e6537b8d))
+
+
+### Bug Fixes
+
+* **client:** omit Content-Type on bodyless DELETE requests ([#4](https://github.com/browserbase/sdk-node/issues/4)) ([2051799](https://github.com/browserbase/sdk-node/commit/205179994d8bb14823301c6f653f2ed41b1817a4))
+
+
+### Chores
+
+* add CODEOWNERS — core-browser owns this repo ([#3](https://github.com/browserbase/sdk-node/issues/3)) ([87176b8](https://github.com/browserbase/sdk-node/commit/87176b8606e156193b639a8f2d7f0285c6217989))
+* reconcile trunk fork from independently-added CODEOWNERS ([6021c23](https://github.com/browserbase/sdk-node/commit/6021c23b4d076788e04b1dcd21057a6a1ee81574))
+* reconcile trunk fork from the 2.18.1 release squash ([9a85609](https://github.com/browserbase/sdk-node/commit/9a85609c3f160b6ef0369ac652c59aa81429c45b))
+* reconcile trunk fork from the 2.18.1 release squash ([c4e0ee9](https://github.com/browserbase/sdk-node/commit/c4e0ee93e7af9f3839e19ce594037d99abfbbc95))
+
+## [2.18.1](https://github.com/browserbase/sdk-node/compare/v2.18.0...v2.18.1) (2026-08-17)
+
+
+### Chores
+
+* add CODEOWNERS — core-browser owns this repo ([#201](https://github.com/browserbase/sdk-node/issues/201)) ([ba34ebf](https://github.com/browserbase/sdk-node/commit/ba34ebf73fd95632cdb1466a27cb69aff4e52cb7))
+
+## [2.18.0](https://github.com/browserbase/sdk-node/compare/v2.17.0...v2.18.0) (2026-08-14)
+
+
+### Features
+
+* initial stlc build ([4ff2b49](https://github.com/browserbase/sdk-node/commit/4ff2b494fc44e5074860040553d5af6d3ec7d618))
+* stlc workspace + generate workflow ([360299b](https://github.com/browserbase/sdk-node/commit/360299b07135a55fac7856243ed2a969b1f5a6c0))
+
+
+### Bug Fixes
+
+* **api:** document session timeout bounds in create-session description ([a21a546](https://github.com/browserbase/sdk-node/commit/a21a54679baf176e06dbe6e2a657f2cf7405edf8))
+
+
+### Chores
+
+* sync production releases back into staging ([9dabbf3](https://github.com/browserbase/sdk-node/commit/9dabbf3d7ce7b0c72a03d17590fea3e119e718f3))
+
+## 2.17.0 (2026-08-10)
+
+Full Changelog: [v2.16.0...v2.17.0](https://github.com/browserbase/sdk-node/compare/v2.16.0...v2.17.0)
+
+### Features
+
+* [AI-2679] Deprecate presigned-url context uploads ([05919d1](https://github.com/browserbase/sdk-node/commit/05919d1603f3f6dfd0e9130491e6644d623ce061))
+* [CORE-2365] Add optional name to create and get Context API ([5d0b67a](https://github.com/browserbase/sdk-node/commit/5d0b67aa2087c089952cdf63318f2cb30d4e2592))
+* [STG-2717] Pass-thru `proxy` config for session creation in `/v1/agents/runs` ([428168e](https://github.com/browserbase/sdk-node/commit/428168eb7cd5b08ac53fe8ad28f3f4d0c3b592eb))
+* name session-create timeout param for SDK codegen ([78f6fab](https://github.com/browserbase/sdk-node/commit/78f6fab50f0e4998f06a3e9e303a7a85663e8089))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([27b689b](https://github.com/browserbase/sdk-node/commit/27b689b3998e15cbe654f0fc90e1e9c3aecc5899))
+
 ## 2.16.0 (2026-07-14)
 
 Full Changelog: [v2.15.0...v2.16.0](https://github.com/browserbase/sdk-node/compare/v2.15.0...v2.16.0)

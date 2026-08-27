@@ -18,4 +18,5 @@ jobs:
         run: |
           bash ./bin/check-release-environment
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          STLC_BOT_APP_ID: ${{ secrets.STLC_BOT_APP_ID }}
+          STLC_BOT_PRIVATE_KEY: ${{ secrets.STLC_BOT_PRIVATE_KEY }}
