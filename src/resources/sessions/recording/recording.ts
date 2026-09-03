@@ -9,7 +9,10 @@ export class Recording extends APIResource {
   downloads: DownloadsAPI.Downloads = new DownloadsAPI.Downloads(this._client);
 
   /**
-   * Session Recording
+   * Deprecated. Returns raw rrweb DOM replay events. Use the Session Replay API for
+   * HLS video or the Recording Downloads API for MP4 files.
+   *
+   * @deprecated
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<RecordingRetrieveResponse> {
     return this._client.get(`/v1/sessions/${id}/recording`, options);
