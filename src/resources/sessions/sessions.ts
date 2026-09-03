@@ -300,7 +300,9 @@ export namespace SessionCreateParams {
 
     /**
      * Enable or disable ignoring of certificate errors in the browser. Defaults to
-     * `true`.
+     * `false`, so TLS certificate validation is enforced; set to `true` to ignore
+     * certificate errors (for example, to reach hosts with expired or self-signed
+     * certificates).
      */
     ignoreCertificateErrors?: boolean;
 
