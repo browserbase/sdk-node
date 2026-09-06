@@ -3,6 +3,8 @@
 import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as Errors from './error';
+import * as Pagination from './pagination';
+import { type OffsetPageParams, OffsetPageResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
@@ -18,6 +20,7 @@ import {
   ContextUpdateResponse,
   Contexts,
 } from './resources/contexts';
+import { Download, DownloadListParams, Downloads, DownloadsOffsetPage } from './resources/downloads';
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
 import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
@@ -177,6 +180,7 @@ export class Browserbase extends Core.APIClient {
 
   certificates: API.Certificates = new API.Certificates(this);
   contexts: API.Contexts = new API.Contexts(this);
+  downloads: API.Downloads = new API.Downloads(this);
   extensions: API.Extensions = new API.Extensions(this);
   fetchAPI: API.FetchAPI = new API.FetchAPI(this);
   projects: API.Projects = new API.Projects(this);
@@ -229,6 +233,8 @@ export class Browserbase extends Core.APIClient {
 
 Browserbase.Certificates = Certificates;
 Browserbase.Contexts = Contexts;
+Browserbase.Downloads = Downloads;
+Browserbase.DownloadsOffsetPage = DownloadsOffsetPage;
 Browserbase.Extensions = Extensions;
 Browserbase.FetchAPI = FetchAPI;
 Browserbase.Projects = Projects;
@@ -238,6 +244,9 @@ Browserbase.Agents = Agents;
 
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
+
+  export import OffsetPage = Pagination.OffsetPage;
+  export { type OffsetPageParams as OffsetPageParams, type OffsetPageResponse as OffsetPageResponse };
 
   export {
     Certificates as Certificates,
@@ -252,6 +261,13 @@ export declare namespace Browserbase {
     type ContextCreateResponse as ContextCreateResponse,
     type ContextUpdateResponse as ContextUpdateResponse,
     type ContextCreateParams as ContextCreateParams,
+  };
+
+  export {
+    Downloads as Downloads,
+    type Download as Download,
+    DownloadsOffsetPage as DownloadsOffsetPage,
+    type DownloadListParams as DownloadListParams,
   };
 
   export {
