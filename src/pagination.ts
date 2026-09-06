@@ -13,8 +13,14 @@ export interface DownloadsPageResponse<Item> {
 }
 
 export interface DownloadsPageParams {
+  /**
+   * Maximum number of results to return (1–100, default 20).
+   */
   limit?: number;
 
+  /**
+   * Number of results to skip (default 0).
+   */
   offset?: number;
 }
 
@@ -36,9 +42,9 @@ export class DownloadsPage<Item> extends AbstractPage<Item> implements Downloads
     super(client, response, body, options);
 
     this.downloads = body.downloads || [];
-    this.total = body.total || 0.0;
-    this.limit = body.limit || 0.0;
-    this.offset = body.offset || 0.0;
+    this.total = body.total || 0;
+    this.limit = body.limit || 0;
+    this.offset = body.offset || 0;
   }
 
   getPaginatedItems(): Item[] {

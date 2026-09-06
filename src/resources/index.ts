@@ -23,13 +23,7 @@ export {
   type ContextUpdateResponse,
   type ContextCreateParams,
 } from './contexts';
-export {
-  DownloadListResponsesDownloadsPage,
-  Downloads,
-  type Download,
-  type DownloadListResponse,
-  type DownloadListParams,
-} from './downloads';
+export { DownloadsDownloadsPage, Downloads, type Download, type DownloadListParams } from './downloads';
 export { Extensions, type Extension, type ExtensionCreateParams } from './extensions';
 export { FetchAPI, type FetchAPICreateResponse, type FetchAPICreateParams } from './fetch-api';
 export { Projects, type Project, type ProjectUsage, type ProjectListResponse } from './projects';

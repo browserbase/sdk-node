@@ -159,13 +159,13 @@ List methods in the Browserbase API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllDownloadListResponses(params) {
-  const allDownloadListResponses = [];
+async function fetchAllDownloads(params) {
+  const allDownloads = [];
   // Automatically fetches more pages as needed.
-  for await (const downloadListResponse of client.downloads.list({ sessionId: 'sessionId' })) {
-    allDownloadListResponses.push(downloadListResponse);
+  for await (const download of client.downloads.list({ sessionId: 'sessionId' })) {
+    allDownloads.push(download);
   }
-  return allDownloadListResponses;
+  return allDownloads;
 }
 ```
 
@@ -173,8 +173,8 @@ Alternatively, you can request a single page at a time:
 
 ```ts
 let page = await client.downloads.list({ sessionId: 'sessionId' });
-for (const downloadListResponse of page.downloads) {
-  console.log(downloadListResponse);
+for (const download of page.downloads) {
+  console.log(download);
 }
 
 // Convenience methods are provided for manually paginating:

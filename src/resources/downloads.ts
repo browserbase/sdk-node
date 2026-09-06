@@ -20,11 +20,8 @@ export class Downloads extends APIResource {
   list(
     query: DownloadListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<DownloadListResponsesDownloadsPage, DownloadListResponse> {
-    return this._client.getAPIList('/v1/downloads', DownloadListResponsesDownloadsPage, {
-      query,
-      ...options,
-    });
+  ): Core.PagePromise<DownloadsDownloadsPage, Download> {
+    return this._client.getAPIList('/v1/downloads', DownloadsDownloadsPage, { query, ...options });
   }
 
   /**
@@ -50,46 +47,9 @@ export class Downloads extends APIResource {
   }
 }
 
-export class DownloadListResponsesDownloadsPage extends DownloadsPage<DownloadListResponse> {}
+export class DownloadsDownloadsPage extends DownloadsPage<Download> {}
 
 export interface Download {
-  /**
-   * Unique identifier for the download.
-   */
-  id: string;
-
-  /**
-   * SHA256 checksum of the file.
-   */
-  checksum: string;
-
-  /**
-   * Timestamp when the file was downloaded.
-   */
-  createdAt: string;
-
-  /**
-   * The filename of the downloaded file.
-   */
-  filename: string;
-
-  /**
-   * The MIME type of the file.
-   */
-  mimeType: string;
-
-  /**
-   * The Session ID this download belongs to.
-   */
-  sessionId: string;
-
-  /**
-   * File size in bytes.
-   */
-  size: number;
-}
-
-export interface DownloadListResponse {
   /**
    * Unique identifier for the download.
    */
@@ -163,13 +123,12 @@ export interface DownloadListParams extends DownloadsPageParams {
   minSize?: number;
 }
 
-Downloads.DownloadListResponsesDownloadsPage = DownloadListResponsesDownloadsPage;
+Downloads.DownloadsDownloadsPage = DownloadsDownloadsPage;
 
 export declare namespace Downloads {
   export {
     type Download as Download,
-    type DownloadListResponse as DownloadListResponse,
-    DownloadListResponsesDownloadsPage as DownloadListResponsesDownloadsPage,
+    DownloadsDownloadsPage as DownloadsDownloadsPage,
     type DownloadListParams as DownloadListParams,
   };
 }

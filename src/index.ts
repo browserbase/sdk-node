@@ -20,13 +20,7 @@ import {
   ContextUpdateResponse,
   Contexts,
 } from './resources/contexts';
-import {
-  Download,
-  DownloadListParams,
-  DownloadListResponse,
-  DownloadListResponsesDownloadsPage,
-  Downloads,
-} from './resources/downloads';
+import { Download, DownloadListParams, Downloads, DownloadsDownloadsPage } from './resources/downloads';
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
 import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
@@ -240,7 +234,7 @@ export class Browserbase extends Core.APIClient {
 Browserbase.Certificates = Certificates;
 Browserbase.Contexts = Contexts;
 Browserbase.Downloads = Downloads;
-Browserbase.DownloadListResponsesDownloadsPage = DownloadListResponsesDownloadsPage;
+Browserbase.DownloadsDownloadsPage = DownloadsDownloadsPage;
 Browserbase.Extensions = Extensions;
 Browserbase.FetchAPI = FetchAPI;
 Browserbase.Projects = Projects;
@@ -275,8 +269,7 @@ export declare namespace Browserbase {
   export {
     Downloads as Downloads,
     type Download as Download,
-    type DownloadListResponse as DownloadListResponse,
-    DownloadListResponsesDownloadsPage as DownloadListResponsesDownloadsPage,
+    DownloadsDownloadsPage as DownloadsDownloadsPage,
     type DownloadListParams as DownloadListParams,
   };
 
