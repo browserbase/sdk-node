@@ -257,7 +257,7 @@ export interface SessionCreateParams {
 export namespace SessionCreateParams {
   export interface BrowserSettings {
     /**
-     * Advanced Browser Stealth Mode
+     * @deprecated Advanced Browser Stealth Mode. Deprecated: use `verified` instead.
      */
     advancedStealth?: boolean;
 

@@ -153,6 +153,37 @@ On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
+## Auto-pagination
+
+List methods in the Browserbase API are paginated.
+You can use the `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllDownloadListResponses(params) {
+  const allDownloadListResponses = [];
+  // Automatically fetches more pages as needed.
+  for await (const downloadListResponse of client.downloads.list({ sessionId: 'sessionId' })) {
+    allDownloadListResponses.push(downloadListResponse);
+  }
+  return allDownloadListResponses;
+}
+```
+
+Alternatively, you can request a single page at a time:
+
+```ts
+let page = await client.downloads.list({ sessionId: 'sessionId' });
+for (const downloadListResponse of page.downloads) {
+  console.log(downloadListResponse);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = await page.getNextPage();
+  // ...
+}
+```
+
 ## Advanced Usage
 
 ### Accessing raw Response data (e.g., headers)
