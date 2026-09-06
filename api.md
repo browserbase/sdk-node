@@ -27,6 +27,20 @@ Methods:
 - <code title="put /v1/contexts/{id}">client.contexts.<a href="./src/resources/contexts.ts">update</a>(id) -> ContextUpdateResponse</code>
 - <code title="delete /v1/contexts/{id}">client.contexts.<a href="./src/resources/contexts.ts">delete</a>(id) -> void</code>
 
+# Downloads
+
+Types:
+
+- <code><a href="./src/resources/downloads.ts">Download</a></code>
+- <code><a href="./src/resources/downloads.ts">DownloadListResponse</a></code>
+
+Methods:
+
+- <code title="get /v1/downloads/{id}">client.downloads.<a href="./src/resources/downloads.ts">retrieve</a>(id) -> Download</code>
+- <code title="get /v1/downloads">client.downloads.<a href="./src/resources/downloads.ts">list</a>({ ...params }) -> DownloadListResponsesDownloadsPage</code>
+- <code title="delete /v1/downloads/{id}">client.downloads.<a href="./src/resources/downloads.ts">delete</a>(id) -> void</code>
+- <code title="get /v1/downloads/{id}">client.downloads.<a href="./src/resources/downloads.ts">download</a>(id) -> Response</code>
+
 # Extensions
 
 Types:
