@@ -162,7 +162,7 @@ You can use the `for await … of` syntax to iterate through items across all pa
 async function fetchAllDownloads(params) {
   const allDownloads = [];
   // Automatically fetches more pages as needed.
-  for await (const download of client.downloads.list({ sessionId: 'sessionId' })) {
+  for await (const download of client.downloads.list({ sessionId: 'your_session_id' })) {
     allDownloads.push(download);
   }
   return allDownloads;
@@ -172,7 +172,7 @@ async function fetchAllDownloads(params) {
 Alternatively, you can request a single page at a time:
 
 ```ts
-let page = await client.downloads.list({ sessionId: 'sessionId' });
+let page = await client.downloads.list({ sessionId: 'your_session_id' });
 for (const download of page.downloads) {
   console.log(download);
 }
