@@ -1,7 +1,11 @@
 {
   "name": "@browserbasehq/sdk",
-  "version": "2.19.1",
+  "version": "2.20.0",
+<<<<<<< HEAD
+  "description": "The official TypeScript library for the Browserbase API",
+=======
   "description": "The official Node.js library for the Browserbase API",
+>>>>>>> 5d0b324 (Apply custom code)
   "author": "Browserbase <support@browserbase.com>",
   "license": "Apache-2.0",
   "types": "dist/index.d.ts",
