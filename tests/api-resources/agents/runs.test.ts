@@ -31,9 +31,9 @@ describe('resource runs', () => {
             type: 'browserbase',
             domainPattern: 'domainPattern',
             geolocation: {
-              country: 'xx',
+              country: 'se',
               city: 'city',
-              state: 'xx',
+              state: 'se',
             },
           },
         ],
