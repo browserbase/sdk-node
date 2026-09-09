@@ -40,3 +40,14 @@ export {
   type SessionListParams,
   type SessionDebugParams,
 } from './sessions/sessions';
+export {
+  Webhooks,
+  type Webhook,
+  type WebhookCreateResponse,
+  type WebhookListResponse,
+  type WebhookRotateSecretResponse,
+  type WebhookCreateParams,
+  type WebhookUpdateParams,
+  type WebhookListParams,
+  type WebhookRotateSecretParams,
+} from './webhooks';
