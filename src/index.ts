@@ -23,6 +23,17 @@ import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resour
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
 import { Search, SearchWebParams, SearchWebResponse } from './resources/search';
 import {
+  Webhook,
+  WebhookCreateParams,
+  WebhookCreateResponse,
+  WebhookListParams,
+  WebhookListResponse,
+  WebhookRotateSecretParams,
+  WebhookRotateSecretResponse,
+  WebhookUpdateParams,
+  Webhooks,
+} from './resources/webhooks';
+import {
   AgentCreateParams,
   AgentCreateResponse,
   AgentListParams,
@@ -183,6 +194,7 @@ export class Browserbase extends Core.APIClient {
   search: API.Search = new API.Search(this);
   sessions: API.Sessions = new API.Sessions(this);
   agents: API.Agents = new API.Agents(this);
+  webhooks: API.Webhooks = new API.Webhooks(this);
 
   /**
    * Check whether the base URL is set to its default.
@@ -235,6 +247,7 @@ Browserbase.Projects = Projects;
 Browserbase.Search = Search;
 Browserbase.Sessions = Sessions;
 Browserbase.Agents = Agents;
+Browserbase.Webhooks = Webhooks;
 
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
@@ -301,6 +314,18 @@ export declare namespace Browserbase {
     type AgentCreateParams as AgentCreateParams,
     type AgentUpdateParams as AgentUpdateParams,
     type AgentListParams as AgentListParams,
+  };
+
+  export {
+    Webhooks as Webhooks,
+    type Webhook as Webhook,
+    type WebhookCreateResponse as WebhookCreateResponse,
+    type WebhookListResponse as WebhookListResponse,
+    type WebhookRotateSecretResponse as WebhookRotateSecretResponse,
+    type WebhookCreateParams as WebhookCreateParams,
+    type WebhookUpdateParams as WebhookUpdateParams,
+    type WebhookListParams as WebhookListParams,
+    type WebhookRotateSecretParams as WebhookRotateSecretParams,
   };
 }
 
