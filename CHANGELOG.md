@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.20.0](https://github.com/browserbase/sdk-node/compare/v2.19.1...v2.20.0) (2026-09-09)
+
+
+### Features
+
+* **api:** declare the webhooks resource ([d57781b](https://github.com/browserbase/sdk-node/commit/d57781b1fdbff5415c5f49223395e651c571eac2))
+
+
+### Chores
+
+* **api:** reset webhooks before release re-land ([bf7ad1e](https://github.com/browserbase/sdk-node/commit/bf7ad1ee100ac2bdd493f11e77f10cc41c7e84f8))
+
 ## [2.19.1](https://github.com/browserbase/sdk-node/compare/v2.19.0...v2.19.1) (2026-09-03)
 
 
