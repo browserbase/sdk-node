@@ -292,8 +292,8 @@ export interface AgentListParams {
   cursor?: string;
 
   /**
-   * Only return agents created on or before this timestamp (inclusive). ISO 8601 /
-   * RFC 3339, e.g. 2026-01-20T00:00:00Z.
+   * Only return agents created on or before this timestamp (inclusive). RFC 3339,
+   * e.g. 2026-01-20T00:00:00Z.
    */
   endAt?: string;
 
@@ -303,8 +303,8 @@ export interface AgentListParams {
   limit?: number;
 
   /**
-   * Only return agents created on or after this timestamp (inclusive). ISO 8601 /
-   * RFC 3339, e.g. 2026-01-19T00:00:00Z.
+   * Only return agents created on or after this timestamp (inclusive). RFC 3339,
+   * e.g. 2026-01-19T00:00:00Z.
    */
   startAt?: string;
 }
