@@ -49,6 +49,20 @@ Methods:
 
 - <code title="post /v1/fetch">client.fetchAPI.<a href="./src/resources/fetch-api.ts">create</a>({ ...params }) -> FetchAPICreateResponse</code>
 
+# Functions
+
+## Secrets
+
+Types:
+
+- <code><a href="./src/resources/functions/secrets.ts">SecretListResponse</a></code>
+
+Methods:
+
+- <code title="get /v1/functions/{id}/secrets">client.functions.secrets.<a href="./src/resources/functions/secrets.ts">list</a>(id, { ...params }) -> SecretListResponse</code>
+- <code title="post /v1/functions/{id}/secrets">client.functions.secrets.<a href="./src/resources/functions/secrets.ts">attach</a>(id, { ...params }) -> void</code>
+- <code title="delete /v1/functions/{id}/secrets/{secretId}">client.functions.secrets.<a href="./src/resources/functions/secrets.ts">detach</a>(id, secretId) -> void</code>
+
 # Projects
 
 Types:
@@ -72,6 +86,23 @@ Types:
 Methods:
 
 - <code title="post /v1/search">client.search.<a href="./src/resources/search.ts">web</a>({ ...params }) -> SearchWebResponse</code>
+
+# Secrets
+
+Types:
+
+- <code><a href="./src/resources/secrets.ts">Secret</a></code>
+- <code><a href="./src/resources/secrets.ts">SecretsKeypair</a></code>
+- <code><a href="./src/resources/secrets.ts">SecretListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/secrets">client.secrets.<a href="./src/resources/secrets.ts">create</a>({ ...params }) -> Secret</code>
+- <code title="get /v1/secrets/{id}">client.secrets.<a href="./src/resources/secrets.ts">retrieve</a>(id) -> Secret</code>
+- <code title="patch /v1/secrets/{id}">client.secrets.<a href="./src/resources/secrets.ts">update</a>(id, { ...params }) -> Secret</code>
+- <code title="get /v1/secrets">client.secrets.<a href="./src/resources/secrets.ts">list</a>({ ...params }) -> SecretListResponse</code>
+- <code title="delete /v1/secrets/{id}">client.secrets.<a href="./src/resources/secrets.ts">delete</a>(id) -> void</code>
+- <code title="get /v1/secrets/keypair">client.secrets.<a href="./src/resources/secrets.ts">getPublicKey</a>() -> SecretsKeypair</code>
 
 # Sessions
 
