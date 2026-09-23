@@ -23,6 +23,15 @@ import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resour
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
 import { Search, SearchWebParams, SearchWebResponse } from './resources/search';
 import {
+  Secret,
+  SecretCreateParams,
+  SecretListParams,
+  SecretListResponse,
+  SecretUpdateParams,
+  Secrets,
+  SecretsKeypair,
+} from './resources/secrets';
+import {
   Webhook,
   WebhookCreateParams,
   WebhookCreateResponse,
@@ -43,6 +52,7 @@ import {
   AgentUpdateResponse,
   Agents,
 } from './resources/agents/agents';
+import { Functions } from './resources/functions/functions';
 import {
   Session,
   SessionCreateParams,
@@ -190,8 +200,10 @@ export class Browserbase extends Core.APIClient {
   contexts: API.Contexts = new API.Contexts(this);
   extensions: API.Extensions = new API.Extensions(this);
   fetchAPI: API.FetchAPI = new API.FetchAPI(this);
+  functions: API.Functions = new API.Functions(this);
   projects: API.Projects = new API.Projects(this);
   search: API.Search = new API.Search(this);
+  secrets: API.Secrets = new API.Secrets(this);
   sessions: API.Sessions = new API.Sessions(this);
   agents: API.Agents = new API.Agents(this);
   webhooks: API.Webhooks = new API.Webhooks(this);
@@ -243,8 +255,10 @@ Browserbase.Certificates = Certificates;
 Browserbase.Contexts = Contexts;
 Browserbase.Extensions = Extensions;
 Browserbase.FetchAPI = FetchAPI;
+Browserbase.Functions = Functions;
 Browserbase.Projects = Projects;
 Browserbase.Search = Search;
+Browserbase.Secrets = Secrets;
 Browserbase.Sessions = Sessions;
 Browserbase.Agents = Agents;
 Browserbase.Webhooks = Webhooks;
@@ -279,6 +293,8 @@ export declare namespace Browserbase {
     type FetchAPICreateParams as FetchAPICreateParams,
   };
 
+  export { Functions as Functions };
+
   export {
     Projects as Projects,
     type Project as Project,
@@ -290,6 +306,16 @@ export declare namespace Browserbase {
     Search as Search,
     type SearchWebResponse as SearchWebResponse,
     type SearchWebParams as SearchWebParams,
+  };
+
+  export {
+    Secrets as Secrets,
+    type Secret as Secret,
+    type SecretsKeypair as SecretsKeypair,
+    type SecretListResponse as SecretListResponse,
+    type SecretCreateParams as SecretCreateParams,
+    type SecretUpdateParams as SecretUpdateParams,
+    type SecretListParams as SecretListParams,
   };
 
   export {
