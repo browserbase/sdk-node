@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.21.0](https://github.com/browserbase/sdk-node/compare/v2.20.0...v2.21.0) (2026-09-24)
+
+
+### Features
+
+* Add secrets SDK generation ([f22482a](https://github.com/browserbase/sdk-node/commit/f22482a19ff77f7ff47fbc5635069e5ec0900a1f))
+
 ## [2.20.0](https://github.com/browserbase/sdk-node/compare/v2.19.1...v2.20.0) (2026-09-09)
 
 
