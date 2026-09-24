@@ -85,8 +85,10 @@ export interface RunCreateResponse {
    * - `FAILED` - agent has failed the run
    * - `STOPPED` - run was stopped by the user
    * - `TIMED_OUT` - run exceeded maximum time
+   * - `PAUSED` - run is paused awaiting input from the caller; the agent's request
+   *   is the trailing `pause` tool call in the run's messages
    */
-  status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT';
+  status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT' | 'PAUSED';
 
   /**
    * The original task description.
@@ -165,8 +167,10 @@ export interface RunRetrieveResponse {
    * - `FAILED` - agent has failed the run
    * - `STOPPED` - run was stopped by the user
    * - `TIMED_OUT` - run exceeded maximum time
+   * - `PAUSED` - run is paused awaiting input from the caller; the agent's request
+   *   is the trailing `pause` tool call in the run's messages
    */
-  status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT';
+  status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT' | 'PAUSED';
 
   /**
    * The original task description.
@@ -267,8 +271,10 @@ export namespace RunListResponse {
      * - `FAILED` - agent has failed the run
      * - `STOPPED` - run was stopped by the user
      * - `TIMED_OUT` - run exceeded maximum time
+     * - `PAUSED` - run is paused awaiting input from the caller; the agent's request
+     *   is the trailing `pause` tool call in the run's messages
      */
-    status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT';
+    status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT' | 'PAUSED';
 
     /**
      * The original task description.
@@ -413,6 +419,15 @@ export interface RunCreateParams {
    * apply.
    */
   browserSettings?: RunCreateParams.BrowserSettings;
+
+  /**
+   * Optional description of when the agent should pause and wait for input from your
+   * application (e.g. a verification code, an approval, or an answer from another
+   * system). When set, the agent is given a `pause` tool; calling it transitions the
+   * run to `PAUSED` (the agent's request is the trailing `pause` tool call in the
+   * run's messages) until it is resumed via the resume endpoint.
+   */
+  pauseWhen?: string;
 
   /**
    * An optional [JSON Schema](https://json-schema.org/specification) object. If
@@ -605,8 +620,10 @@ export interface RunListParams {
    * - `FAILED` - agent has failed the run
    * - `STOPPED` - run was stopped by the user
    * - `TIMED_OUT` - run exceeded maximum time
+   * - `PAUSED` - run is paused awaiting input from the caller; the agent's request
+   *   is the trailing `pause` tool call in the run's messages
    */
-  status?: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT';
+  status?: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'STOPPED' | 'TIMED_OUT' | 'PAUSED';
 }
 
 export interface RunListMessagesParams {
