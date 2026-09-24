@@ -39,6 +39,7 @@ describe('resource runs', () => {
         ],
         verified: true,
       },
+      pauseWhen: 'x',
       resultSchema: { foo: 'bar' },
       variables: { foo: { value: 'value', description: 'description' } },
     });
