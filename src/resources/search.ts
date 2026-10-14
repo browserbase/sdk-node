@@ -68,16 +68,45 @@ export namespace SearchWebResponse {
   }
 }
 
-export interface SearchWebParams {
-  /**
-   * The search query string
-   */
-  query: string;
+export type SearchWebParams = SearchWebParams.Variant0 | SearchWebParams.Variant1;
 
-  /**
-   * Number of results to return (1-25)
-   */
-  numResults?: number;
+export declare namespace SearchWebParams {
+  export interface Variant0 {
+    provider: 'parallel';
+
+    mode?: 'fast' | 'advanced';
+
+    /**
+     * Number of results to return (1-25)
+     */
+    numResults?: number;
+
+    /**
+     * The search query string
+     */
+    query?: string;
+  }
+
+  export interface Variant1 {
+    /**
+     * The search mode used by the underlying provider.
+     * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
+     * available modes and defaults.
+     */
+    mode?: 'fast' | 'advanced';
+
+    /**
+     * Number of results to return (1-25)
+     */
+    numResults?: number;
+
+    provider?: 'exa';
+
+    /**
+     * The search query string
+     */
+    query?: string;
+  }
 }
 
 export declare namespace Search {
