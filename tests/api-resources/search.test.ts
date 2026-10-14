@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource search', () => {
   test('web: only required params', async () => {
-    const responsePromise = client.search.web({ provider: 'parallel' });
+    const responsePromise = client.search.web({ provider: 'parallel', query: 'x' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,9 +23,9 @@ describe('resource search', () => {
   test('web: required and optional params', async () => {
     const response = await client.search.web({
       provider: 'parallel',
+      query: 'x',
       mode: 'fast',
       numResults: 1,
-      query: 'x',
     });
   });
 });
