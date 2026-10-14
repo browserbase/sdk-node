@@ -72,22 +72,17 @@ export type SearchWebParams = SearchWebParams.Variant0 | SearchWebParams.Variant
 
 export declare namespace SearchWebParams {
   export interface Variant0 {
-    provider: 'parallel';
-
-    mode?: 'fast' | 'advanced';
-
     /**
-     * Number of results to return (1-25)
+     * Search provider to serve this request. Omit to use the default provider for your
+     * project.
      */
-    numResults?: number;
+    provider: 'parallel';
 
     /**
      * The search query string
      */
-    query?: string;
-  }
+    query: string;
 
-  export interface Variant1 {
     /**
      * The search mode used by the underlying provider.
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
@@ -99,13 +94,24 @@ export declare namespace SearchWebParams {
      * Number of results to return (1-25)
      */
     numResults?: number;
+  }
 
-    provider?: 'exa';
-
+  export interface Variant1 {
     /**
      * The search query string
      */
-    query?: string;
+    query: string;
+
+    /**
+     * Number of results to return (1-25)
+     */
+    numResults?: number;
+
+    /**
+     * Search provider to serve this request. Omit to use the default provider for your
+     * project.
+     */
+    provider?: 'exa';
   }
 }
 
