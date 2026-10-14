@@ -62,7 +62,7 @@ export namespace SearchWebResponse {
     image?: string;
 
     /**
-     * Publication date in ISO 8601 format
+     * Publication date in RFC 3339 format
      */
     publishedDate?: string;
   }
