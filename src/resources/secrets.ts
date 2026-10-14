@@ -6,14 +6,14 @@ import * as Core from '../core';
 
 export class Secrets extends APIResource {
   /**
-   * Create Secret
+   * Create a Secret
    */
   create(body: SecretCreateParams, options?: Core.RequestOptions): Core.APIPromise<Secret> {
     return this._client.post('/v1/secrets', { body, ...options });
   }
 
   /**
-   * Get Secret
+   * Get a Secret
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Secret> {
     return this._client.get(`/v1/secrets/${id}`, options);
@@ -43,7 +43,7 @@ export class Secrets extends APIResource {
   }
 
   /**
-   * Delete Secret
+   * Delete a Secret
    */
   delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.delete(`/v1/secrets/${id}`, {
@@ -53,7 +53,7 @@ export class Secrets extends APIResource {
   }
 
   /**
-   * Get Secrets Keypair
+   * Get a Keypair
    */
   getPublicKey(options?: Core.RequestOptions): Core.APIPromise<SecretsKeypair> {
     return this._client.get('/v1/secrets/keypair', options);
@@ -117,9 +117,9 @@ export interface SecretCreateParams {
   keypairId: string;
 
   /**
-   * The secret value encrypted with HPKE. In order to seal the secret value before
-   * sending, get the project's public key from GET /v1/secrets/keypair. Decode the
-   * publicKey using base64 into the raw 32-byte public key. Then, use HPKE Base mode
+   * The secret value encrypted with HPKE. To seal the secret value before sending,
+   * get the project's public key from GET /v1/secrets/keypair. Decode the publicKey
+   * using base64 into the raw 32-byte public key. Then, use HPKE Base mode
    * (RFC 9180) with the following algorithm suite: DHKEM(X25519, HKDF-SHA256),
    * HKDF-SHA256, and AES-256-GCM. Set both info and additional authenticated data
    * (AAD) to an empty byte string. Then, create a new sender context using the
@@ -145,16 +145,16 @@ export interface SecretUpdateParams {
   keypairId: string;
 
   /**
-   * The new secret value encrypted with HPKE. In order to seal the secret value
-   * before sending, get the project's public key from GET /v1/secrets/keypair.
-   * Decode the publicKey using base64 into the raw 32-byte public key. Then, use
-   * HPKE Base mode (RFC 9180) with the following algorithm suite: DHKEM(X25519,
-   * HKDF-SHA256), HKDF-SHA256, and AES-256-GCM. Set both info and additional
-   * authenticated data (AAD) to an empty byte string. Then, create a new sender
-   * context using the public key and these settings, and encrypt the secret value as
-   * one message. Put the 32-byte encapsulated key before the ciphertext and keep the
-   * authentication tag at the end of the ciphertext. Encode the combined bytes with
-   * standard base64. Send the result as sealedSecretValue: base64(enc || ciphertext)
+   * The new secret value encrypted with HPKE. To seal the secret value before
+   * sending, get the project's public key from GET /v1/secrets/keypair. Decode the
+   * publicKey using base64 into the raw 32-byte public key. Then, use HPKE Base mode
+   * (RFC 9180) with the following algorithm suite: DHKEM(X25519, HKDF-SHA256),
+   * HKDF-SHA256, and AES-256-GCM. Set both info and additional authenticated data
+   * (AAD) to an empty byte string. Then, create a new sender context using the
+   * public key and these settings, and encrypt the secret value as one message. Put
+   * the 32-byte encapsulated key before the ciphertext and keep the authentication
+   * tag at the end of the ciphertext. Encode the combined bytes with standard
+   * base64. Send the result as sealedSecretValue: base64(enc || ciphertext)
    */
   sealedSecretValue: string;
 }
