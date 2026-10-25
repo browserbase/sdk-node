@@ -68,7 +68,7 @@ export namespace SearchWebResponse {
   }
 }
 
-export type SearchWebParams = SearchWebParams.Variant0 | SearchWebParams.Variant1;
+export type SearchWebParams = SearchWebParams.Variant0 | SearchWebParams.Variant1 | SearchWebParams.Variant2;
 
 export declare namespace SearchWebParams {
   export interface Variant0 {
@@ -88,7 +88,7 @@ export declare namespace SearchWebParams {
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
      * available modes and defaults.
      */
-    mode?: 'fast' | 'advanced';
+    mode?: 'fast' | 'advanced' | 'deep-lite' | 'deep';
 
     /**
      * Number of results to return (1-25)
@@ -112,6 +112,31 @@ export declare namespace SearchWebParams {
      * project.
      */
     provider?: 'exa';
+  }
+
+  export interface Variant2 {
+    /**
+     * The search mode used by the underlying provider.
+     * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
+     * available modes and defaults.
+     */
+    mode?: 'fast' | 'advanced' | 'deep-lite' | 'deep';
+
+    /**
+     * Number of results to return (1-25)
+     */
+    numResults?: number;
+
+    /**
+     * Search provider to serve this request. Omit to use the default provider for your
+     * project.
+     */
+    provider?: 'parallel' | 'exa';
+
+    /**
+     * The search query string
+     */
+    query?: string;
   }
 }
 
