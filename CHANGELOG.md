@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.23.0](https://github.com/browserbase/sdk-node/compare/v2.22.0...v2.23.0) (2026-10-26)
+
+
+### Features
+
+* add contextId to fetch and Exa deep search modes ([257c819](https://github.com/browserbase/sdk-node/commit/257c8192e1db3ca77fe35967fba2afc4a438e9d8))
+
 ## [2.22.0](https://github.com/browserbase/sdk-node/compare/v2.21.0...v2.22.0) (2026-10-14)
 
 
