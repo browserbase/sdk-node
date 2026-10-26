@@ -62,6 +62,11 @@ export interface FetchAPICreateParams {
   allowRedirects?: boolean;
 
   /**
+   * ID of a context whose persisted cookies are sent with the request.
+   */
+  contextId?: string;
+
+  /**
    * Output format for the response content. `raw` (default) returns the response
    * body unchanged; `json` returns structured data (requires `schema`); `markdown`
    * returns the page as markdown.
