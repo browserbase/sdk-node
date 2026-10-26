@@ -25,6 +25,7 @@ describe('resource fetchAPI', () => {
       url: 'https://example.com',
       allowInsecureSsl: true,
       allowRedirects: true,
+      contextId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       format: 'raw',
       proxies: true,
       schema: { foo: 'bar' },
