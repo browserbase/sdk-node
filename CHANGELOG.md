@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.22.0](https://github.com/browserbase/sdk-node/compare/v2.21.0...v2.22.0) (2026-10-14)
+
+
+### Features
+
+* add search provider and mode options ([99e788c](https://github.com/browserbase/sdk-node/commit/99e788c3d8cee22d3b5dca9767d838c8bd7666a8))
+
+
+### Bug Fixes
+
+* preserve required search parameters in SDKs ([56022b3](https://github.com/browserbase/sdk-node/commit/56022b3415b7b9f2c6eaf1bcecb30551aea83d08))
+
 ## [2.21.0](https://github.com/browserbase/sdk-node/compare/v2.20.0...v2.21.0) (2026-09-24)
 
 
