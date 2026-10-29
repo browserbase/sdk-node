@@ -234,3 +234,18 @@ Methods:
 - <code title="get /v1/webhooks">client.webhooks.<a href="./src/resources/webhooks.ts">list</a>({ ...params }) -> WebhookListResponse</code>
 - <code title="delete /v1/webhooks/{id}">client.webhooks.<a href="./src/resources/webhooks.ts">delete</a>(id) -> void</code>
 - <code title="post /v1/webhooks/{id}/secret">client.webhooks.<a href="./src/resources/webhooks.ts">rotateSecret</a>(id, { ...params }) -> WebhookRotateSecretResponse</code>
+
+# NavigationPolicies
+
+Types:
+
+- <code><a href="./src/resources/navigation-policies.ts">NavigationPolicy</a></code>
+- <code><a href="./src/resources/navigation-policies.ts">NavigationPolicyListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/navigation-policies">client.navigationPolicies.<a href="./src/resources/navigation-policies.ts">create</a>({ ...params }) -> NavigationPolicy</code>
+- <code title="get /v1/navigation-policies/{id}">client.navigationPolicies.<a href="./src/resources/navigation-policies.ts">retrieve</a>(id) -> NavigationPolicy</code>
+- <code title="patch /v1/navigation-policies/{id}">client.navigationPolicies.<a href="./src/resources/navigation-policies.ts">update</a>(id, { ...params }) -> NavigationPolicy</code>
+- <code title="get /v1/navigation-policies">client.navigationPolicies.<a href="./src/resources/navigation-policies.ts">list</a>() -> NavigationPolicyListResponse</code>
+- <code title="delete /v1/navigation-policies/{id}">client.navigationPolicies.<a href="./src/resources/navigation-policies.ts">delete</a>(id) -> void</code>
