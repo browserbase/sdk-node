@@ -20,6 +20,13 @@ import {
 } from './resources/contexts';
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
 import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
+import {
+  NavigationPolicies,
+  NavigationPolicy,
+  NavigationPolicyCreateParams,
+  NavigationPolicyListResponse,
+  NavigationPolicyUpdateParams,
+} from './resources/navigation-policies';
 import { Project, ProjectListResponse, ProjectUsage, Projects } from './resources/projects';
 import { Search, SearchWebParams, SearchWebResponse } from './resources/search';
 import {
@@ -207,6 +214,7 @@ export class Browserbase extends Core.APIClient {
   sessions: API.Sessions = new API.Sessions(this);
   agents: API.Agents = new API.Agents(this);
   webhooks: API.Webhooks = new API.Webhooks(this);
+  navigationPolicies: API.NavigationPolicies = new API.NavigationPolicies(this);
 
   /**
    * Check whether the base URL is set to its default.
@@ -262,6 +270,7 @@ Browserbase.Secrets = Secrets;
 Browserbase.Sessions = Sessions;
 Browserbase.Agents = Agents;
 Browserbase.Webhooks = Webhooks;
+Browserbase.NavigationPolicies = NavigationPolicies;
 
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
@@ -352,6 +361,14 @@ export declare namespace Browserbase {
     type WebhookUpdateParams as WebhookUpdateParams,
     type WebhookListParams as WebhookListParams,
     type WebhookRotateSecretParams as WebhookRotateSecretParams,
+  };
+
+  export {
+    NavigationPolicies as NavigationPolicies,
+    type NavigationPolicy as NavigationPolicy,
+    type NavigationPolicyListResponse as NavigationPolicyListResponse,
+    type NavigationPolicyCreateParams as NavigationPolicyCreateParams,
+    type NavigationPolicyUpdateParams as NavigationPolicyUpdateParams,
   };
 }
 
