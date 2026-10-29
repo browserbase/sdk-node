@@ -323,6 +323,14 @@ export namespace SessionCreateParams {
     recordSession?: boolean;
 
     /**
+     * Navigation policy to enforce for the session. Must belong to the session's
+     * project and be enabled. The session keeps the policy as it was when the session
+     * started; later edits apply to sessions that start afterwards. Browserbase
+     * enforces it only when navigation policy enforcement is enabled for the project.
+     */
+    riskPolicyId?: string;
+
+    /**
      * Enable or disable captcha solving in the browser. Defaults to `true`.
      */
     solveCaptchas?: boolean;
