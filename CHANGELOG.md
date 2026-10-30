@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.24.0](https://github.com/browserbase/sdk-node/compare/v2.23.0...v2.24.0) (2026-10-30)
+
+
+### Features
+
+* add navigation policies ([fc7d6aa](https://github.com/browserbase/sdk-node/commit/fc7d6aae4c8b9134d8c2749fadd120574597bcad))
+
 ## [2.23.0](https://github.com/browserbase/sdk-node/compare/v2.22.0...v2.23.0) (2026-10-26)
 
 
