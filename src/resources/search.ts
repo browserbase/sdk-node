@@ -73,8 +73,8 @@ export type SearchWebParams = SearchWebParams.Variant0 | SearchWebParams.Variant
 export declare namespace SearchWebParams {
   export interface Variant0 {
     /**
-     * Search provider to serve this request. Omit to use the default provider for your
-     * project.
+     * Search provider to serve this request. Defaults to `parallel`, which uses
+     * `advanced` mode unless `mode` is set.
      */
     provider: 'parallel';
 
@@ -84,9 +84,10 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * The search mode used by the underlying provider.
+     * The search mode used by the underlying provider. Defaults to `advanced` for
+     * `parallel` and `fast` for `exa`. See the
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
-     * available modes and defaults.
+     * available modes.
      */
     mode?: 'fast' | 'advanced';
 
@@ -98,8 +99,8 @@ export declare namespace SearchWebParams {
 
   export interface Variant1 {
     /**
-     * Search provider to serve this request. Omit to use the default provider for your
-     * project.
+     * Search provider to serve this request. Defaults to `parallel`, which uses
+     * `advanced` mode unless `mode` is set.
      */
     provider: 'exa';
 
@@ -109,9 +110,10 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * The search mode used by the underlying provider.
+     * The search mode used by the underlying provider. Defaults to `advanced` for
+     * `parallel` and `fast` for `exa`. See the
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
-     * available modes and defaults.
+     * available modes.
      */
     mode?: 'fast' | 'deep-lite' | 'deep';
 
