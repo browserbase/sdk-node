@@ -70,6 +70,18 @@ export interface Secret {
    * The name the secret value is stored under.
    */
   secretKey: string;
+
+  /**
+   * Time at which the secret was created, in UTC, using RFC 3339 format, e.g.
+   * 2026-01-19T00:00:00.000Z.
+   */
+  createdAt?: string;
+
+  /**
+   * Time at which the secret's value was last set, in UTC, using RFC 3339 format,
+   * e.g. 2026-01-20T00:00:00.000Z.
+   */
+  updatedAt?: string;
 }
 
 export interface SecretsKeypair {
