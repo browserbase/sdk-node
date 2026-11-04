@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.25.0](https://github.com/browserbase/sdk-node/compare/v2.24.0...v2.25.0) (2026-11-04)
+
+
+### Features
+
+* add created and updated timestamps to secrets ([777a635](https://github.com/browserbase/sdk-node/commit/777a63500e4ecb7c0bef13142de60c600c6977a7))
+
+
+### Chores
+
+* **internal:** generate straight into the SDK repos ([dcdba8f](https://github.com/browserbase/sdk-node/commit/dcdba8ff2c966af307c00860e1550c5372b2476e))
+
 ## [2.24.0](https://github.com/browserbase/sdk-node/compare/v2.23.0...v2.24.0) (2026-10-30)
 
 
