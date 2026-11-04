@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Browserbase from '@browserbasehq/sdk';
-import { APIUserAbortError } from '@browserbasehq/sdk';
+import { APIConnectionError, APIUserAbortError } from '@browserbasehq/sdk';
 import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
@@ -129,6 +129,50 @@ describe('instantiate client', () => {
 
     await expect(client.get('/foo', { signal: controller.signal })).rejects.toThrowError(APIUserAbortError);
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  test('cleans up custom signal listeners after requests settle', async () => {
+    const testFetch = jest
+      .fn<Promise<Response>, [RequestInfo, RequestInit?]>()
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } }),
+      )
+      .mockRejectedValueOnce(new Error('network failure'));
+    const client = new Browserbase({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 0 });
+    const controller = new AbortController();
+    const addEventListener = jest.spyOn(controller.signal, 'addEventListener');
+    const removeEventListener = jest.spyOn(controller.signal, 'removeEventListener');
+
+    await client.get('/success', { signal: controller.signal });
+    await expect(client.get('/failure', { signal: controller.signal })).rejects.toThrow(APIConnectionError);
+
+    expect(addEventListener).toHaveBeenCalledTimes(2);
+    expect(removeEventListener).toHaveBeenCalledTimes(2);
+    expect(removeEventListener.mock.calls.map((call) => call[1])).toEqual(
+      addEventListener.mock.calls.map((call) => call[1]),
+    );
+  });
+
+  test('propagates a signal that is already aborted', async () => {
+    let capturedSignal: RequestInit['signal'];
+    const client = new Browserbase({
+      apiKey: 'My API Key',
+      fetch: async (_url, init) => {
+        capturedSignal = init?.signal;
+        return new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } });
+      },
+    });
+    const inputController = new AbortController();
+    inputController.abort();
+
+    await client.fetchWithTimeout(
+      'https://example.com',
+      { signal: inputController.signal as RequestInit['signal'] },
+      100,
+      new AbortController(),
+    );
+
+    expect(capturedSignal?.aborted).toBe(true);
   });
 
   test('normalized method', async () => {
