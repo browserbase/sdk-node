@@ -502,6 +502,12 @@ export namespace RunCreateParams {
        * Geographic location for the proxy. Optional.
        */
       geolocation?: BrowserbaseProxyConfig.Geolocation;
+
+      /**
+       * ID of a managed static proxy assigned to your organization. Cannot be combined
+       * with geolocation.
+       */
+      proxyId?: string;
     }
 
     export namespace BrowserbaseProxyConfig {
