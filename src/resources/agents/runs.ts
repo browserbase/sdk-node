@@ -455,6 +455,11 @@ export namespace RunCreateParams {
     context?: BrowserSettings.Context;
 
     /**
+     * Enable or disable session logging. Defaults to `true`.
+     */
+    logSession?: boolean;
+
+    /**
      * Proxy configuration. Can be true for default proxy, or an array of proxy
      * configurations.
      */
@@ -465,6 +470,11 @@ export namespace RunCreateParams {
           | BrowserSettings.NoneProxyConfig
         >
       | boolean;
+
+    /**
+     * Enable or disable session recording. Defaults to `true`.
+     */
+    recordSession?: boolean;
 
     /**
      * Set true to enable Browserbase Verified for the session.
