@@ -3,6 +3,8 @@
 import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as Errors from './error';
+import * as Pagination from './pagination';
+import { type OffsetPageParams, OffsetPageResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
@@ -18,8 +20,10 @@ import {
   ContextUpdateResponse,
   Contexts,
 } from './resources/contexts';
+import { Download, DownloadListParams, Downloads, DownloadsOffsetPage } from './resources/downloads';
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
 import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
+import { Label, LabelCreateParams, LabelUpdateParams, Labels } from './resources/labels';
 import {
   NavigationPolicies,
   NavigationPolicy,
@@ -70,6 +74,8 @@ import {
   SessionLiveURLs,
   SessionRetrieveParams,
   SessionRetrieveResponse,
+  SessionSetLabelsParams,
+  SessionSetLabelsResponse,
   SessionUpdateParams,
   Sessions,
 } from './resources/sessions/sessions';
@@ -206,9 +212,11 @@ export class Browserbase extends Core.APIClient {
 
   certificates: API.Certificates = new API.Certificates(this);
   contexts: API.Contexts = new API.Contexts(this);
+  downloads: API.Downloads = new API.Downloads(this);
   extensions: API.Extensions = new API.Extensions(this);
   fetchAPI: API.FetchAPI = new API.FetchAPI(this);
   functions: API.Functions = new API.Functions(this);
+  labels: API.Labels = new API.Labels(this);
   projects: API.Projects = new API.Projects(this);
   search: API.Search = new API.Search(this);
   secrets: API.Secrets = new API.Secrets(this);
@@ -262,9 +270,12 @@ export class Browserbase extends Core.APIClient {
 
 Browserbase.Certificates = Certificates;
 Browserbase.Contexts = Contexts;
+Browserbase.Downloads = Downloads;
+Browserbase.DownloadsOffsetPage = DownloadsOffsetPage;
 Browserbase.Extensions = Extensions;
 Browserbase.FetchAPI = FetchAPI;
 Browserbase.Functions = Functions;
+Browserbase.Labels = Labels;
 Browserbase.Projects = Projects;
 Browserbase.Search = Search;
 Browserbase.Secrets = Secrets;
@@ -275,6 +286,9 @@ Browserbase.NavigationPolicies = NavigationPolicies;
 
 export declare namespace Browserbase {
   export type RequestOptions = Core.RequestOptions;
+
+  export import OffsetPage = Pagination.OffsetPage;
+  export { type OffsetPageParams as OffsetPageParams, type OffsetPageResponse as OffsetPageResponse };
 
   export {
     Certificates as Certificates,
@@ -292,6 +306,13 @@ export declare namespace Browserbase {
   };
 
   export {
+    Downloads as Downloads,
+    type Download as Download,
+    DownloadsOffsetPage as DownloadsOffsetPage,
+    type DownloadListParams as DownloadListParams,
+  };
+
+  export {
     Extensions as Extensions,
     type Extension as Extension,
     type ExtensionCreateParams as ExtensionCreateParams,
@@ -304,6 +325,13 @@ export declare namespace Browserbase {
   };
 
   export { Functions as Functions };
+
+  export {
+    Labels as Labels,
+    type Label as Label,
+    type LabelCreateParams as LabelCreateParams,
+    type LabelUpdateParams as LabelUpdateParams,
+  };
 
   export {
     Projects as Projects,
@@ -335,11 +363,13 @@ export declare namespace Browserbase {
     type SessionCreateResponse as SessionCreateResponse,
     type SessionRetrieveResponse as SessionRetrieveResponse,
     type SessionListResponse as SessionListResponse,
+    type SessionSetLabelsResponse as SessionSetLabelsResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
     type SessionDebugParams as SessionDebugParams,
+    type SessionSetLabelsParams as SessionSetLabelsParams,
   };
 
   export {

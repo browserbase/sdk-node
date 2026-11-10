@@ -11,10 +11,12 @@ export {
   type SessionCreateResponse,
   type SessionRetrieveResponse,
   type SessionListResponse,
+  type SessionSetLabelsResponse,
   type SessionCreateParams,
   type SessionRetrieveParams,
   type SessionUpdateParams,
   type SessionListParams,
   type SessionDebugParams,
+  type SessionSetLabelsParams,
 } from './sessions';
 export { Uploads, type UploadCreateResponse, type UploadCreateParams } from './uploads';
