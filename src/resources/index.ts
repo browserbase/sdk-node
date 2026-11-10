@@ -52,6 +52,7 @@ export {
   type SessionRetrieveResponse,
   type SessionListResponse,
   type SessionCreateParams,
+  type SessionRetrieveParams,
   type SessionUpdateParams,
   type SessionListParams,
   type SessionDebugParams,
