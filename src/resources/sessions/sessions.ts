@@ -22,7 +22,7 @@ export class Sessions extends APIResource {
   replays: ReplaysAPI.Replays = new ReplaysAPI.Replays(this._client);
 
   /**
-   * Create a Session
+   * Create a new Session
    */
   create(params?: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
   create(options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse>;
