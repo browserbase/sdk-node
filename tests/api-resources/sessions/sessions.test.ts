@@ -51,6 +51,7 @@ describe('resource sessions', () => {
           },
           extensionId: 'extensionId',
           keepAlive: true,
+          labels: ['string'],
           projectId: 'projectId',
           proxies: [
             {
@@ -61,6 +62,7 @@ describe('resource sessions', () => {
                 city: 'city',
                 state: 'se',
               },
+              proxyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
             },
           ],
           proxySettings: { caCertificates: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'] },
@@ -89,6 +91,13 @@ describe('resource sessions', () => {
     await expect(client.sessions.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Browserbase.NotFoundError,
     );
+  });
+
+  test('retrieve: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.sessions.retrieve('id', { includeLabels: true }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Browserbase.NotFoundError);
   });
 
   test('update: only required params', async () => {

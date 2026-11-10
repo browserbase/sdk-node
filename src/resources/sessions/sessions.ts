@@ -40,8 +40,21 @@ export class Sessions extends APIResource {
   /**
    * Get a Session
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionRetrieveResponse> {
-    return this._client.get(`/v1/sessions/${id}`, options);
+  retrieve(
+    id: string,
+    query?: SessionRetrieveParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionRetrieveResponse>;
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SessionRetrieveResponse>;
+  retrieve(
+    id: string,
+    query: SessionRetrieveParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionRetrieveResponse> {
+    if (isRequestOptions(query)) {
+      return this.retrieve(id, {}, query);
+    }
+    return this._client.get(`/v1/sessions/${id}`, { query, ...options });
   }
 
   /**
@@ -184,6 +197,12 @@ export interface SessionRetrieveResponse extends Session {
   connectUrl?: string;
 
   /**
+   * Browserbase returns label IDs and current names only when includeLabels is true.
+   * An empty array means the session has no labels.
+   */
+  labels?: Array<SessionRetrieveResponse.Label>;
+
+  /**
    * HTTP URL to connect to the Session.
    */
   seleniumRemoteUrl?: string;
@@ -192,6 +211,23 @@ export interface SessionRetrieveResponse extends Session {
    * Signing key to use when connecting to the Session via HTTP.
    */
   signingKey?: string;
+}
+
+export namespace SessionRetrieveResponse {
+  /**
+   * A project-owned session label.
+   */
+  export interface Label {
+    /**
+     * Stable identifier of the label.
+     */
+    id: string;
+
+    /**
+     * Display name, unique ignoring case within the project.
+     */
+    name: string;
+  }
 }
 
 export type SessionListResponse = Array<Session>;
@@ -210,6 +246,12 @@ export interface SessionCreateParams {
    * the Hobby Plan and above.
    */
   keepAlive?: boolean;
+
+  /**
+   * Label names to assign after creation. Creates missing labels automatically.
+   * Assignment is best-effort and does not delay or fail session creation.
+   */
+  labels?: Array<string>;
 
   /**
    * The Project ID. Can be found in
@@ -386,6 +428,12 @@ export namespace SessionCreateParams {
      * Geographic location for the proxy. Optional.
      */
     geolocation?: BrowserbaseProxyConfig.Geolocation;
+
+    /**
+     * ID of a managed static proxy assigned to your organization. Cannot be combined
+     * with geolocation.
+     */
+    proxyId?: string;
   }
 
   export namespace BrowserbaseProxyConfig {
@@ -462,6 +510,13 @@ export namespace SessionCreateParams {
   }
 }
 
+export interface SessionRetrieveParams {
+  /**
+   * Include the session's label IDs and current names.
+   */
+  includeLabels?: boolean;
+}
+
 export interface SessionUpdateParams {
   /**
    * Set to `REQUEST_RELEASE` to request that the session complete. Use before
@@ -510,6 +565,7 @@ export declare namespace Sessions {
     type SessionRetrieveResponse as SessionRetrieveResponse,
     type SessionListResponse as SessionListResponse,
     type SessionCreateParams as SessionCreateParams,
+    type SessionRetrieveParams as SessionRetrieveParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
     type SessionDebugParams as SessionDebugParams,
