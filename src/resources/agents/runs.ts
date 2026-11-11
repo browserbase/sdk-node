@@ -452,7 +452,20 @@ export namespace RunCreateParams {
    * apply.
    */
   export interface BrowserSettings {
+    /**
+     * Domains the browser session may navigate to, including their subdomains.
+     * Restricts top-level navigations only. Omit or pass an empty list to allow every
+     * domain.
+     */
+    allowedDomains?: Array<string>;
+
     context?: BrowserSettings.Context;
+
+    /**
+     * Set `true` to ignore TLS certificate errors in the browser session. When
+     * omitted, your project's default applies.
+     */
+    ignoreCertificateErrors?: boolean;
 
     /**
      * Enable or disable session logging. Defaults to `true`.
@@ -470,6 +483,11 @@ export namespace RunCreateParams {
           | BrowserSettings.NoneProxyConfig
         >
       | boolean;
+
+    /**
+     * Proxy settings for the browser session. Optional.
+     */
+    proxySettings?: BrowserSettings.ProxySettings;
 
     /**
      * Enable or disable session recording. Defaults to `true`.
@@ -581,6 +599,16 @@ export namespace RunCreateParams {
        * domains. Optional.
        */
       domainPattern?: string;
+    }
+
+    /**
+     * Proxy settings for the browser session. Optional.
+     */
+    export interface ProxySettings {
+      /**
+       * The TLS certificate IDs to trust. Optional.
+       */
+      caCertificates?: Array<string>;
     }
   }
 
