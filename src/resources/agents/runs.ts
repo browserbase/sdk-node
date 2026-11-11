@@ -452,7 +452,25 @@ export namespace RunCreateParams {
    * apply.
    */
   export interface BrowserSettings {
+    /**
+     * An optional list of allowed domains for the session. If you pass one or more
+     * domains, Browserbase restricts top-level (main-frame) page navigations to the
+     * listed domains and their subdomains. For example, `example.com` also permits
+     * `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is
+     * domain-based, not full-URL. An empty list (the default) disables the restriction
+     * entirely. Browserbase enforces only main-frame navigations; it does not block
+     * iframe/subframe loads or other in-page resource requests (images, scripts, XHR,
+     * etc.).
+     */
+    allowedDomains?: Array<string>;
+
     context?: BrowserSettings.Context;
+
+    /**
+     * Set `true` to ignore TLS certificate errors. When omitted, your project's
+     * default applies.
+     */
+    ignoreCertificateErrors?: boolean;
 
     /**
      * Enable or disable session logging. Defaults to `true`.
@@ -470,6 +488,11 @@ export namespace RunCreateParams {
           | BrowserSettings.NoneProxyConfig
         >
       | boolean;
+
+    /**
+     * Proxy settings. Optional.
+     */
+    proxySettings?: BrowserSettings.ProxySettings;
 
     /**
      * Enable or disable session recording. Defaults to `true`.
@@ -581,6 +604,16 @@ export namespace RunCreateParams {
        * domains. Optional.
        */
       domainPattern?: string;
+    }
+
+    /**
+     * Proxy settings. Optional.
+     */
+    export interface ProxySettings {
+      /**
+       * The TLS certificate IDs to trust. Optional.
+       */
+      caCertificates?: Array<string>;
     }
   }
 
