@@ -98,9 +98,8 @@ export declare namespace SearchWebParams {
     /**
      * Refetch a page when the cached copy is older than this many hours, from 1
      * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
-     * provider only). Omit to use the provider default. This is a refresh threshold,
-     * not a strict maximum age: a provider can return an older cached copy when a live
-     * fetch fails.
+     * provider only). Omit to use the provider default. A provider can return an older
+     * cached copy when a live fetch fails.
      */
     maxAgeHours?: number;
 
@@ -158,9 +157,8 @@ export declare namespace SearchWebParams {
     /**
      * Refetch a page when the cached copy is older than this many hours, from 1
      * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
-     * provider only). Omit to use the provider default. This is a refresh threshold,
-     * not a strict maximum age: a provider can return an older cached copy when a live
-     * fetch fails.
+     * provider only). Omit to use the provider default. A provider can return an older
+     * cached copy when a live fetch fails.
      */
     maxAgeHours?: number;
 
@@ -212,9 +210,8 @@ export declare namespace SearchWebParams {
     /**
      * Refetch a page when the cached copy is older than this many hours, from 1
      * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
-     * provider only). Omit to use the provider default. This is a refresh threshold,
-     * not a strict maximum age: a provider can return an older cached copy when a live
-     * fetch fails.
+     * provider only). Omit to use the provider default. A provider can return an older
+     * cached copy when a live fetch fails.
      */
     maxAgeHours?: number;
 
