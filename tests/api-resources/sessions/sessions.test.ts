@@ -167,4 +167,23 @@ describe('resource sessions', () => {
       client.sessions.debug('id', { expiresIn: 60 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Browserbase.NotFoundError);
   });
+
+  test('setLabels: only required params', async () => {
+    const responsePromise = client.sessions.setLabels('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      labels: ['string'],
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('setLabels: required and optional params', async () => {
+    const response = await client.sessions.setLabels('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      labels: ['string'],
+    });
+  });
 });
