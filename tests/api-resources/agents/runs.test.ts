@@ -26,6 +26,7 @@ describe('resource runs', () => {
       agentId: 'agentId',
       browserSettings: {
         context: { id: 'id', persist: true },
+        logSession: true,
         proxies: [
           {
             type: 'browserbase',
@@ -35,8 +36,10 @@ describe('resource runs', () => {
               city: 'city',
               state: 'se',
             },
+            proxyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
           },
         ],
+        recordSession: true,
         verified: true,
       },
       pauseWhen: 'x',
