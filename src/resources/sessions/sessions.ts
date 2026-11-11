@@ -3,6 +3,7 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
+import * as LabelsAPI from '../labels';
 import * as DownloadsAPI from './downloads';
 import { Downloads } from './downloads';
 import * as LogsAPI from './logs';
@@ -97,6 +98,18 @@ export class Sessions extends APIResource {
       return this.debug(id, {}, query);
     }
     return this._client.get(`/v1/sessions/${id}/debug`, { query, ...options });
+  }
+
+  /**
+   * Atomically replace a session's labels. Returns the response after the assignment
+   * commits.
+   */
+  setLabels(
+    id: string,
+    body: SessionSetLabelsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionSetLabelsResponse> {
+    return this._client.put(`/v1/sessions/${id}/labels`, { body, ...options });
   }
 }
 
@@ -231,6 +244,10 @@ export namespace SessionRetrieveResponse {
 }
 
 export type SessionListResponse = Array<Session>;
+
+export interface SessionSetLabelsResponse {
+  labels: Array<LabelsAPI.Label>;
+}
 
 export interface SessionCreateParams {
   browserSettings?: SessionCreateParams.BrowserSettings;
@@ -551,6 +568,14 @@ export interface SessionDebugParams {
   expiresIn?: number;
 }
 
+export interface SessionSetLabelsParams {
+  /**
+   * Complete replacement set of label names. Empty clears assignments; missing names
+   * create labels.
+   */
+  labels: Array<string>;
+}
+
 Sessions.Downloads = Downloads;
 Sessions.Logs = Logs;
 Sessions.Recording = Recording;
@@ -564,11 +589,13 @@ export declare namespace Sessions {
     type SessionCreateResponse as SessionCreateResponse,
     type SessionRetrieveResponse as SessionRetrieveResponse,
     type SessionListResponse as SessionListResponse,
+    type SessionSetLabelsResponse as SessionSetLabelsResponse,
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
     type SessionDebugParams as SessionDebugParams,
+    type SessionSetLabelsParams as SessionSetLabelsParams,
   };
 
   export { Downloads as Downloads };

@@ -63,6 +63,20 @@ Methods:
 - <code title="post /v1/functions/{id}/secrets">client.functions.secrets.<a href="./src/resources/functions/secrets.ts">attach</a>(id, { ...params }) -> void</code>
 - <code title="delete /v1/functions/{id}/secrets/{secretId}">client.functions.secrets.<a href="./src/resources/functions/secrets.ts">detach</a>(id, secretId) -> void</code>
 
+# Labels
+
+Types:
+
+- <code><a href="./src/resources/labels.ts">Label</a></code>
+- <code><a href="./src/resources/labels.ts">LabelListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/labels">client.labels.<a href="./src/resources/labels.ts">create</a>({ ...params }) -> Label</code>
+- <code title="patch /v1/labels/{labelId}">client.labels.<a href="./src/resources/labels.ts">update</a>(labelId, { ...params }) -> Label</code>
+- <code title="get /v1/labels">client.labels.<a href="./src/resources/labels.ts">list</a>({ ...params }) -> LabelListResponse</code>
+- <code title="delete /v1/labels/{labelId}">client.labels.<a href="./src/resources/labels.ts">delete</a>(labelId) -> void</code>
+
 # Projects
 
 Types:
@@ -113,6 +127,7 @@ Types:
 - <code><a href="./src/resources/sessions/sessions.ts">SessionCreateResponse</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionRetrieveResponse</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionListResponse</a></code>
+- <code><a href="./src/resources/sessions/sessions.ts">SessionSetLabelsResponse</a></code>
 
 Methods:
 
@@ -121,6 +136,7 @@ Methods:
 - <code title="post /v1/sessions/{id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">update</a>(id, { ...params }) -> Session</code>
 - <code title="get /v1/sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">list</a>({ ...params }) -> SessionListResponse</code>
 - <code title="get /v1/sessions/{id}/debug">client.sessions.<a href="./src/resources/sessions/sessions.ts">debug</a>(id, { ...params }) -> SessionLiveURLs</code>
+- <code title="put /v1/sessions/{id}/labels">client.sessions.<a href="./src/resources/sessions/sessions.ts">setLabels</a>(id, { ...params }) -> SessionSetLabelsResponse</code>
 
 ## Downloads
 
