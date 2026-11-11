@@ -23,9 +23,18 @@ export {
   type ContextUpdateResponse,
   type ContextCreateParams,
 } from './contexts';
+export { DownloadsOffsetPage, Downloads, type Download, type DownloadListParams } from './downloads';
 export { Extensions, type Extension, type ExtensionCreateParams } from './extensions';
 export { FetchAPI, type FetchAPICreateResponse, type FetchAPICreateParams } from './fetch-api';
 export { Functions } from './functions/functions';
+export {
+  Labels,
+  type Label,
+  type LabelListResponse,
+  type LabelCreateParams,
+  type LabelUpdateParams,
+  type LabelListParams,
+} from './labels';
 export {
   NavigationPolicies,
   type NavigationPolicy,
@@ -51,11 +60,13 @@ export {
   type SessionCreateResponse,
   type SessionRetrieveResponse,
   type SessionListResponse,
+  type SessionSetLabelsResponse,
   type SessionCreateParams,
   type SessionRetrieveParams,
   type SessionUpdateParams,
   type SessionListParams,
   type SessionDebugParams,
+  type SessionSetLabelsParams,
 } from './sessions/sessions';
 export {
   Webhooks,
