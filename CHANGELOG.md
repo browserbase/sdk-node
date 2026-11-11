@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.26.0](https://github.com/browserbase/sdk-node/compare/v2.25.0...v2.26.0) (2026-11-11)
+
+
+### Features
+
+* release managed static proxies, session labels, and agent recording controls ([#229](https://github.com/browserbase/sdk-node/issues/229)) ([b3dfebf](https://github.com/browserbase/sdk-node/commit/b3dfebf00ca5e355f915471c41c3335eea74c973))
+
 ## [2.25.0](https://github.com/browserbase/sdk-node/compare/v2.24.0...v2.25.0) (2026-11-04)
 
 
