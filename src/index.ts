@@ -23,7 +23,14 @@ import {
 import { Download, DownloadListParams, Downloads, DownloadsOffsetPage } from './resources/downloads';
 import { Extension, ExtensionCreateParams, Extensions } from './resources/extensions';
 import { FetchAPI, FetchAPICreateParams, FetchAPICreateResponse } from './resources/fetch-api';
-import { Label, LabelCreateParams, LabelUpdateParams, Labels } from './resources/labels';
+import {
+  Label,
+  LabelCreateParams,
+  LabelListParams,
+  LabelListResponse,
+  LabelUpdateParams,
+  Labels,
+} from './resources/labels';
 import {
   NavigationPolicies,
   NavigationPolicy,
@@ -329,8 +336,10 @@ export declare namespace Browserbase {
   export {
     Labels as Labels,
     type Label as Label,
+    type LabelListResponse as LabelListResponse,
     type LabelCreateParams as LabelCreateParams,
     type LabelUpdateParams as LabelUpdateParams,
+    type LabelListParams as LabelListParams,
   };
 
   export {
