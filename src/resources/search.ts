@@ -52,6 +52,12 @@ export namespace SearchWebResponse {
     author?: string;
 
     /**
+     * Passages from the page most relevant to the query. Only set when the request
+     * asks for excerpts.
+     */
+    excerpts?: Array<string>;
+
+    /**
      * Favicon URL
      */
     favicon?: string;
@@ -84,6 +90,20 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Return the passages of each page most relevant to the query. Omit to return no
+     * excerpts.
+     */
+    excerpts?: Variant0.Excerpts;
+
+    /**
+     * Refetch a page when the cached copy is older than this many hours, from 1
+     * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
+     * provider only). Omit to use the provider default. A provider can return an older
+     * cached copy when a live fetch fails.
+     */
+    maxAgeHours?: number;
+
+    /**
      * The search mode used by the underlying provider. Defaults to `advanced` for
      * `parallel` and `fast` for `exa`. See the
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
@@ -95,6 +115,25 @@ export declare namespace SearchWebParams {
      * Number of results to return (1-25)
      */
     numResults?: number;
+
+    /**
+     * The task intent and soft preferences for the search, in natural language. Adds
+     * context to query without replacing it.
+     */
+    objective?: string;
+  }
+
+  export namespace Variant0 {
+    /**
+     * Return the passages of each page most relevant to the query. Omit to return no
+     * excerpts.
+     */
+    export interface Excerpts {
+      /**
+       * Maximum excerpt characters per result. Omit to use the provider default.
+       */
+      maxCharacters?: number;
+    }
   }
 
   export interface Variant1 {
@@ -110,6 +149,20 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Return the passages of each page most relevant to the query. Omit to return no
+     * excerpts.
+     */
+    excerpts?: Variant1.Excerpts;
+
+    /**
+     * Refetch a page when the cached copy is older than this many hours, from 1
+     * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
+     * provider only). Omit to use the provider default. A provider can return an older
+     * cached copy when a live fetch fails.
+     */
+    maxAgeHours?: number;
+
+    /**
      * The search mode used by the underlying provider. Defaults to `advanced` for
      * `parallel` and `fast` for `exa`. See the
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
@@ -121,6 +174,25 @@ export declare namespace SearchWebParams {
      * Number of results to return (1-25)
      */
     numResults?: number;
+
+    /**
+     * The task intent and soft preferences for the search, in natural language. Adds
+     * context to query without replacing it.
+     */
+    objective?: string;
+  }
+
+  export namespace Variant1 {
+    /**
+     * Return the passages of each page most relevant to the query. Omit to return no
+     * excerpts.
+     */
+    export interface Excerpts {
+      /**
+       * Maximum excerpt characters per result. Omit to use the provider default.
+       */
+      maxCharacters?: number;
+    }
   }
 
   export interface Variant2 {
@@ -130,9 +202,42 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Return the passages of each page most relevant to the query. Omit to return no
+     * excerpts.
+     */
+    excerpts?: Variant2.Excerpts;
+
+    /**
+     * Refetch a page when the cached copy is older than this many hours, from 1
+     * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
+     * provider only). Omit to use the provider default. A provider can return an older
+     * cached copy when a live fetch fails.
+     */
+    maxAgeHours?: number;
+
+    /**
      * Number of results to return (1-25)
      */
     numResults?: number;
+
+    /**
+     * The task intent and soft preferences for the search, in natural language. Adds
+     * context to query without replacing it.
+     */
+    objective?: string;
+  }
+
+  export namespace Variant2 {
+    /**
+     * Return the passages of each page most relevant to the query. Omit to return no
+     * excerpts.
+     */
+    export interface Excerpts {
+      /**
+       * Maximum excerpt characters per result. Omit to use the provider default.
+       */
+      maxCharacters?: number;
+    }
   }
 }
 
