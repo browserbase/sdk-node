@@ -68,11 +68,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/labels.ts">Label</a></code>
+- <code><a href="./src/resources/labels.ts">LabelListResponse</a></code>
 
 Methods:
 
 - <code title="post /v1/labels">client.labels.<a href="./src/resources/labels.ts">create</a>({ ...params }) -> Label</code>
 - <code title="patch /v1/labels/{labelId}">client.labels.<a href="./src/resources/labels.ts">update</a>(labelId, { ...params }) -> Label</code>
+- <code title="get /v1/labels">client.labels.<a href="./src/resources/labels.ts">list</a>({ ...params }) -> LabelListResponse</code>
 - <code title="delete /v1/labels/{labelId}">client.labels.<a href="./src/resources/labels.ts">delete</a>(labelId) -> void</code>
 
 # Projects
