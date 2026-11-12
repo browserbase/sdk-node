@@ -5,28 +5,29 @@ import * as Core from '../core';
 
 export class Certificates extends APIResource {
   /**
-   * Upload a Certificate
+   * Upload a PEM-encoded CA certificate file to your project for use in browser
+   * sessions.
    */
   create(body: CertificateCreateParams, options?: Core.RequestOptions): Core.APIPromise<Certificate> {
     return this._client.post('/v1/certificates', Core.multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
-   * Get a Certificate
+   * Retrieve metadata for an uploaded certificate by its ID.
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Certificate> {
     return this._client.get(`/v1/certificates/${id}`, options);
   }
 
   /**
-   * List Certificates
+   * List the certificates uploaded to your project.
    */
   list(options?: Core.RequestOptions): Core.APIPromise<CertificateListResponse> {
     return this._client.get('/v1/certificates', options);
   }
 
   /**
-   * Delete a Certificate
+   * Delete an uploaded certificate from your project by its ID.
    */
   delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.delete(`/v1/certificates/${id}`, {
