@@ -10,7 +10,7 @@ const client = new Browserbase({
 
 describe('resource fetchAPI', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.fetchAPI.create({ url: 'https://example.com' });
+    const responsePromise = client.fetchAPI.create({ url: 'url' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource fetchAPI', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.fetchAPI.create({
-      url: 'https://example.com',
+      url: 'url',
       allowInsecureSsl: true,
       allowRedirects: true,
       contextId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
