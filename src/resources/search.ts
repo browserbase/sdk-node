@@ -14,12 +14,6 @@ export class Search extends APIResource {
 
 export interface SearchWebResponse {
   /**
-   * The search provider that served the request. Can differ from the documented
-   * default when the project or the filters select another provider.
-   */
-  provider: 'parallel' | 'exa';
-
-  /**
    * The search query that was executed
    */
   query: string;
@@ -38,6 +32,12 @@ export interface SearchWebResponse {
    * The search mode that served the request.
    */
   mode?: 'fast' | 'advanced' | 'deep-lite' | 'deep';
+
+  /**
+   * The search provider that served the request. Can differ from the documented
+   * default when the project or the filters select another provider.
+   */
+  provider?: 'parallel' | 'exa';
 }
 
 export namespace SearchWebResponse {
