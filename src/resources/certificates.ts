@@ -5,15 +5,17 @@ import * as Core from '../core';
 
 export class Certificates extends APIResource {
   /**
-   * Upload a PEM-encoded CA certificate file to your project for use in browser
-   * sessions.
+   * Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the
+   * returned ID in `proxySettings.caCertificates` when creating a session so the
+   * browser trusts these certificates.
    */
   create(body: CertificateCreateParams, options?: Core.RequestOptions): Core.APIPromise<Certificate> {
     return this._client.post('/v1/certificates', Core.multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
-   * Retrieve metadata for an uploaded certificate by its ID.
+   * Retrieve metadata for an uploaded certificate by its ID, including its project
+   * ID and timestamps. The PEM content is not returned.
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<Certificate> {
     return this._client.get(`/v1/certificates/${id}`, options);
@@ -27,7 +29,9 @@ export class Certificates extends APIResource {
   }
 
   /**
-   * Delete an uploaded certificate from your project by its ID.
+   * Delete an uploaded certificate from your project by its ID. Session creation
+   * requests that still reference this ID in `proxySettings.caCertificates` fail
+   * with HTTP 400.
    */
   delete(id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.delete(`/v1/certificates/${id}`, {
