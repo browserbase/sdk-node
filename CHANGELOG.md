@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.27.0](https://github.com/browserbase/sdk-node/compare/v2.26.0...v2.27.0) (2026-11-13)
+
+
+### Features
+
+* add paginated downloads and file streaming ([93237c3](https://github.com/browserbase/sdk-node/commit/93237c3d812ef3dd28718ce8de7d36ccf70be633))
+* **api:** add labels and session set_labels methods ([1380f34](https://github.com/browserbase/sdk-node/commit/1380f34f4042414650382c524ac9b3f0e362400b))
+* **api:** Support additional browser settings for `/v1/agents/runs` ([6915361](https://github.com/browserbase/sdk-node/commit/6915361ed294a8f4cac17c0a2c4488d94835f208))
+
+
+### Chores
+
+* **internal:** generate SDK main from core, retire the spec sync ([19d52f6](https://github.com/browserbase/sdk-node/commit/19d52f66782af7891bcac4886f4a6ca95e4adf3e))
+
+
+### Documentation
+
+* **api:** add certificate endpoint descriptions ([411b440](https://github.com/browserbase/sdk-node/commit/411b440d6bcd10f5211fe7fd7e597b62236bbb31))
+
 ## [2.26.0](https://github.com/browserbase/sdk-node/compare/v2.25.0...v2.26.0) (2026-11-11)
 
 
