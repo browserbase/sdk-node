@@ -14,6 +14,12 @@ export class Search extends APIResource {
 
 export interface SearchWebResponse {
   /**
+   * The search provider that served the request. Can differ from the documented
+   * default when the project or the filters select another provider.
+   */
+  provider: 'parallel' | 'exa';
+
+  /**
    * The search query that was executed
    */
   query: string;
@@ -27,6 +33,11 @@ export interface SearchWebResponse {
    * List of search results
    */
   results: Array<SearchWebResponse.Result>;
+
+  /**
+   * The search mode that served the request.
+   */
+  mode?: 'fast' | 'advanced' | 'deep-lite' | 'deep';
 }
 
 export namespace SearchWebResponse {
@@ -90,16 +101,14 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Return the passages of each page most relevant to the query. Omit to return no
-     * excerpts.
+     * Return the passages of each page most relevant to the query. Defaults to false.
      */
-    excerpts?: Variant0.Excerpts;
+    excerpts?: boolean;
 
     /**
-     * Refetch a page when the cached copy is older than this many hours, from 1
-     * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
-     * provider only). Omit to use the provider default. A provider can return an older
-     * cached copy when a live fetch fails.
+     * Refetch a page when the cached copy is older than this many hours. Omit to use
+     * the provider default. A provider can return an older cached copy when a live
+     * fetch fails.
      */
     maxAgeHours?: number;
 
@@ -112,7 +121,7 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'advanced';
 
     /**
-     * Number of results to return (1-25)
+     * Number of results to return
      */
     numResults?: number;
 
@@ -121,19 +130,6 @@ export declare namespace SearchWebParams {
      * context to query without replacing it.
      */
     objective?: string;
-  }
-
-  export namespace Variant0 {
-    /**
-     * Return the passages of each page most relevant to the query. Omit to return no
-     * excerpts.
-     */
-    export interface Excerpts {
-      /**
-       * Maximum excerpt characters per result. Omit to use the provider default.
-       */
-      maxCharacters?: number;
-    }
   }
 
   export interface Variant1 {
@@ -149,16 +145,14 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Return the passages of each page most relevant to the query. Omit to return no
-     * excerpts.
+     * Return the passages of each page most relevant to the query. Defaults to false.
      */
-    excerpts?: Variant1.Excerpts;
+    excerpts?: boolean;
 
     /**
-     * Refetch a page when the cached copy is older than this many hours, from 1
-     * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
-     * provider only). Omit to use the provider default. A provider can return an older
-     * cached copy when a live fetch fails.
+     * Refetch a page when the cached copy is older than this many hours. Omit to use
+     * the provider default. A provider can return an older cached copy when a live
+     * fetch fails.
      */
     maxAgeHours?: number;
 
@@ -171,7 +165,7 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'deep-lite' | 'deep';
 
     /**
-     * Number of results to return (1-25)
+     * Number of results to return
      */
     numResults?: number;
 
@@ -180,19 +174,6 @@ export declare namespace SearchWebParams {
      * context to query without replacing it.
      */
     objective?: string;
-  }
-
-  export namespace Variant1 {
-    /**
-     * Return the passages of each page most relevant to the query. Omit to return no
-     * excerpts.
-     */
-    export interface Excerpts {
-      /**
-       * Maximum excerpt characters per result. Omit to use the provider default.
-       */
-      maxCharacters?: number;
-    }
   }
 
   export interface Variant2 {
@@ -202,21 +183,19 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Return the passages of each page most relevant to the query. Omit to return no
-     * excerpts.
+     * Return the passages of each page most relevant to the query. Defaults to false.
      */
-    excerpts?: Variant2.Excerpts;
+    excerpts?: boolean;
 
     /**
-     * Refetch a page when the cached copy is older than this many hours, from 1
-     * to 720. 0 always fetches fresh content and -1 uses only cached content (exa
-     * provider only). Omit to use the provider default. A provider can return an older
-     * cached copy when a live fetch fails.
+     * Refetch a page when the cached copy is older than this many hours. Omit to use
+     * the provider default. A provider can return an older cached copy when a live
+     * fetch fails.
      */
     maxAgeHours?: number;
 
     /**
-     * Number of results to return (1-25)
+     * Number of results to return
      */
     numResults?: number;
 
@@ -225,19 +204,6 @@ export declare namespace SearchWebParams {
      * context to query without replacing it.
      */
     objective?: string;
-  }
-
-  export namespace Variant2 {
-    /**
-     * Return the passages of each page most relevant to the query. Omit to return no
-     * excerpts.
-     */
-    export interface Excerpts {
-      /**
-       * Maximum excerpt characters per result. Omit to use the provider default.
-       */
-      maxCharacters?: number;
-    }
   }
 }
 

@@ -24,8 +24,8 @@ describe('resource search', () => {
     const response = await client.search.web({
       provider: 'parallel',
       query: 'x',
-      excerpts: { maxCharacters: 1 },
-      maxAgeHours: -1,
+      excerpts: true,
+      maxAgeHours: 1,
       mode: 'fast',
       numResults: 1,
       objective: 'P',
