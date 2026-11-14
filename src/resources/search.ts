@@ -27,6 +27,17 @@ export interface SearchWebResponse {
    * List of search results
    */
   results: Array<SearchWebResponse.Result>;
+
+  /**
+   * The search mode that served the request.
+   */
+  mode?: 'fast' | 'advanced' | 'deep-lite' | 'deep';
+
+  /**
+   * The search provider that served the request. Can differ from the documented
+   * default when the project or the filters select another provider.
+   */
+  provider?: 'parallel' | 'exa';
 }
 
 export namespace SearchWebResponse {
@@ -50,6 +61,12 @@ export namespace SearchWebResponse {
      * Author of the content if available
      */
     author?: string;
+
+    /**
+     * Passages from the page most relevant to the query. Only set when the request
+     * asks for excerpts.
+     */
+    excerpts?: Array<string>;
 
     /**
      * Favicon URL
@@ -84,6 +101,18 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Return the passages of each page most relevant to the query. Defaults to false.
+     */
+    excerpts?: boolean;
+
+    /**
+     * Refetch a page when the cached copy is older than this many hours. Omit to use
+     * the provider default. A provider can return an older cached copy when a live
+     * fetch fails.
+     */
+    maxAgeHours?: number;
+
+    /**
      * The search mode used by the underlying provider. Defaults to `advanced` for
      * `parallel` and `fast` for `exa`. See the
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
@@ -92,9 +121,15 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'advanced';
 
     /**
-     * Number of results to return (1-25)
+     * Number of results to return
      */
     numResults?: number;
+
+    /**
+     * The task intent and soft preferences for the search, in natural language. Adds
+     * context to query without replacing it.
+     */
+    objective?: string;
   }
 
   export interface Variant1 {
@@ -110,6 +145,18 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Return the passages of each page most relevant to the query. Defaults to false.
+     */
+    excerpts?: boolean;
+
+    /**
+     * Refetch a page when the cached copy is older than this many hours. Omit to use
+     * the provider default. A provider can return an older cached copy when a live
+     * fetch fails.
+     */
+    maxAgeHours?: number;
+
+    /**
      * The search mode used by the underlying provider. Defaults to `advanced` for
      * `parallel` and `fast` for `exa`. See the
      * [Search docs](https://docs.browserbase.com/platform/search/overview) for the
@@ -118,9 +165,15 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'deep-lite' | 'deep';
 
     /**
-     * Number of results to return (1-25)
+     * Number of results to return
      */
     numResults?: number;
+
+    /**
+     * The task intent and soft preferences for the search, in natural language. Adds
+     * context to query without replacing it.
+     */
+    objective?: string;
   }
 
   export interface Variant2 {
@@ -130,9 +183,27 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Number of results to return (1-25)
+     * Return the passages of each page most relevant to the query. Defaults to false.
+     */
+    excerpts?: boolean;
+
+    /**
+     * Refetch a page when the cached copy is older than this many hours. Omit to use
+     * the provider default. A provider can return an older cached copy when a live
+     * fetch fails.
+     */
+    maxAgeHours?: number;
+
+    /**
+     * Number of results to return
      */
     numResults?: number;
+
+    /**
+     * The task intent and soft preferences for the search, in natural language. Adds
+     * context to query without replacing it.
+     */
+    objective?: string;
   }
 }
 
