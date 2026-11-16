@@ -495,6 +495,12 @@ export namespace RunCreateParams {
     recordSession?: boolean;
 
     /**
+     * The requested region for the browser session. Defaults to us-west-2. Project
+     * routing may override this value.
+     */
+    region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
+
+    /**
      * Set true to enable Browserbase Verified for the session.
      */
     verified?: boolean;
