@@ -505,4 +505,15 @@ describe('retries', () => {
     ).toEqual(JSON.stringify({ a: 1 }));
     expect(count).toEqual(3);
   });
+
+  test('signal aborts the retry wait', async () => {
+    const client = new Browserbase({
+      apiKey: 'My API Key',
+      fetch: async () => new Response(undefined, { status: 429, headers: { 'Retry-After': '60' } }),
+    });
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), 10);
+
+    await expect(client.get('/foo', { signal: controller.signal })).rejects.toThrow(APIUserAbortError);
+  });
 });
