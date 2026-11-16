@@ -68,6 +68,7 @@ export {
   type SessionDebugParams,
   type SessionSetLabelsParams,
 } from './sessions/sessions';
+export { StaticProxies, type StaticProxyListResponse, type StaticProxyListParams } from './static-proxies';
 export {
   Webhooks,
   type Webhook,
