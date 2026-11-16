@@ -43,6 +43,7 @@ describe('resource runs', () => {
         ],
         proxySettings: { caCertificates: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'] },
         recordSession: true,
+        region: 'us-west-2',
         verified: true,
       },
       pauseWhen: 'x',
