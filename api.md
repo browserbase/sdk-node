@@ -131,6 +131,16 @@ Methods:
 - <code title="delete /v1/secrets/{id}">client.secrets.<a href="./src/resources/secrets.ts">delete</a>(id) -> void</code>
 - <code title="get /v1/secrets/keypair">client.secrets.<a href="./src/resources/secrets.ts">getPublicKey</a>() -> SecretsKeypair</code>
 
+# StaticProxies
+
+Types:
+
+- <code><a href="./src/resources/static-proxies.ts">StaticProxyListResponse</a></code>
+
+Methods:
+
+- <code title="get /v1/static-proxies">client.staticProxies.<a href="./src/resources/static-proxies.ts">list</a>({ ...params }) -> StaticProxyListResponse</code>
+
 # Sessions
 
 Types:

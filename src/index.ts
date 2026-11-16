@@ -49,6 +49,7 @@ import {
   Secrets,
   SecretsKeypair,
 } from './resources/secrets';
+import { StaticProxies, StaticProxyListParams, StaticProxyListResponse } from './resources/static-proxies';
 import {
   Webhook,
   WebhookCreateParams,
@@ -227,6 +228,7 @@ export class Browserbase extends Core.APIClient {
   projects: API.Projects = new API.Projects(this);
   search: API.Search = new API.Search(this);
   secrets: API.Secrets = new API.Secrets(this);
+  staticProxies: API.StaticProxies = new API.StaticProxies(this);
   sessions: API.Sessions = new API.Sessions(this);
   agents: API.Agents = new API.Agents(this);
   webhooks: API.Webhooks = new API.Webhooks(this);
@@ -286,6 +288,7 @@ Browserbase.Labels = Labels;
 Browserbase.Projects = Projects;
 Browserbase.Search = Search;
 Browserbase.Secrets = Secrets;
+Browserbase.StaticProxies = StaticProxies;
 Browserbase.Sessions = Sessions;
 Browserbase.Agents = Agents;
 Browserbase.Webhooks = Webhooks;
@@ -363,6 +366,12 @@ export declare namespace Browserbase {
     type SecretCreateParams as SecretCreateParams,
     type SecretUpdateParams as SecretUpdateParams,
     type SecretListParams as SecretListParams,
+  };
+
+  export {
+    StaticProxies as StaticProxies,
+    type StaticProxyListResponse as StaticProxyListResponse,
+    type StaticProxyListParams as StaticProxyListParams,
   };
 
   export {
