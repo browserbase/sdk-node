@@ -4,6 +4,9 @@ import Browserbase from '@browserbasehq/sdk';
 import { APIUserAbortError } from '@browserbasehq/sdk';
 import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
+import { getEventListeners } from 'node:events';
+import http from 'node:http';
+import { type AddressInfo } from 'node:net';
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -129,6 +132,37 @@ describe('instantiate client', () => {
 
     await expect(client.get('/foo', { signal: controller.signal })).rejects.toThrowError(APIUserAbortError);
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  test('does not add listeners to a reused signal', async () => {
+    const client = new Browserbase({
+      apiKey: 'My API Key',
+      fetch: async () => new Response('{}', { headers: { 'Content-Type': 'application/json' } }),
+    });
+    const { signal } = new AbortController();
+
+    for (let i = 0; i < 3; i++) await client.get('/foo', { signal });
+
+    expect(getEventListeners(signal, 'abort')).toHaveLength(0);
+  });
+
+  test.each([
+    ['native fetch', undefined],
+    ['node-fetch', defaultFetch],
+  ])('signal still aborts the response body with %s', async (_, fetch) => {
+    const server = http.createServer((req, res) => res.writeHead(200).write('partial'));
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address() as AddressInfo;
+    const client = new Browserbase({ apiKey: 'My API Key', baseURL: `http://127.0.0.1:${port}`, fetch });
+    const controller = new AbortController();
+    try {
+      const response = await client.get('/foo', { signal: controller.signal }).asResponse();
+      controller.abort();
+      await expect(response.text()).rejects.toThrow();
+    } finally {
+      server.closeAllConnections();
+      server.close();
+    }
   });
 
   test('normalized method', async () => {
