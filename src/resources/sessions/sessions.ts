@@ -358,8 +358,8 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
-     * Set `true` to ignore TLS certificate errors in the browser. When omitted, your
-     * project's default applies.
+     * Set `true` to ignore TLS certificate errors in the browser session. When
+     * omitted, your project's default applies.
      */
     ignoreCertificateErrors?: boolean;
 
