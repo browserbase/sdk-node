@@ -358,6 +358,11 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
+     * Built-in Browserbase extensions to load in the session.
+     */
+    extensions?: Array<'onepassword' | 'browser-events' | 'stagehand'>;
+
+    /**
      * Set `true` to ignore TLS certificate errors in the browser session (for example,
      * to reach hosts with expired or self-signed certificates). When omitted, your
      * project's default applies.
