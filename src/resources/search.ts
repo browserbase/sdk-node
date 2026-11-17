@@ -101,9 +101,33 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Focus the search on a category of content
+     */
+    category?: 'company' | 'publication' | 'news' | 'personal site' | 'financial report' | 'people';
+
+    /**
+     * Only return results published before this date (ISO 8601). Not supported with
+     * the company or people categories.
+     */
+    endPublishedDate?: string;
+
+    /**
      * Return the passages of each page most relevant to the query. Defaults to false.
      */
     excerpts?: boolean;
+
+    /**
+     * Never return results from these domains. Accepts the same entry formats as
+     * includeDomains. Not supported with the people category.
+     */
+    excludeDomains?: Array<string>;
+
+    /**
+     * Only return results from these domains. Entries can be a hostname (example.com),
+     * a hostname with a path prefix (example.com/docs), or a wildcard subdomain
+     * (\*.example.com).
+     */
+    includeDomains?: Array<string>;
 
     /**
      * Refetch a page when the cached copy is older than this many hours. Omit to use
@@ -121,6 +145,11 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'advanced';
 
     /**
+     * Filter unsafe content from the results. Defaults to false.
+     */
+    moderation?: boolean;
+
+    /**
      * Number of results to return
      */
     numResults?: number;
@@ -130,6 +159,19 @@ export declare namespace SearchWebParams {
      * context to query without replacing it.
      */
     objective?: string;
+
+    /**
+     * Only return results published after this date (ISO 8601). Not supported with the
+     * company or people categories.
+     */
+    startPublishedDate?: string;
+
+    /**
+     * Two-letter ISO 3166-1 country code of the end user, used to localize results.
+     * This localizes ranking and does not restrict results to sources from that
+     * country.
+     */
+    userLocation?: string;
   }
 
   export interface Variant1 {
@@ -145,9 +187,33 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Focus the search on a category of content
+     */
+    category?: 'company' | 'publication' | 'news' | 'personal site' | 'financial report' | 'people';
+
+    /**
+     * Only return results published before this date (ISO 8601). Not supported with
+     * the company or people categories.
+     */
+    endPublishedDate?: string;
+
+    /**
      * Return the passages of each page most relevant to the query. Defaults to false.
      */
     excerpts?: boolean;
+
+    /**
+     * Never return results from these domains. Accepts the same entry formats as
+     * includeDomains. Not supported with the people category.
+     */
+    excludeDomains?: Array<string>;
+
+    /**
+     * Only return results from these domains. Entries can be a hostname (example.com),
+     * a hostname with a path prefix (example.com/docs), or a wildcard subdomain
+     * (\*.example.com).
+     */
+    includeDomains?: Array<string>;
 
     /**
      * Refetch a page when the cached copy is older than this many hours. Omit to use
@@ -165,6 +231,11 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'deep-lite' | 'deep';
 
     /**
+     * Filter unsafe content from the results. Defaults to false.
+     */
+    moderation?: boolean;
+
+    /**
      * Number of results to return
      */
     numResults?: number;
@@ -174,6 +245,19 @@ export declare namespace SearchWebParams {
      * context to query without replacing it.
      */
     objective?: string;
+
+    /**
+     * Only return results published after this date (ISO 8601). Not supported with the
+     * company or people categories.
+     */
+    startPublishedDate?: string;
+
+    /**
+     * Two-letter ISO 3166-1 country code of the end user, used to localize results.
+     * This localizes ranking and does not restrict results to sources from that
+     * country.
+     */
+    userLocation?: string;
   }
 
   export interface Variant2 {
@@ -183,9 +267,33 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
+     * Focus the search on a category of content
+     */
+    category?: 'company' | 'publication' | 'news' | 'personal site' | 'financial report' | 'people';
+
+    /**
+     * Only return results published before this date (ISO 8601). Not supported with
+     * the company or people categories.
+     */
+    endPublishedDate?: string;
+
+    /**
      * Return the passages of each page most relevant to the query. Defaults to false.
      */
     excerpts?: boolean;
+
+    /**
+     * Never return results from these domains. Accepts the same entry formats as
+     * includeDomains. Not supported with the people category.
+     */
+    excludeDomains?: Array<string>;
+
+    /**
+     * Only return results from these domains. Entries can be a hostname (example.com),
+     * a hostname with a path prefix (example.com/docs), or a wildcard subdomain
+     * (\*.example.com).
+     */
+    includeDomains?: Array<string>;
 
     /**
      * Refetch a page when the cached copy is older than this many hours. Omit to use
@@ -193,6 +301,11 @@ export declare namespace SearchWebParams {
      * fetch fails.
      */
     maxAgeHours?: number;
+
+    /**
+     * Filter unsafe content from the results. Defaults to false.
+     */
+    moderation?: boolean;
 
     /**
      * Number of results to return
@@ -204,6 +317,19 @@ export declare namespace SearchWebParams {
      * context to query without replacing it.
      */
     objective?: string;
+
+    /**
+     * Only return results published after this date (ISO 8601). Not supported with the
+     * company or people categories.
+     */
+    startPublishedDate?: string;
+
+    /**
+     * Two-letter ISO 3166-1 country code of the end user, used to localize results.
+     * This localizes ranking and does not restrict results to sources from that
+     * country.
+     */
+    userLocation?: string;
   }
 }
 
