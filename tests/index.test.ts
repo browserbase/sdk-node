@@ -296,6 +296,56 @@ describe('request building', () => {
 });
 
 describe('retries', () => {
+  test('cancels a web response body before retrying', async () => {
+    let count = 0;
+    const cancel = jest.fn();
+    const testFetch = async (): Promise<Response> => {
+      if (count++ === 0) {
+        const body = new ReadableStream({ cancel });
+        return new globalThis.Response(body, { status: 500 }) as unknown as Response;
+      }
+      return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
+    };
+    const client = new Browserbase({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 1 });
+
+    await expect(client.get('/foo')).resolves.toEqual({ a: 1 });
+
+    expect(cancel).toHaveBeenCalledTimes(1);
+  });
+
+  test('releases a node-style async iterable body before retrying', async () => {
+    let count = 0;
+    const returnBody = jest.fn();
+    const retryResponse = {
+      body: { [Symbol.asyncIterator]: () => ({ return: returnBody }) },
+      headers: new Response().headers,
+      ok: false,
+      status: 500,
+      url: 'https://example.com/retry',
+    } as unknown as Response;
+    const testFetch = async (): Promise<Response> => {
+      if (count++ === 0) return retryResponse;
+      return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
+    };
+    const client = new Browserbase({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 1 });
+
+    await expect(client.get('/foo')).resolves.toEqual({ a: 1 });
+
+    expect(returnBody).toHaveBeenCalledTimes(1);
+  });
+
+  test('retries responses without bodies', async () => {
+    let count = 0;
+    const testFetch = async (): Promise<Response> => {
+      if (count++ === 0) return new Response(undefined, { status: 500 });
+      return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
+    };
+    const client = new Browserbase({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 1 });
+
+    await expect(client.get('/foo')).resolves.toEqual({ a: 1 });
+    expect(count).toBe(2);
+  });
+
   test('retry on timeout', async () => {
     let count = 0;
     const testFetch = async (url: RequestInfo, { signal }: RequestInit = {}): Promise<Response> => {
