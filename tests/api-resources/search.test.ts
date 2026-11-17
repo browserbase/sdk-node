@@ -24,11 +24,18 @@ describe('resource search', () => {
     const response = await client.search.web({
       provider: 'parallel',
       query: 'x',
+      category: 'company',
+      endPublishedDate: '2019-12-27T18:11:19.117Z',
       excerpts: true,
+      excludeDomains: ['x'],
+      includeDomains: ['x'],
       maxAgeHours: 1,
       mode: 'fast',
+      moderation: true,
       numResults: 1,
       objective: 'P',
+      startPublishedDate: '2019-12-27T18:11:19.117Z',
+      userLocation: 'se',
     });
   });
 });
