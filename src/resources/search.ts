@@ -91,7 +91,9 @@ export declare namespace SearchWebParams {
   export interface Variant0 {
     /**
      * Search provider to serve this request. Defaults to `parallel`, which uses
-     * `advanced` mode unless `mode` is set.
+     * `advanced` mode unless `mode` is set. If you omit it and set a filter that
+     * `parallel` doesn't support, `exa` serves the request at `exa` pricing. The
+     * response `provider` field shows which one served it.
      */
     provider: 'parallel';
 
@@ -101,13 +103,15 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Focus the search on a category of content
+     * Focus the search on a category of content. Only the `exa` provider supports this
+     * filter.
      */
     category?: 'company' | 'publication' | 'news' | 'personal site' | 'financial report' | 'people';
 
     /**
-     * Only return results published before this date (ISO 8601). Not supported with
-     * the company or people categories.
+     * Only return results published before this date-time (RFC 3339, for example
+     * 2026-01-01T00:00:00Z). Only the `exa` provider supports this filter. Not
+     * supported with the company or people categories.
      */
     endPublishedDate?: string;
 
@@ -125,7 +129,8 @@ export declare namespace SearchWebParams {
     /**
      * Only return results from these domains. Entries can be a hostname (example.com),
      * a hostname with a path prefix (example.com/docs), or a wildcard subdomain
-     * (\*.example.com).
+     * (\*.example.com). The `parallel` provider allows one list, not both, with at
+     * most 200 domains and no scheme, port, query string, or fragment.
      */
     includeDomains?: Array<string>;
 
@@ -145,7 +150,8 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'advanced';
 
     /**
-     * Filter unsafe content from the results. Defaults to false.
+     * Filter unsafe content from the results. Defaults to false. Only the `exa`
+     * provider supports `true`.
      */
     moderation?: boolean;
 
@@ -161,15 +167,17 @@ export declare namespace SearchWebParams {
     objective?: string;
 
     /**
-     * Only return results published after this date (ISO 8601). Not supported with the
-     * company or people categories.
+     * Only return results published after this date-time (RFC 3339, for example
+     * 2026-01-01T00:00:00Z). The `parallel` provider rounds it up to a whole UTC day.
+     * Not supported with the company or people categories.
      */
     startPublishedDate?: string;
 
     /**
-     * Two-letter ISO 3166-1 country code of the end user, used to localize results.
-     * This localizes ranking and does not restrict results to sources from that
-     * country.
+     * Two-letter ISO 3166-1 country code of the end user. Localizes ranking without
+     * restricting results to sources from that country. The `parallel` provider
+     * supports only
+     * [some countries](https://docs.browserbase.com/platform/search/overview#appendix-supported-countries).
      */
     userLocation?: string;
   }
@@ -177,7 +185,9 @@ export declare namespace SearchWebParams {
   export interface Variant1 {
     /**
      * Search provider to serve this request. Defaults to `parallel`, which uses
-     * `advanced` mode unless `mode` is set.
+     * `advanced` mode unless `mode` is set. If you omit it and set a filter that
+     * `parallel` doesn't support, `exa` serves the request at `exa` pricing. The
+     * response `provider` field shows which one served it.
      */
     provider: 'exa';
 
@@ -187,13 +197,15 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Focus the search on a category of content
+     * Focus the search on a category of content. Only the `exa` provider supports this
+     * filter.
      */
     category?: 'company' | 'publication' | 'news' | 'personal site' | 'financial report' | 'people';
 
     /**
-     * Only return results published before this date (ISO 8601). Not supported with
-     * the company or people categories.
+     * Only return results published before this date-time (RFC 3339, for example
+     * 2026-01-01T00:00:00Z). Only the `exa` provider supports this filter. Not
+     * supported with the company or people categories.
      */
     endPublishedDate?: string;
 
@@ -211,7 +223,8 @@ export declare namespace SearchWebParams {
     /**
      * Only return results from these domains. Entries can be a hostname (example.com),
      * a hostname with a path prefix (example.com/docs), or a wildcard subdomain
-     * (\*.example.com).
+     * (\*.example.com). The `parallel` provider allows one list, not both, with at
+     * most 200 domains and no scheme, port, query string, or fragment.
      */
     includeDomains?: Array<string>;
 
@@ -231,7 +244,8 @@ export declare namespace SearchWebParams {
     mode?: 'fast' | 'deep-lite' | 'deep';
 
     /**
-     * Filter unsafe content from the results. Defaults to false.
+     * Filter unsafe content from the results. Defaults to false. Only the `exa`
+     * provider supports `true`.
      */
     moderation?: boolean;
 
@@ -247,15 +261,17 @@ export declare namespace SearchWebParams {
     objective?: string;
 
     /**
-     * Only return results published after this date (ISO 8601). Not supported with the
-     * company or people categories.
+     * Only return results published after this date-time (RFC 3339, for example
+     * 2026-01-01T00:00:00Z). The `parallel` provider rounds it up to a whole UTC day.
+     * Not supported with the company or people categories.
      */
     startPublishedDate?: string;
 
     /**
-     * Two-letter ISO 3166-1 country code of the end user, used to localize results.
-     * This localizes ranking and does not restrict results to sources from that
-     * country.
+     * Two-letter ISO 3166-1 country code of the end user. Localizes ranking without
+     * restricting results to sources from that country. The `parallel` provider
+     * supports only
+     * [some countries](https://docs.browserbase.com/platform/search/overview#appendix-supported-countries).
      */
     userLocation?: string;
   }
@@ -267,13 +283,15 @@ export declare namespace SearchWebParams {
     query: string;
 
     /**
-     * Focus the search on a category of content
+     * Focus the search on a category of content. Only the `exa` provider supports this
+     * filter.
      */
     category?: 'company' | 'publication' | 'news' | 'personal site' | 'financial report' | 'people';
 
     /**
-     * Only return results published before this date (ISO 8601). Not supported with
-     * the company or people categories.
+     * Only return results published before this date-time (RFC 3339, for example
+     * 2026-01-01T00:00:00Z). Only the `exa` provider supports this filter. Not
+     * supported with the company or people categories.
      */
     endPublishedDate?: string;
 
@@ -291,7 +309,8 @@ export declare namespace SearchWebParams {
     /**
      * Only return results from these domains. Entries can be a hostname (example.com),
      * a hostname with a path prefix (example.com/docs), or a wildcard subdomain
-     * (\*.example.com).
+     * (\*.example.com). The `parallel` provider allows one list, not both, with at
+     * most 200 domains and no scheme, port, query string, or fragment.
      */
     includeDomains?: Array<string>;
 
@@ -303,7 +322,8 @@ export declare namespace SearchWebParams {
     maxAgeHours?: number;
 
     /**
-     * Filter unsafe content from the results. Defaults to false.
+     * Filter unsafe content from the results. Defaults to false. Only the `exa`
+     * provider supports `true`.
      */
     moderation?: boolean;
 
@@ -319,15 +339,17 @@ export declare namespace SearchWebParams {
     objective?: string;
 
     /**
-     * Only return results published after this date (ISO 8601). Not supported with the
-     * company or people categories.
+     * Only return results published after this date-time (RFC 3339, for example
+     * 2026-01-01T00:00:00Z). The `parallel` provider rounds it up to a whole UTC day.
+     * Not supported with the company or people categories.
      */
     startPublishedDate?: string;
 
     /**
-     * Two-letter ISO 3166-1 country code of the end user, used to localize results.
-     * This localizes ranking and does not restrict results to sources from that
-     * country.
+     * Two-letter ISO 3166-1 country code of the end user. Localizes ranking without
+     * restricting results to sources from that country. The `parallel` provider
+     * supports only
+     * [some countries](https://docs.browserbase.com/platform/search/overview#appendix-supported-countries).
      */
     userLocation?: string;
   }
