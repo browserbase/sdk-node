@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.28.0](https://github.com/browserbase/sdk-node/compare/v2.27.0...v2.28.0) (2026-11-17)
+
+
+### Features
+
+* **api:** api-types: stop rejecting valid URLs on /v1/fetch ([8bbd54a](https://github.com/browserbase/sdk-node/commit/8bbd54a00630d54a18cdb3cc4d4871aa6f5ba42e))
+* **api:** Publish search filter params in SDK and docs specs ([0b24196](https://github.com/browserbase/sdk-node/commit/0b2419676bf08b48353ae726f4f2f60fb5f6ee02))
+
+
+### Chores
+
+* **internal:** resolve node-fetch to the SDK shim in resource tests ([#236](https://github.com/browserbase/sdk-node/issues/236)) ([666694e](https://github.com/browserbase/sdk-node/commit/666694e507ac6088d79d39ffd513a5ecd74e5e78))
+
+
+### Documentation
+
+* Add copy and link for new search api params ([4069e84](https://github.com/browserbase/sdk-node/commit/4069e84f86eee9b62b4be1992d4cf4af9d09b86a))
+
 ## [2.27.0](https://github.com/browserbase/sdk-node/compare/v2.26.0...v2.27.0) (2026-11-13)
 
 
