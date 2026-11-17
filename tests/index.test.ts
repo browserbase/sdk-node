@@ -4,6 +4,8 @@ import Browserbase from '@browserbasehq/sdk';
 import { APIUserAbortError } from '@browserbasehq/sdk';
 import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
+import http from 'node:http';
+import { type AddressInfo } from 'node:net';
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -504,5 +506,30 @@ describe('retries', () => {
         .then((r) => r.text()),
     ).toEqual(JSON.stringify({ a: 1 }));
     expect(count).toEqual(3);
+  });
+
+  test.each([
+    ['native fetch', undefined],
+    ['node-fetch', defaultFetch],
+  ])('releases the retried response body with %s', async (_, fetch) => {
+    let firstClosed: Promise<void> | undefined;
+    const server = http.createServer((req, res) => {
+      if (!firstClosed) {
+        firstClosed = new Promise((resolve) => res.on('close', resolve));
+        res.writeHead(500, { 'retry-after-ms': '0' }).write('partial');
+        return;
+      }
+      res.writeHead(200, { 'content-type': 'application/json' }).end('{}');
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address() as AddressInfo;
+    const client = new Browserbase({ apiKey: 'My API Key', baseURL: `http://127.0.0.1:${port}`, fetch });
+    try {
+      expect(await client.get('/foo')).toEqual({});
+      await firstClosed;
+    } finally {
+      server.closeAllConnections();
+      server.close();
+    }
   });
 });
