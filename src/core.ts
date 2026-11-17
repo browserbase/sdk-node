@@ -630,7 +630,7 @@ export abstract class APIClient {
       const maxRetries = options.maxRetries ?? this.maxRetries;
       timeoutMillis = this.calculateDefaultRetryTimeoutMillis(retriesRemaining, maxRetries);
     }
-    await sleep(timeoutMillis);
+    await sleep(timeoutMillis, options.signal);
 
     return this.makeRequest(options, retriesRemaining - 1);
   }
@@ -1022,7 +1022,16 @@ const isAbsoluteURL = (url: string): boolean => {
   return startsWithSchemeRegexp.test(url);
 };
 
-export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+export const sleep = (ms: number, signal?: AbortSignal | null) =>
+  new Promise<void>((resolve) => {
+    const done = () => {
+      clearTimeout(timeout);
+      signal?.removeEventListener('abort', done);
+      resolve();
+    };
+    const timeout = setTimeout(done, ms);
+    signal?.addEventListener('abort', done);
+  });
 
 const validatePositiveInteger = (name: string, n: unknown): number => {
   if (typeof n !== 'number' || !Number.isInteger(n)) {
