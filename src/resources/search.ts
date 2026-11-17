@@ -85,10 +85,13 @@ export namespace SearchWebResponse {
   }
 }
 
-export type SearchWebParams = SearchWebParams.Variant0 | SearchWebParams.Variant1 | SearchWebParams.Variant2;
+export type SearchWebParams =
+  | SearchWebParams.ProviderParallel
+  | SearchWebParams.ProviderExa
+  | SearchWebParams.DefaultProvider;
 
 export declare namespace SearchWebParams {
-  export interface Variant0 {
+  export interface ProviderParallel {
     /**
      * Search provider to serve this request. Defaults to `parallel`, which uses
      * `advanced` mode unless `mode` is set.
@@ -132,7 +135,7 @@ export declare namespace SearchWebParams {
     objective?: string;
   }
 
-  export interface Variant1 {
+  export interface ProviderExa {
     /**
      * Search provider to serve this request. Defaults to `parallel`, which uses
      * `advanced` mode unless `mode` is set.
@@ -176,7 +179,7 @@ export declare namespace SearchWebParams {
     objective?: string;
   }
 
-  export interface Variant2 {
+  export interface DefaultProvider {
     /**
      * The search query string
      */
