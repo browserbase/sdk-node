@@ -4,6 +4,8 @@ import Browserbase from '@browserbasehq/sdk';
 import { APIUserAbortError } from '@browserbasehq/sdk';
 import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
+import http from 'node:http';
+import { type AddressInfo } from 'node:net';
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -277,6 +279,26 @@ describe('request building', () => {
       const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: 'hello' } });
       expect((req.headers as Record<string, string>)['content-length']).toEqual('22');
     });
+  });
+
+  test.each([
+    ['native fetch', undefined],
+    ['node-fetch', defaultFetch],
+  ])('sends only the bytes of a sliced binary body with %s', async (_, fetch) => {
+    const server = http.createServer(async (req, res) => {
+      const bytes: number[] = [];
+      for await (const chunk of req) bytes.push(...chunk);
+      res.writeHead(200, { 'content-type': 'application/json' }).end(JSON.stringify(bytes));
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address() as AddressInfo;
+    const client = new Browserbase({ apiKey: 'My API Key', baseURL: `http://127.0.0.1:${port}`, fetch });
+    try {
+      const body = new Uint8Array([10, 20, 30, 40]).subarray(1, 3);
+      expect(await client.post('/foo', { body, __binaryRequest: true })).toEqual([20, 30]);
+    } finally {
+      server.close();
+    }
   });
 
   describe('custom headers', () => {
