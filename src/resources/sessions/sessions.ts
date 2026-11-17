@@ -358,10 +358,9 @@ export namespace SessionCreateParams {
     extensionId?: string;
 
     /**
-     * Enable or disable ignoring of certificate errors in the browser. Defaults to
-     * `false`, so TLS certificate validation is enforced; set to `true` to ignore
-     * certificate errors (for example, to reach hosts with expired or self-signed
-     * certificates).
+     * Set `true` to ignore TLS certificate errors in the browser session (for example,
+     * to reach hosts with expired or self-signed certificates). When omitted, your
+     * project's default applies.
      */
     ignoreCertificateErrors?: boolean;
 
