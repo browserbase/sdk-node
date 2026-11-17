@@ -4,6 +4,8 @@ import Browserbase from '@browserbasehq/sdk';
 import { APIUserAbortError } from '@browserbasehq/sdk';
 import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
+import http from 'node:http';
+import { type AddressInfo } from 'node:net';
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -268,14 +270,28 @@ describe('request building', () => {
   const client = new Browserbase({ apiKey: 'My API Key' });
 
   describe('Content-Length', () => {
-    test('handles multi-byte characters', async () => {
+    test('is left to fetch', async () => {
       const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: '—' } });
-      expect((req.headers as Record<string, string>)['content-length']).toEqual('20');
+      expect((req.headers as Record<string, string>)['content-length']).toBeUndefined();
     });
 
-    test('handles standard characters', async () => {
-      const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: 'hello' } });
-      expect((req.headers as Record<string, string>)['content-length']).toEqual('22');
+    test.each([
+      ['native fetch', undefined],
+      ['node-fetch', defaultFetch],
+    ])('is sent once with the byte length by %s', async (_, fetch) => {
+      const server = http.createServer((req, res) =>
+        res
+          .writeHead(200, { 'content-type': 'application/json' })
+          .end(JSON.stringify(req.rawHeaders.filter((_, i, raw) => /^content-length$/i.test(raw[i - 1]!)))),
+      );
+      await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+      const { port } = server.address() as AddressInfo;
+      const client = new Browserbase({ apiKey: 'My API Key', baseURL: `http://127.0.0.1:${port}`, fetch });
+      try {
+        expect(await client.post('/foo', { body: { value: '—' } })).toEqual(['20']);
+      } finally {
+        server.close();
+      }
     });
   });
 
