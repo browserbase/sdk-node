@@ -40,6 +40,7 @@ describe('resource sessions', () => {
             captchaInputSelector: 'captchaInputSelector',
             context: { id: 'id', persist: true },
             extensionId: 'extensionId',
+            extensions: ['onepassword'],
             ignoreCertificateErrors: true,
             logSession: true,
             os: 'windows',
