@@ -154,6 +154,11 @@ export interface Session {
   endedAt?: string;
 
   /**
+   * Size of the browser used for the session.
+   */
+  size?: 'regular' | 'large' | 'xlarge';
+
+  /**
    * Arbitrary user metadata to attach to the session. To learn more about user
    * metadata, see [User Metadata](/features/sessions#user-metadata).
    */
@@ -388,6 +393,12 @@ export namespace SessionCreateParams {
      * enforces it only when navigation policy enforcement is enabled for the project.
      */
     riskPolicyId?: string;
+
+    /**
+     * Size of the browser. Larger sizes provide more resources to improve performance
+     * for intensive tasks. Defaults to `regular`.
+     */
+    size?: 'regular' | 'large' | 'xlarge';
 
     /**
      * Enable or disable captcha solving in the browser. Defaults to `true`.

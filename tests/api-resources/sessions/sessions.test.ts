@@ -45,6 +45,7 @@ describe('resource sessions', () => {
             os: 'windows',
             recordSession: true,
             riskPolicyId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            size: 'regular',
             solveCaptchas: true,
             verified: true,
             viewport: { height: 0, width: 0 },
