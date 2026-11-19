@@ -52,6 +52,15 @@ export interface FetchAPICreateParams {
   url: string;
 
   /**
+   * Domains the fetch may reach. A listed domain also permits its subdomains:
+   * `example.com` permits `www.example.com`. A URL on any other host is rejected
+   * with a 400 before it is fetched, and so is a redirect to one when
+   * `allowRedirects` is set, before it is followed. An empty list (the default)
+   * allows any host.
+   */
+  allowedDomains?: Array<string>;
+
+  /**
    * Whether to bypass TLS certificate verification
    */
   allowInsecureSsl?: boolean;
