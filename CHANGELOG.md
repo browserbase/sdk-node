@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.29.0](https://github.com/browserbase/sdk-node/compare/v2.28.0...v2.29.0) (2026-11-19)
+
+
+### Features
+
+* **api:** : Clarify certificate error descriptions in Sessions and Agents APIs ([11a8e46](https://github.com/browserbase/sdk-node/commit/11a8e463ffcb73903fd1afc499b2470e1fc3cde7))
+* **api:** Unhide VSB in docs/SDK ([354f6d3](https://github.com/browserbase/sdk-node/commit/354f6d331b6b9d51e23011b637505ebf2794bbc8))
+
+
+### Build System
+
+* **deps-dev:** bump adm-zip from 0.5.16 to 0.6.1 ([#248](https://github.com/browserbase/sdk-node/issues/248)) ([dc3e35e](https://github.com/browserbase/sdk-node/commit/dc3e35eaa7f0aa8c8863dc52673b383c78156cc8))
+* **deps:** bump @babel/core from 7.28.6 to 7.29.13 ([#255](https://github.com/browserbase/sdk-node/issues/255)) ([df6ef1a](https://github.com/browserbase/sdk-node/commit/df6ef1ac7fa6d205be469183d2477b63d826fc9c))
+* **deps:** bump brace-expansion from 1.1.12 to 1.1.22 ([#252](https://github.com/browserbase/sdk-node/issues/252)) ([b5a1783](https://github.com/browserbase/sdk-node/commit/b5a1783c5d1fd433e7febcff1b2f07a9be7a3c42))
+* **deps:** bump browserslist from 4.28.1 to 4.29.6 ([#249](https://github.com/browserbase/sdk-node/issues/249)) ([7c8ab2b](https://github.com/browserbase/sdk-node/commit/7c8ab2bc65f1d0d25e1bc64ff733205d97590a8a))
+* **deps:** bump flatted from 3.2.7 to 3.4.4 ([#256](https://github.com/browserbase/sdk-node/issues/256)) ([34dc19b](https://github.com/browserbase/sdk-node/commit/34dc19bf4ce8d89983e36f73c206d4b9237d01c9))
+* **deps:** bump form-data from 4.0.4 to 4.0.6 ([#254](https://github.com/browserbase/sdk-node/issues/254)) ([d702ded](https://github.com/browserbase/sdk-node/commit/d702ded0e1aa91e70621d7ad1338b1f7bdb3ab7f))
+* **deps:** bump js-yaml from 3.14.2 to 3.15.2 ([#250](https://github.com/browserbase/sdk-node/issues/250)) ([92ee962](https://github.com/browserbase/sdk-node/commit/92ee96211a65d6aa11bed47f4c5a79f440eb32f8))
+* **deps:** bump tmp from 0.2.5 to 0.2.7 ([#253](https://github.com/browserbase/sdk-node/issues/253)) ([4451651](https://github.com/browserbase/sdk-node/commit/44516513246c49f3ee972062d9791b08dbd99992))
+
 ## [2.28.0](https://github.com/browserbase/sdk-node/compare/v2.27.0...v2.28.0) (2026-11-17)
 
 
