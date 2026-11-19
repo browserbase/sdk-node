@@ -5,7 +5,7 @@
 
 ### Features
 
-* **api:** : Clarify certificate error descriptions in Sessions and Agents APIs ([11a8e46](https://github.com/browserbase/sdk-node/commit/11a8e463ffcb73903fd1afc499b2470e1fc3cde7))
+* **api:** Clarify certificate error descriptions in Sessions and Agents APIs ([11a8e46](https://github.com/browserbase/sdk-node/commit/11a8e463ffcb73903fd1afc499b2470e1fc3cde7))
 * **api:** Add browser size selection with `regular`, `large`, and `xlarge` options. ([354f6d3](https://github.com/browserbase/sdk-node/commit/354f6d331b6b9d51e23011b637505ebf2794bbc8))
 
 
