@@ -52,7 +52,7 @@ export interface FetchAPICreateParams {
   url: string;
 
   /**
-   * Domains the fetch may reach, up to 100. A listed domain also permits its
+   * Domains the fetch may reach, up to 1000. A listed domain also permits its
    * subdomains: `example.com` permits `www.example.com`. A URL on any other host is
    * rejected with a 400 before it is fetched, and so is a redirect to one when
    * `allowRedirects` is set, before it is followed. An empty list (the default)
