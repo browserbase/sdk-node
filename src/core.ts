@@ -496,6 +496,7 @@ export abstract class APIClient {
       if (retriesRemaining && this.shouldRetry(response)) {
         const retryMessage = `retrying, ${retriesRemaining} attempts remaining`;
         debug(`response (error; ${retryMessage})`, response.status, url, responseHeaders);
+        controller.abort();
         return this.retryRequest(options, retriesRemaining, responseHeaders);
       }
 
