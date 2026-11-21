@@ -54,6 +54,7 @@ type APIResponseProps = {
   response: Response;
   options: FinalRequestOptions;
   controller: AbortController;
+  timeout: number;
 };
 
 async function defaultParseResponse<T>(props: APIResponseProps): Promise<T> {
@@ -67,6 +68,19 @@ async function defaultParseResponse<T>(props: APIResponseProps): Promise<T> {
     return response as unknown as T;
   }
 
+  const timeout = setTimeout(() => props.controller.abort(), props.timeout);
+  try {
+    return await parseBody<T>(response);
+  } catch (err) {
+    if (props.controller.signal.aborted && !props.options.signal?.aborted)
+      throw new APIConnectionTimeoutError();
+    throw err;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function parseBody<T>(response: Response): Promise<T> {
   const contentType = response.headers.get('content-type');
   const mediaType = contentType?.split(';')[0]?.trim();
   const isJSON = mediaType?.includes('application/json') || mediaType?.endsWith('+json');
@@ -510,7 +524,7 @@ export abstract class APIClient {
       throw err;
     }
 
-    return { response, options, controller };
+    return { response, options, controller, timeout };
   }
 
   requestAPIList<Item = unknown, PageClass extends AbstractPage<Item> = AbstractPage<Item>>(

@@ -1,9 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Browserbase from '@browserbasehq/sdk';
-import { APIUserAbortError } from '@browserbasehq/sdk';
+import { APIConnectionTimeoutError, APIUserAbortError } from '@browserbasehq/sdk';
 import { Headers } from '@browserbasehq/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
+import http from 'node:http';
+import { type AddressInfo } from 'node:net';
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -504,5 +506,29 @@ describe('retries', () => {
         .then((r) => r.text()),
     ).toEqual(JSON.stringify({ a: 1 }));
     expect(count).toEqual(3);
+  });
+
+  test.each([
+    ['native fetch', undefined],
+    ['node-fetch', defaultFetch],
+  ])('timeout covers a stalled response body with %s', async (_, fetch) => {
+    const server = http.createServer((req, res) =>
+      res.writeHead(200, { 'content-type': 'application/json' }).write('{'),
+    );
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address() as AddressInfo;
+    const client = new Browserbase({
+      apiKey: 'My API Key',
+      baseURL: `http://127.0.0.1:${port}`,
+      fetch,
+      timeout: 50,
+      maxRetries: 0,
+    });
+    try {
+      await expect(client.get('/foo')).rejects.toThrow(APIConnectionTimeoutError);
+    } finally {
+      server.closeAllConnections();
+      server.close();
+    }
   });
 });
