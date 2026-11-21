@@ -552,12 +552,13 @@ export abstract class APIClient {
     controller: AbortController,
   ): Promise<Response> {
     const { signal, ...options } = init || {};
-    if (signal) signal.addEventListener('abort', () => controller.abort());
+    const combine = signal instanceof AbortSignal && 'any' in AbortSignal;
+    if (signal && !combine) signal.addEventListener('abort', () => controller.abort());
 
     const timeout = setTimeout(() => controller.abort(), ms);
 
     const fetchOptions = {
-      signal: controller.signal as any,
+      signal: combine ? (AbortSignal as any).any([signal, controller.signal]) : (controller.signal as any),
       ...options,
     };
     if (fetchOptions.method) {
