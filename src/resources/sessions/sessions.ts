@@ -309,7 +309,7 @@ export interface SessionCreateParams {
    * Browserbase, into the session. A Stagehand client can pass an object with its
    * details instead, which also loads it.
    */
-  stagehand?: SessionCreateParams.UnionMember0 | boolean;
+  stagehand?: SessionCreateParams.StagehandSettings | boolean;
 
   /**
    * Duration in seconds after which the session will automatically end. Defaults to
@@ -546,11 +546,11 @@ export namespace SessionCreateParams {
   /**
    * Details a Stagehand client sends about itself. Unknown keys are rejected.
    */
-  export interface UnionMember0 {
+  export interface StagehandSettings {
     /**
      * The Stagehand client that created the session.
      */
-    clientInfo?: UnionMember0.ClientInfo;
+    clientInfo?: StagehandSettings.ClientInfo;
 
     /**
      * SHA-256 fingerprint of the Stagehand extension build the client ships with, as
@@ -564,7 +564,7 @@ export namespace SessionCreateParams {
     protocolVersion?: string;
   }
 
-  export namespace UnionMember0 {
+  export namespace StagehandSettings {
     /**
      * The Stagehand client that created the session.
      */
