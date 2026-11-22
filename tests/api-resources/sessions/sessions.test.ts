@@ -68,6 +68,12 @@ describe('resource sessions', () => {
           ],
           proxySettings: { caCertificates: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'] },
           region: 'us-west-2',
+          stagehand: {
+            enabled: true,
+            clientInfo: { name: 'x', version: 'x' },
+            extensionFingerprint: 'ecc2efdd09bd231a9ad9bd2aada37aa7ccc3d38a03cc25beb6c28aa0aaa316be',
+            protocolVersion: '869.6101.6934',
+          },
           api_timeout: 60,
           userMetadata: { foo: 'bar' },
         },
