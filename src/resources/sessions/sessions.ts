@@ -305,6 +305,13 @@ export interface SessionCreateParams {
   region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
 
   /**
+   * Set to true to load the browser extension the Stagehand SDK uses, provided by
+   * Browserbase, into the session. A Stagehand client can pass an object with its
+   * details instead, which also loads it.
+   */
+  stagehand?: SessionCreateParams.UnionMember0 | boolean;
+
+  /**
    * Duration in seconds after which the session will automatically end. Defaults to
    * the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6
    * hours).
@@ -534,6 +541,44 @@ export namespace SessionCreateParams {
      * The TLS certificate IDs to trust. Optional.
      */
     caCertificates?: Array<string>;
+  }
+
+  /**
+   * Details a Stagehand client sends about itself. Unknown keys are rejected.
+   */
+  export interface UnionMember0 {
+    /**
+     * The Stagehand client that created the session.
+     */
+    clientInfo?: UnionMember0.ClientInfo;
+
+    /**
+     * SHA-256 fingerprint of the Stagehand extension build the client ships with, as
+     * 64 lowercase hex characters. The API does not verify it.
+     */
+    extensionFingerprint?: string;
+
+    /**
+     * The Stagehand protocol version the client speaks, as a SemVer 2.0.0 string.
+     */
+    protocolVersion?: string;
+  }
+
+  export namespace UnionMember0 {
+    /**
+     * The Stagehand client that created the session.
+     */
+    export interface ClientInfo {
+      /**
+       * Name of the Stagehand client.
+       */
+      name: string;
+
+      /**
+       * Version of the Stagehand client.
+       */
+      version: string;
+    }
   }
 }
 
