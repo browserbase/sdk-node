@@ -305,9 +305,11 @@ export interface SessionCreateParams {
   region?: 'us-west-2' | 'us-east-1' | 'eu-central-1' | 'ap-southeast-1';
 
   /**
-   * Stagehand settings for the session. Unknown keys are rejected.
+   * Set to true to load the browser extension the Stagehand SDK uses, provided by
+   * Browserbase, into the session. A Stagehand client can pass an object with its
+   * details instead, which also loads it.
    */
-  stagehand?: SessionCreateParams.Stagehand;
+  stagehand?: SessionCreateParams.UnionMember0 | boolean;
 
   /**
    * Duration in seconds after which the session will automatically end. Defaults to
@@ -542,19 +544,13 @@ export namespace SessionCreateParams {
   }
 
   /**
-   * Stagehand settings for the session. Unknown keys are rejected.
+   * Details a Stagehand client sends about itself. Unknown keys are rejected.
    */
-  export interface Stagehand {
-    /**
-     * Set to true to load the browser extension the Stagehand SDK uses, provided by
-     * Browserbase, into the session.
-     */
-    enabled: boolean;
-
+  export interface UnionMember0 {
     /**
      * The Stagehand client that created the session.
      */
-    clientInfo?: Stagehand.ClientInfo;
+    clientInfo?: UnionMember0.ClientInfo;
 
     /**
      * SHA-256 fingerprint of the Stagehand extension build the client ships with, as
@@ -568,7 +564,7 @@ export namespace SessionCreateParams {
     protocolVersion?: string;
   }
 
-  export namespace Stagehand {
+  export namespace UnionMember0 {
     /**
      * The Stagehand client that created the session.
      */
