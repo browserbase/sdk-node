@@ -114,6 +114,8 @@ export interface Webhook {
     | 'functions.invocations.running'
     | 'functions.invocations.completed'
     | 'functions.invocations.failed'
+    | 'sessions.navigations.allowed'
+    | 'sessions.navigations.blocked'
   >;
 
   /**
@@ -183,6 +185,8 @@ export interface WebhookCreateParams {
     | 'functions.invocations.running'
     | 'functions.invocations.completed'
     | 'functions.invocations.failed'
+    | 'sessions.navigations.allowed'
+    | 'sessions.navigations.blocked'
   >;
 }
 
@@ -203,6 +207,8 @@ export interface WebhookUpdateParams {
     | 'functions.invocations.running'
     | 'functions.invocations.completed'
     | 'functions.invocations.failed'
+    | 'sessions.navigations.allowed'
+    | 'sessions.navigations.blocked'
   >;
 }
 
